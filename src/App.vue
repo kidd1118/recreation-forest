@@ -2,27 +2,40 @@
   <div id="app">
     <div>
       <el-container>
-        <el-header>
-          <h1>嘉明湖國家步道</h1>
-          <!--<el-button @click="startHacking">Start</el-button>-->
-          <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-            <el-menu-item index="1"><a href="#div_aside">認識步道</a></el-menu-item>
-            <el-menu-item index="2"><a href="#div_travel">旅遊資訊</a></el-menu-item>
-            <el-menu-item index="3"><a href="#div_trafic">交通資訊</a></el-menu-item>
-            <el-menu-item index="4"><a href="#div_aside_overall">步道導覽</a></el-menu-item>
-            <el-menu-item index="5"><a href="#div_season">季節風貌</a></el-menu-item>
-            <el-menu-item index="6"><a href="#div_enviorment">環境資源</a></el-menu-item>
-            <el-menu-item index="7"><a href="#div_share">民眾分享</a></el-menu-item>
-          </el-menu>
+        <el-header class="rt-header" style="height: auto;">
+          <div class="rt-header__mask"></div>
+          <el-row>
+            <el-col :span="16">
+                <h1>{{$store.state.title}}</h1>
+                <p>{{$store.state.summary}}</p>
+            </el-col>
+            <el-col :span="8">
+                <div class="rt-link-apply1">{{$store.state.apply[0]}}</div>
+                <div class="rt-link-apply2">{{$store.state.apply[1]}}</div>
+                <div class="rt-link-apply3">{{$store.state.apply[2]}}</div>
+                <div class="rt-info">{{$store.state.info}}</div>
+            </el-col>
+          </el-row>
+           <el-row>
+            <el-col :span="24">
+              <!--<el-button @click="increment">Start</el-button>-->
+              <el-menu :default-active="activeIndex" class="el-menu" mode="horizontal" @select="handleSelect">
+                <el-menu-item index="1" v-for="item in $store.state.tabs" :key="item">
+                  <a v-bind:href="item.href" class="js-anchor">{{ item.label }}</a>
+                </el-menu-item>
+              </el-menu>
+            </el-col>
+          </el-row>
         </el-header>
         <el-main>
         <div id="div_aside">
           <h2>認識步道</h2>
           <el-carousel :interval="1000" :autoplay="false" arrow="always">
-            <el-carousel-item v-for="item in 4" :key="item">
-              <h3>{{ item * 10 }}</h3>
-              <h3>{{ item * 20 }}</h3>
-              <h3>{{ item * 30 }}</h3>
+            <el-carousel-item v-for="item in $store.state.snapshots" :key="item">
+              <div class="el-carousel__cell">
+                <img v-bind:src="item.url"/>
+                <h4>{{ item.label }}</h4>
+              </div>
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -35,10 +48,13 @@
             <el-tab-pane label="旅程建議" name="second">
               <h3>旅程建議</h3>
               <el-carousel :interval="1000" :autoplay="false" arrow="always">
-                <el-carousel-item v-for="item in 4" :key="item">
-                  <h3>{{ item * 10 }}</h3>
-                  <h3>{{ item * 20 }}</h3>
-                  <h3>{{ item * 30 }}</h3>
+                <el-carousel-item v-for="item in $store.state.snapshots" :key="item">
+                  <div class="el-carousel__cell">
+                    <img v-bind:src="item.url"/>
+                    <h4>{{ item.label }}</h4>
+                  </div>
+                  
+
                 </el-carousel-item>
               </el-carousel>
             </el-tab-pane>
@@ -57,8 +73,8 @@
         <div id="div_aside_overall">
           <h2>步道導覽</h2>
           <el-carousel :interval="1000" :autoplay="false" arrow="always">
-            <el-carousel-item v-for="item in 4" :key="item">
-              <h3>{{ item * 10 }}</h3>
+            <el-carousel-item v-for="item in $store.state.snapshots" :key="item">
+              <h3>{{ item.label }}</h3>
               <h3>{{ item * 20 }}</h3>
               <h3>{{ item * 30 }}</h3>
             </el-carousel-item>
@@ -87,9 +103,20 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  methods: {
-    startHacking() {
+  methods:mapActions([
+    'increment',
+    'decrement',
+    'incrementIfOdd',
+    'incrementAsync'
+  ]),
+  handleSelect(tab, event) {
+    console.log(tab, event);
+  } 
+    /*{
+    increment() {
       this.$notify({
         title: "It works!",
         type: "success",
@@ -101,17 +128,19 @@ export default {
     handleClick(tab, event) {
       console.log(tab, event);
     }
-  }
+  }*/
 };
 </script>
 
 <style>
+
 #app {
   font-family: Helvetica, sans-serif;
   text-align: center;
+  width: 100%;
 }
 
-.el-carousel__item h3 {
+.el-carousel__item .el-carousel__cell {
   color: #475669;
   font-size: 18px;
   opacity: 0.75;
@@ -127,5 +156,45 @@ export default {
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+
+.el-menu { 
+  display: flex; 
+  width: 100%; 
+  list-style: none; 
+  margin:0px; 
+  padding:0px; 
+} 
+.el-menu li { 
+  flex: 1;
+}
+
+.rt-header {
+  border-width:1px;
+  border-style:solid;
+  border-color:rgba(121, 121, 121, 1);
+  background-image: url(http://cloud.emct.com.tw/recreation/RT/images/%E5%98%89%E6%98%8E%E6%B9%96/u9.png);
+  color: #fff;
+  position: relative;
+}
+.rt-header__mask{
+  background-color:rgba(0, 0, 0, 0.698039215686274);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.rt-link-apply1{
+  background-color: #0F7A6E;
+}
+.rt-link-apply2{
+  background-color: #996600;
+}
+.rt-link-apply3{
+  background-color: #C22448;
+}
+.rt-info{
+  background-color: #3B5999;
 }
 </style>
