@@ -4,7 +4,7 @@ export const state = {
     tabs: [
         {
             label: '認識步道',
-            href: '#div_aside'
+            href: '#div_trail'
         },
         {
             label: '旅遊資訊',
@@ -16,7 +16,7 @@ export const state = {
         },
         {
             label: '步道導覽',
-            href: '#div_aside_overall'
+            href: '#div_trail_overall'
         },
         {
             label: '季節風貌',
@@ -28,15 +28,73 @@ export const state = {
         },
         {
             label: '民眾分享',
-            href: '#div_share'
+            href: '#div_sharing'
         }
     ],
-    apply: ['山屋及營地申請', '申辦入山許可證', '自然保護(留)區進入申請'],
-    info: '步道開放資訊',
+    breadcrumb: ['首頁', '自然步道', '嘉明湖國家步道'],
+    campApply: {label: '山屋及營地申請', href: 'http://jmlnt.forest.gov.tw/'},
+    entryApply: {label:'申辦入山許可證', href: 'https://nv2.npa.gov.tw/NM103-604Client/'}, 
+    enviormentApply: {label: '自然保護(留)區進入申請', href: 'http://pa.forest.gov.tw/ForestApply/'},
+    openInfo: '步道開放資訊',
     snapshots: [
-        { url: 'http://cloud.emct.com.tw/recreation/RT/images/嘉明湖/u232.jpg', label: '嘉明湖' },
-        { url: 'http://cloud.emct.com.tw/recreation/RT/images/嘉明湖/u233.jpg', label: '向陽山屋' },
-        { url: 'http://cloud.emct.com.tw/recreation/RT/images/嘉明湖/u234.jpg', label: '嘉明湖翻騰的雲海夕陽' }
+        { url: 'http://cloud.emct.com.tw/recreation/RT/images/嘉明湖/u232.jpg', label: '嘉明湖', author: '林宗以' },
+        { url: 'http://cloud.emct.com.tw/recreation/RT/images/嘉明湖/u233.jpg', label: '向陽山屋', author: '林宗以' },
+        { url: 'http://cloud.emct.com.tw/recreation/RT/images/嘉明湖/u234.jpg', label: '嘉明湖翻騰的雲海夕陽', author: '林宗以' }
     ],
+    trailInfo: [
+        {columnName: '步道難度', text: '想要有挑戰性（4級)', showInfo: true},
+        {columnName: '步道海拔', text: '2365～3602 公尺'},
+        {columnName: '路面狀況', text: '土徑、草坡、碎石路'},
+        {columnName: '步道位置', text: '台東縣海端鄉'},
+        {columnName: '步道全長', text: '13.0 公里'},
+        {columnName: '路程規劃', text: '三日'},
+        {columnName: '所屬山系', text: '向陽山、三叉山'},
+        {columnName: '步道型態', text: '線型雙向'},
+        {columnName: '步道分類', text: '國家級步道'},
+        {columnName: '最佳造訪期', text: '四季皆宜'},
+        {columnName: '首選景觀', text: '嘉明湖'},
+        {columnName: '管轄單位', text: '臺東林區管理處'},
+        {columnName: '洽詢電話', text: '089-324121-4 轉育樂課'}
+    ],
+    trailDetail: {
+        title: '步道分級',
+        category: ['我只想流點汗', '有點累也可以', '想要有挑戰性'],
+        levels: [
+            {level: 1, candidate: '親子、一般大眾', altitude: '海拔1,000公尺以下', days: '1天內', equipment: '輕裝（帶水或少許糧食）', remark: '容易到達、坡度平緩且設施完善，路面平整易行。'},
+            {level: 2, candidate: '體力稍佳者', altitude: '海拔1,000~2,000公尺', days: '1天內', equipment: '輕裝（帶水與適量糧食）', remark: '容易到達之開放性步道，坡度稍陡，或有少數困難路段，但設施完善，路面平整。'},
+            {level: 3, candidate: '體力較佳者', altitude: '海拔2,000~3,000公尺', days: '1~3天', equipment: '登山裝備需具備（糧食、睡袋、炊煮設備等）', remark: '部分路段需先申請入園許可；部分路段路況較差，坡度較陡，但基本設施完善。'},
+            {level: 4, candidate: '體力佳並具地圖判讀級野外求生能力者', altitude: '海拔3,000公尺以上', days: '1~3天', equipment: '登山裝備需具備（糧食、睡袋、炊煮設備等）', remark: '部分路段需先申請入園許可；部分路段路況較差，坡度較陡，但基本設施完善。'},
+            {level: 5, candidate: '已受訓登山者', altitude: '海拔3,000公尺以上', days: '3天以上', equipment: '登山裝備需具備（糧食、睡袋、炊煮設備等）', remark: '部分路段需先申請入園許可；位於高海拔（約3,000公尺以上）山區，路況不佳，也較原始，有許多困難及危險路段，坡度陡，氣候變化大。'}
+        ] 
+    },
+    travelInfo: '行程須知',
+    travelSuggestion: {text: '旅程建議', detail: '搭配南橫景點，安排4--5日遊程'},
+    travelTrail: '手作步道',
+    travelScence: '順遊景點',
+    byCar: {
+        label: '自行開車', 
+        detail: [
+            '1.東部：台9線往台東縣池上鄉→轉台20甲前行約5公里→右轉接台20線進南部橫貫公路→154.5公里處向陽國家森林遊樂區內→嘉明湖國家步道登山口。',
+            '2.西部：由國道3號官田系統→轉84號快速道路→至玉井，接台3線與台20線共線道路→往北寮、南化經甲仙、寶來、天池及埡口→向陽國家森林遊樂區。(本路線因啞口段封閉，西部暫不通行)'
+        ]
+    },
+    byMasstransport: {label: '大眾運輸', detail: ''},
+    label: {
+        plant: '植物',
+        animal: '動物',
+        scence: '景觀特色',
+        january: '一月',
+        fabruary: '二月',
+        march: '三月',
+        april: '四月',
+        may: '五月',
+        june: '六月',
+        july: '七月',
+        august: '八月',
+        september: '九月',
+        october: '十月',
+        november: '十一月',
+        december: '十二月'
+    },
     count: 0
 }

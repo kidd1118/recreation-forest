@@ -20,7 +20,7 @@ new Vue({
 
 $(document).ready(function(){
   // Add smooth scrolling to all links
-  $("a").on('click', function(event) {
+  $("a.js-anchor").on('click', function(event) {
 
     // Make sure this.hash has a value before overriding default behavior
     if (this.hash !== "") {
@@ -41,4 +41,11 @@ $(document).ready(function(){
       });
     } 
   });
+  $('a.js-anchor').keydown(function(event){
+    if(event.keyCode == 13){
+        $(this).click();   
+    }
+});
+
+  $('#loading').hide();
 });
