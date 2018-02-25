@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*css reset*/
+html, body, div, ul, li, th, td, p br {
+  margin: 0;
+  padding: 0;
+  font-family: "微軟正黑體, Microsoft YaHei", "Source Han Sans CN", "SimHei", "ST Heiti", Tahoma, Verdana, Geneva, sans-serif;
+  font-size: 1rem; /* 1*12px=12px */
+}
+ol, ul {
+  list-style: none outside none;
+}
+a {
+  text-decoration: none;
+}
+body {
+  color: #333;
+  background-color: rgba(242, 242, 242, 1);
+}
+h1 {
+  font-size: 4em;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.75em;
+}
+h4 {
+  font-size: 1.5em;
+}
+p {
+  font-size: 1.25em;
+}
+@media all and (min-width: 768px) and (max-width: 1024px) { 
+  html {
+    font-size: 18px;
+  }
+}
+
+@media all and (max-width: 425px) { 
+  html {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 425px) and (max-width: 768px) { 
+  html {
+    font-size: 14px;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1024px) { 
+  html {
+    font-size: 16px;
+  }
+}
+@media all and (min-width: 1024px) and (max-width: 1440px) { 
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  html {
+    font-size: 16px;
+  }
+}
