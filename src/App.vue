@@ -2,7 +2,7 @@
   <div id="app">
     <div>
       <el-container>
-        <el-header class="rt-header" style="height: 80vh; max-height: 500px;">
+        <el-header class="rt-header" style="height: 80vh; max-height: 500px; min-height: 250px;">
           <div class="rt-header__mask"></div>
           <el-row class="rt-header__content">
             <el-col :span="16" class="rt-header__left">
@@ -48,7 +48,7 @@
               <el-col :span="12" class="rt-main__trailImage">
                 <img src="static/u262.jpg" @click="trailImageDialogVisible=true">
               </el-col>
-              <el-col :span="12">
+              <el-col :span="12" class="rt-main__trailInfo">
                 <el-row v-for="(item, index) in $store.state.trailInfo" :key=index>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
@@ -64,7 +64,7 @@
                 </el-row>
               </el-col>
             </el-row>
-            <el-carousel type="card" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+            <el-carousel :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
               <el-carousel-item v-for="(item, index) in $store.state.snapshots" :key="index">
                 <div class="rt-carousel__cell">
                   <div v-bind:style="{backgroundImage: 'url(' + item.url + ')'}" class="rt-carousel__cell__img"></div>
@@ -98,7 +98,7 @@
               <el-tab-pane :label="$store.state.travelSuggestion.text">
                 <p style="text-align: left;">{{$store.state.travelSuggestion.detail}}</p>
                 <h3>{{$store.state.travelScence}}</h3>
-                <el-carousel type="card" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                <el-carousel :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
                   <el-carousel-item v-for="(item, index) in $store.state.snapshots" :key="index">
                     <div class="rt-carousel__cell">
                       <div v-bind:style="{backgroundImage: 'url(' + item.url + ')'}" class="rt-carousel__cell__img"></div>
@@ -157,7 +157,7 @@
             <iframe id="trailG-map" scrolling="auto" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" 
               width="100%" height="400px" src="https://www.google.com/maps/d/u/0/embed?mid=1iyYG9qLSsCTNrumDUVoT0VsXxR0">
             </iframe>
-            <el-carousel type="card" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+            <el-carousel :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
               <el-carousel-item v-for="(item, index) in $store.state.snapshots" :key="index">
                 <div class="rt-carousel__cell">
                   <div v-bind:style="{backgroundImage: 'url(' + item.url + ')'}" class="rt-carousel__cell__img"></div>
@@ -514,7 +514,6 @@ export default {
 }
 .el-tabs__content{
   padding: 15px;
-  background-color: #fff;
 }
 .el-tabs__item {
   font-size: 1.5rem;
@@ -539,8 +538,9 @@ export default {
 #app {
   font-family: Helvetica, sans-serif;
   text-align: center;
-  width: 100%;
+  width: 80%;
   height: 100%;
+  margin: 0 auto;
 }
 .rt-carousel__cell {
   background-color: #FFF;
@@ -586,8 +586,11 @@ export default {
 }
 .rt-header__right {
   padding-top: 10vh;
-  padding-left: 5vw;
-  line-height: 1.5rem;
+  padding-left: 3vw;
+}
+.rt-header__right a {
+  line-height: 2rem;
+  font-size: 1.2rem;
 }
 .rt-title,
 .rt-summary {
@@ -610,6 +613,8 @@ export default {
 .rt-info{
   background-color: #3B5999;
   margin-top: 20px;
+  line-height: 2rem;
+  font-size: 1.2rem;
 }
 .rt-menu {
   position: absolute;
@@ -750,6 +755,7 @@ export default {
   .rt-header__left {
     float: none;
     width: 100%;
+    margin-top: 25vmin;
   }
   .rt-header__left p{
     display: none;
@@ -762,11 +768,19 @@ export default {
     left: 0;
     bottom: 0;
   }
+  .rt-title{
+    text-align: center;
+  }
   .rt-info{
     margin-top: 0px;
   }
   .rt-menu {
     display: none;
+  }
+  .rt-main__trailImage,
+  .rt-main__trailInfo {
+    width: 100%;
+    float: none;
   }
 }
 
