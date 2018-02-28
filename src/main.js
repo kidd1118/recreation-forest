@@ -43,9 +43,9 @@ $(document).ready(function(){
   });
   $('a.js-anchor').keydown(function(event){
     if(event.keyCode == 13){
-        $(this).click();   
+      $(this).click();   
     }
-});
+  });
 
   $('#loading').hide();
 });

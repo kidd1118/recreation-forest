@@ -37,9 +37,12 @@ export const state = {
     enviormentApply: {label: '自然保護(留)區進入申請', href: 'http://pa.forest.gov.tw/ForestApply/'},
     openInfo: '步道開放資訊',
     snapshots: [
-        { url: 'http://cloud.emct.com.tw/recreation/RT/images/嘉明湖/u232.jpg', label: '嘉明湖', author: '林宗以' },
-        { url: 'http://cloud.emct.com.tw/recreation/RT/images/嘉明湖/u233.jpg', label: '向陽山屋', author: '林宗以' },
-        { url: 'http://cloud.emct.com.tw/recreation/RT/images/嘉明湖/u234.jpg', label: '嘉明湖翻騰的雲海夕陽', author: '林宗以' }
+        { url: 'http://cloud.emct.com.tw/recreation/RT/images/%E5%98%89%E6%98%8E%E6%B9%96/u424.jpg', label: '嘉明湖', author: '林宗以' },
+        { url: 'http://cloud.emct.com.tw/recreation/RT/images/%E5%98%89%E6%98%8E%E6%B9%96/u426.jpg', label: '向陽山屋', author: '林宗以' },
+        { url: 'http://cloud.emct.com.tw/recreation/RT/images/%E5%98%89%E6%98%8E%E6%B9%96/u428.jpg', label: '嘉明湖翻騰的雲海夕陽', author: '林宗以' },
+        { url: 'http://cloud.emct.com.tw/recreation/RT/images/%E5%98%89%E6%98%8E%E6%B9%96/u436.jpg', label: '遙指南一段連稜', author: '林宗以' },
+        { url: 'http://cloud.emct.com.tw/recreation/RT/images/%E5%98%89%E6%98%8E%E6%B9%96/u438.jpg', label: '玉山圓柏', author: '林宗以' },
+        { url: 'http://cloud.emct.com.tw/recreation/RT/images/%E5%98%89%E6%98%8E%E6%B9%96/u440.jpg', label: '三叉山西北坡為冷杉林與箭竹草坡鑲嵌的地景', author: '林宗以' }
     ],
     trailInfo: [
         {columnName: '步道難度', text: '想要有挑戰性（4級)', showInfo: true},

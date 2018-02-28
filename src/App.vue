@@ -38,11 +38,11 @@
             </el-col>
           </el-row>
         </el-header>
-        <el-main>
+        <el-main class="rt-main">
           <el-breadcrumb separator=">">
             <el-breadcrumb-item :to="{ path: '/' }" v-for="(item, index) in $store.state.breadcrumb" :key="index">{{ item }}</el-breadcrumb-item>
           </el-breadcrumb>
-          <div v-bind:id="$store.state.tabs[0].href.replace('#', '')">
+          <div v-bind:id="$store.state.tabs[0].href.replace('#', '')" class="rt-main__content">
             <h2 v-text="$store.state.tabs[0].label"></h2>
             <el-row>
               <el-col :span="12" class="rt-main__trailImage">
@@ -64,10 +64,10 @@
                 </el-row>
               </el-col>
             </el-row>
-            <el-carousel :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+            <el-carousel :interval="1000" :autoplay="false" arrow="always" indicator-position="none" v-bind:style="{height: carouselHeight}">
               <el-carousel-item v-for="(item, index) in $store.state.snapshots" :key="index">
                 <div class="rt-carousel__cell">
-                  <div v-bind:style="{backgroundImage: 'url(' + item.url + ')'}" class="rt-carousel__cell__img"></div>
+                  <img v-bind:src="item.url" class="rt-carousel__cell__img"/>
                   <div class="rt-carousel__cell__text">
                     <div class="rt-carousel__cell__text__label">{{ item.label }}</div>
                     <div class="rt-carousel__cell__text__subLabel">{{ item.author }}</div>
@@ -76,7 +76,7 @@
               </el-carousel-item>
             </el-carousel>
           </div>
-          <div v-bind:id="$store.state.tabs[1].href.replace('#', '')">
+          <div v-bind:id="$store.state.tabs[1].href.replace('#', '')" class="rt-main__content">
             <h2 v-text="$store.state.tabs[1].label"></h2>
             <el-tabs>
               <el-tab-pane :label="$store.state.travelInfo" style="text-align: left;">
@@ -127,7 +127,7 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-bind:id="$store.state.tabs[2].href.replace('#', '')">
+          <div v-bind:id="$store.state.tabs[2].href.replace('#', '')" class="rt-main__content">
             <h2 v-text="$store.state.tabs[2].label"></h2>
             <el-tabs type="border-card">
               <el-tab-pane>
@@ -152,7 +152,7 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-bind:id="$store.state.tabs[3].href.replace('#', '')">
+          <div v-bind:id="$store.state.tabs[3].href.replace('#', '')" class="rt-main__content">
             <h2 v-text="$store.state.tabs[3].label"></h2>
             <iframe id="trailG-map" scrolling="auto" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" 
               width="100%" height="400px" src="https://www.google.com/maps/d/u/0/embed?mid=1iyYG9qLSsCTNrumDUVoT0VsXxR0">
@@ -169,7 +169,7 @@
               </el-carousel-item>
             </el-carousel>
           </div>
-          <div v-bind:id="$store.state.tabs[4].href.replace('#', '')">
+          <div v-bind:id="$store.state.tabs[4].href.replace('#', '')" class="rt-main__content">
             <h2 v-text="$store.state.tabs[4].label"></h2>
             <p>圖片與解說來源：台灣生命大百科</p>
             <el-row>
@@ -259,7 +259,7 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-bind:id="$store.state.tabs[5].href.replace('#', '')">
+          <div v-bind:id="$store.state.tabs[5].href.replace('#', '')" class="rt-main__content">
             <h2 v-text="$store.state.tabs[5].label"></h2>
             <el-row>
               <el-col :span="8" v-for="(item, index) in $store.state.snapshots" :key="index">
@@ -275,7 +275,7 @@
               </el-col>
             </el-row>
           </div>
-          <div v-bind:id="$store.state.tabs[6].href.replace('#', '')">
+          <div v-bind:id="$store.state.tabs[6].href.replace('#', '')" class="rt-main__content">
             <h2 v-text="$store.state.tabs[6].label"></h2>
             <el-row>
               <el-col :span="8" v-for="(item, index) in $store.state.snapshots" :key="index">
@@ -292,12 +292,22 @@
               </el-col>
             </el-row>
           </div>
-          <div style="padding-top: 10px;">
-            <span class="rt-icon__sharing facebook"></span>
-            <span class="rt-icon__sharing google-plus"></span>
-            <span class="rt-icon__sharing line"></span>
-            <span class="rt-icon__sharing twitter"></span>
-            <span class="rt-icon__sharing plurk"></span>
+          <div class="rt-main__content">
+            <span data-href="http://recreation.forest.gov.tw/Index.aspx" data-mobile-iframe="true" class="rt-icon__sharing facebook">
+              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Frecreation.forest.gov.tw%2FIndex.aspx&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a>
+            </span>
+            <span class="rt-icon__sharing google-plus">
+              <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Frecreation.forest.gov.tw%2FIndex.aspx"></a>
+            </span>
+            <span class="rt-icon__sharing line">
+              <a target="_blank" href="http://line.naver.jp/R/msg/text/?http%3A%2F%2Frecreation.forest.gov.tw%2FIndex.aspx"></a>
+            </span>
+            <span class="rt-icon__sharing twitter">
+              <a target="_blank" href="http://twitter.com/home/?status=台灣山林悠遊網 http%3A%2F%2Frecreation.forest.gov.tw%2FIndex.aspx"></a>
+            </span>
+            <span class="rt-icon__sharing plurk">
+              <a target="_blank" href="http://plurk.com/?qualifier=shares&amp;status=http%3A%2F%2Frecreation.forest.gov.tw%2FIndex.aspx (台灣山林悠遊網)"></a>
+            </span>
           </div>
           <el-row>
             <el-col :span="8"><h4>| 查詢其他步道 |</h4></el-col>
@@ -305,7 +315,7 @@
             <el-col :span="8"><h4>| 關於自然步道 |</h4></el-col>
           </el-row>
         </el-main>
-      </el-container>
+      </el-container>"http://plurk.com/?qualifier=shares&status=[分享] 分享網址 (網址標題)"
     </div>
     <el-dialog
       :visible.sync="trailImageDialogVisible"
@@ -388,8 +398,18 @@ export default {
   data: function () {
     return {
       trailImageDialogVisible: false,
-      trailInfoDialogVisible: false
+      trailInfoDialogVisible: false,
+      carouselHeight: 'auto'
     }
+  },
+  mounted: function() { 
+    window.addEventListener('resize', function() {
+      this.carouselHeight = $('.rt-carousel__cell__img:first').height() + $('.rt-carousel__cell__text:first').height() + 'px';
+    }.bind(this));
+    setTimeout(function() {
+      this.carouselHeight = $('.rt-carousel__cell__img:first').height() + $('.rt-carousel__cell__text:first').height() + 'px';
+    }.bind(this), 2000);
+    
   },
   methods: {
     getCurrentTabID: function(tabIndex) {
@@ -475,6 +495,9 @@ export default {
   font-size: 1rem;
 }
 
+.el-carousel__container {
+  height: 100%;
+}
 .el-carousel__arrow{
   background-image: url(assets/icon/circle_Button.png);
   background-repeat: no-repeat;
@@ -538,16 +561,15 @@ export default {
 #app {
   font-family: Helvetica, sans-serif;
   text-align: center;
-  width: 80%;
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
 }
 .rt-carousel__cell {
   background-color: #FFF;
   height: 100%;
 }
 .rt-carousel__cell__img {
-  height: 80%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -570,8 +592,8 @@ export default {
   border-width:1px;
   border-style:solid;
   border-color:rgba(121, 121, 121, 1);
-  background-image: url(http://cloud.emct.com.tw/recreation/RT/images/%E5%98%89%E6%98%8E%E6%B9%96/u9.png);
-  background-size: cover;
+  background-image: url(http://cloud.emct.com.tw/recreation/RT/images/%E5%98%89%E6%98%8E%E6%B9%96/u14.png);
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   color: #fff;
   position: relative;
@@ -621,6 +643,13 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
+}
+.rt-main{
+  width: 80%;
+  margin: 0 auto;
+}
+.rt-main__content {
+  margin-top: 30px;
 }
 .rt-main__trailImage img{
   width: 100%;
@@ -731,6 +760,11 @@ export default {
   width: 80px;
   height: 80px;
   display: inline-block;
+}
+.rt-icon__sharing a{
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .rt-icon__sharing.facebook {
   background-image: url(assets/icon/facebook.png);
