@@ -10,6 +10,19 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = false;
 
+$.ajax({
+  dataType: "json",
+  url: 'fakeData/API_RT_001.json'
+}).done(function (data) {
+  var result;
+  if (data && data.Status == 'success') {
+      result = data.Body;
+  }
+  callback && callback(result);
+}).fail(function () {
+  callback && callback(null);
+});
+
 /* eslint-disable no-new */
 new Vue({
   store: store,

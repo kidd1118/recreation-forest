@@ -65,7 +65,20 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
-
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../src/fakeData'),
+        to: path.resolve(__dirname, '../dist/fakeData'),
+        ignore: ['.*']
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../src/locales'),
+        to: path.resolve(__dirname, '../dist/locales'),
+        ignore: ['.*']
+      }
+    ]),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jquery: 'jquery',
