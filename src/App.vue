@@ -6,8 +6,8 @@
           <div class="rt-header__mask"></div>
           <el-row class="rt-header__content">
             <el-col :span="16" class="rt-header__left">
-                <h1 class="rt-title">{{$store.state.title}}</h1>
-                <p class="rt-summary">{{$store.state.summary}}</p>
+                <h1 class="rt-title">{{$store.state.index.RE_TRBAS.TR_CNAME}}</h1>
+                <p class="rt-summary">{{$store.state.index.TR_GUIDE.GUIDE_CONTENT}}</p>
             </el-col>
             <el-col :span="8" class="rt-header__right">
                 <div class="rt-link--campApply">
@@ -19,7 +19,13 @@
                 <div class="rt-link--enviormentApply">
                   <a v-on:click="click_outerLink($store.state.enviormentApply.href)">{{$store.state.enviormentApply.label}}&nbsp;&gt;</a>
                 </div>
-                <div class="rt-info">{{$store.state.openInfo}}</div>
+                <div class="rt-info">
+                  {{$store.state.index.RE_WEB_NRD.TYPE}}
+                  <div v-show="$store.state.index.RE_WEB_NRD.TR_TYP==1||$store.state.index.RE_WEB_NRD.TR_TYP==2">{{$store.state.lang.openDate}}:{{$store.state.index.RE_WEB_NRD.OpenDt}}</div>
+                  <div v-show="$store.state.index.RE_WEB_NRD.TR_TYP==1||$store.state.index.RE_WEB_NRD.TR_TYP==2">{{$store.state.lang.closeDate}}:{{$store.state.index.RE_WEB_NRD.CloseDt}}</div>
+                  <div v-show="$store.state.index.RE_WEB_NRD.TR_TYP==3">{{$store.state.lang.noticeDate}}:{{$store.state.index.RE_WEB_NRD.OpenDt}}</div>
+                  <a>{{$store.state.lang.checkNotice}}</a>
+                </div>
             </el-col>
           </el-row>
           <el-row class="rt-menu">
@@ -32,7 +38,7 @@
                 active-text-color="#fff" 
                 background-color="rgba(0, 0, 0, 0.4)">
                 <el-menu-item index="1" v-for="(tab, index) in $store.state.tabs" :key="index">
-                  <a v-bind:href="tab.href" class="js-anchor" >{{ tab.label }}</a>
+                  <a v-bind:href="tab.href" class="js-anchor">{{ $store.state[tab.label] ? $store.state[tab.label].name : tab.label }}</a>
                 </el-menu-item>
               </el-menu>
             </el-col>
@@ -43,84 +49,237 @@
             <el-breadcrumb-item :to="{ path: '/' }" v-for="(item, index) in $store.state.breadcrumb" :key="index">{{ item }}</el-breadcrumb-item>
           </el-breadcrumb>
           <div v-bind:id="$store.state.tabs[0].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.tabs[0].label"></h2>
+            <h2 v-text="$store.state.know.name"></h2>
             <el-row>
               <el-col :span="12" class="rt-main__trailImage">
-                <img src="static/u262.jpg" @click="trailImageDialogVisible=true">
+                <img v-bind:src="$store.state.know.RE_TRBAS.EP_MAP" @click="trailImageDialogVisible=true">
+                {{$store.state.lang.imageHint}}
+                <div v-show="$store.state.know.RE_TRBAS.EP_LINE">
+                  <span class="rt-main__trailInfo__columnName" >{{$store.state.lang.detailTrail}}:</span>{{$store.state.know.RE_TRBAS.EP_LINE}}
+                </div>
               </el-col>
               <el-col :span="12" class="rt-main__trailInfo">
-                <el-row v-for="(item, index) in $store.state.trailInfo" :key=index>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_DIF_CLASS">
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
-                      {{item.columnName}}:
+                      {{$store.state.lang.trailDifClass}}:
                     </div>
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{item.text}}
-                      <span v-if="item.showInfo==true" @click="trailInfoDialogVisible=true"></span>
+                      {{getDifClassText($store.state.know.RE_TRBAS.TR_DIF_CLASS)}}
+                      <span @click="trailInfoDialogVisible=true"></span>
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_ALT_LOW||$store.state.know.RE_TRBAS.TR_ALT">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailAltitude}}: 
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_ALT_LOW}} ~ {{$store.state.know.RE_TRBAS.TR_ALT}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_PAVE">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailStatus}}: 
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_PAVE}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_POSITION">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailPosition}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_POSITION}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_LENGTH_NUM">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailLength}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_LENGTH_NUM}} {{$store.state.lang.km}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_TOUR">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailTour}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_TOUR}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_MOUN">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailMoutain}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_MOUN}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_KIND">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailType}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_KIND}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_CLASS">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailClass}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_CLASS}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_BEST_SEASON">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailBestSeason}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_BEST_SEASON}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_BEST_VIEW">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailBestView}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_BEST_VIEW}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_ADMIN">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailAdmin}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_ADMIN}}
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row v-show="$store.state.know.RE_TRBAS.TR_ADMIN_PHONE">
+                  <el-col :span="8">
+                    <div class="rt-main__trailInfo__columnName">
+                      {{$store.state.lang.trailAdminPhone}}:
+                    </div>
+                  </el-col>
+                  <el-col :span="16">
+                    <div class="rt-main__trailInfo__text">
+                      {{$store.state.know.RE_TRBAS.TR_ADMIN_PHONE}}
                     </div>
                   </el-col>
                 </el-row>
               </el-col>
             </el-row>
-            <el-carousel :interval="1000" :autoplay="false" arrow="always" indicator-position="none" v-bind:style="{height: carouselHeight}">
-              <el-carousel-item v-for="(item, index) in $store.state.snapshots" :key="index">
+            <el-carousel id="el-carousel-1" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+              <el-carousel-item v-for="(item, index) in $store.state.know.TR_PHOTO" :key="index">
                 <div class="rt-carousel__cell">
-                  <img v-bind:src="item.url" class="rt-carousel__cell__img"/>
+                  <div v-bind:style="{backgroundImage: 'url(' + item.PHOTO_NAME + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.PHOTO_TITLE" v-bind:title="item.PHOTO_TITLE"></div>
                   <div class="rt-carousel__cell__text">
-                    <div class="rt-carousel__cell__text__label">{{ item.label }}</div>
-                    <div class="rt-carousel__cell__text__subLabel">{{ item.author }}</div>
+                    <div class="rt-carousel__cell__text__label">{{ item.PHOTO_TITLE }}</div>
+                    <div class="rt-carousel__cell__text__subLabel">{{ item.PHOTOGRAPHER }}</div>
                   </div>
                 </div>
               </el-carousel-item>
             </el-carousel>
           </div>
           <div v-bind:id="$store.state.tabs[1].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.tabs[1].label"></h2>
+            <h2 v-text="$store.state.travel.name"></h2>
             <el-tabs>
-              <el-tab-pane :label="$store.state.travelInfo" style="text-align: left;">
-                <h3>建議裝備清單</h3>
-                <el-button>下載</el-button>
-                <h3>行前準備說明</h3>
-                <h4><div class="rt-icon__check"></div>中型遊覽車可進入</h4>
-                <h4><div class="rt-icon__wrong"></div>大型遊覽車不可進入</h4>
-                <h4><div class="rt-icon__check"></div>需申請入山許可證</h4>
-                <p>1.事前辦妥入山證和備妥登山裝備及口糧，並規劃2～3天行程，若有任何疑問可電洽台東林區管理處育樂課：089－345493。</p>
-                <el-button>前往</el-button>
-                <h4><div class="rt-icon__check"></div>需申請進入 北插天山自然保護(留)區</h4>
-                <el-button>前往</el-button>
-                <h4><div class="rt-icon__check"></div>可前往報名 嘉明湖山屋/營地 或 向陽山屋/營地</h4>
-                <p>• 欲入住向陽山屋及嘉明湖避難小屋的登山客，請台東林區管理處（http://taitung.forest.gov.tw/）網站申請住宿，有關住宿申請相關事宜可向台東林區管理處育樂課查詢。</p>
-                <p>• 建議第一天紮營在向陽營地，或於向陽山屋（海拔2,874公尺）住宿。</p>
-                <el-button>前往</el-button>
+              <el-tab-pane :label="$store.state.lang.travelInfo" style="text-align: left;">
+                <h3>{{$store.state.lang.suggestEquipment}}</h3>
+                <el-button>{{$store.state.lang.download}}</el-button>
+                <h3>{{$store.state.lang.beforeInfomation}}</h3>
+                <h4 v-show="$store.state.travel.RE_TRBAS.M_BUS!=null">
+                  <div v-bind:class="$store.state.travel.RE_TRBAS.M_BUS == 0? 'rt-icon__check' : 'rt-icon__wrong'"></div>
+                  {{$store.state.travel.RE_TRBAS.M_BUS == 0? $store.state.lang.yesMiddleBus:$store.state.lang.noMiddleBus}}
+                </h4>
+                <h4 v-show="$store.state.travel.RE_TRBAS.L_BUS!=null">
+                  <div v-bind:class="$store.state.travel.RE_TRBAS.L_BUS == 0? 'rt-icon__check' : 'rt-icon__wrong'"></div>
+                  {{$store.state.travel.RE_TRBAS.M_BUS == 0? $store.state.lang.yesLargeBus:$store.state.lang.noLargeBus}}
+                </h4>
+                <div v-for="(item, index) in getTourData(4)" :key="index">
+                  <h4 v-show="item.TOUR_Title"><div class="rt-icon__check"></div>{{item.TOUR_Title}}</h4>
+                  <p v-show="item.TOUR_CONTENT">{{item.TOUR_CONTENT}}</p>
+                  <el-button v-show="item.TOUR_LINK" v-on:click="click_outerLink(item.TOUR_LINK)">{{$store.state.lang.goto}}</el-button>
+                </div>
               </el-tab-pane>
-              <el-tab-pane :label="$store.state.travelSuggestion.text">
-                <p style="text-align: left;">{{$store.state.travelSuggestion.detail}}</p>
+              <el-tab-pane :label="$store.state.lang.travelSuggestion">
+                <p v-show="!getTourData(1) || !getTourData(1).length">{{$store.state.lang.noData}}</p>
+                <p style="text-align: left;" v-for="(item, index) in getTourData(1)" :key="index">{{item.TOUR_CONTENT}}</p>
                 <h3>{{$store.state.travelScence}}</h3>
-                <el-carousel :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
-                  <el-carousel-item v-for="(item, index) in $store.state.snapshots" :key="index">
+                <el-carousel id="el-carousel-2" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                  <el-carousel-item v-for="(item, index) in getTourData(2)" :key="index">
                     <div class="rt-carousel__cell">
-                      <div v-bind:style="{backgroundImage: 'url(' + item.url + ')'}" class="rt-carousel__cell__img"></div>
+                      <div v-bind:style="{backgroundImage: 'url(' + (item.TOUR_PIC? item.TOUR_PIC : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.TOUR_Title" v-bind:title="item.TOUR_Title"></div>
                       <div class="rt-carousel__cell__text">
-                        <div class="rt-carousel__cell__text__label">{{ item.label }}</div>
-                        <div class="rt-carousel__cell__text__subLabel">{{ item.author }}</div>
+                        <div class="rt-carousel__cell__text__label">{{item.TOUR_Title}}</div>
+                        <div class="rt-carousel__cell__text__subLabel">{{item.TOUR_CONTENT}}</div>
+                        <div class="rt-carousel__cell__button">
+                          <el-button v-show="item.TOUR_LINK" v-on:click="click_outerLink(item.TOUR_LINK)">{{$store.state.lang.goto}}</el-button>
+                        </div>
                       </div>
                     </div>
                   </el-carousel-item>
                 </el-carousel>
               </el-tab-pane>
-              <el-tab-pane :label="$store.state.travelTrail">
-                <el-row>
+              <el-tab-pane :label="$store.state.lang.travelTrail">
+                <p v-show="!getTrailData(1) || !getTrailData(1).length">{{$store.state.lang.noData}}</p>
+                <el-row v-for="(item, index) in getTrailData(1)" :key="index">
                   <el-col :span="12">
-                    <div class="rt-image__travelTrail"></div>
+                    <div v-bind:style="{backgroundImage: 'url(' + (item.PIC? item.PIC : 'static/icon/noImage.png') + ')'}" class="rt-image__travelTrail" v-bind:alt="item.Title" v-bind:title="item.Title"></div>
                   </el-col>
                   <el-col :span="12">
                     <div class="rt-article__travelTrail">
-                      <h4>「手」護天使的眼淚～嘉明湖國家步道手作步道志工召募中！</h4>
-                      <h5>2016/01/05</h5>
-                      <p>是的！「嘉明湖國家步道手作步道」即將捲土重來，並創下國內步道手作步道最長天數：這次，我們將用 7 天美好的假期，一同守護這顆「上帝遺落人間的藍寶石」！</p>
-                      <p>嘉明湖位於海拔 3,310 公尺，是僅次於雪山翠池的高山湖泊。湖水常年不枯，湖色深藍如寶石，加上沿途豐富的森林生態、高山景緻，不僅廣為山友推崇，近年來更在網路上被廣泛宣傳為「一定要去的」台灣秘境之一。</p>
+                      <h4>{{item.TITLE}}</h4>
+                      <p>{{item.FEATURES}}</p>
                     </div>
                   </el-col>
                 </el-row>  
@@ -128,133 +287,129 @@
             </el-tabs>
           </div>
           <div v-bind:id="$store.state.tabs[2].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.tabs[2].label"></h2>
+            <h2 v-text="$store.state.traffic.name"></h2>
             <el-tabs type="border-card">
               <el-tab-pane>
                 <div slot="label" class="rt-tab__travelInfo">  
                   <div class="rt-tab__car"></div>
-                  <span>{{$store.state.byCar.label}}</span>
+                  <span>{{$store.state.lang.byCar}}</span>
                 </div>
-                <p style="text-align: left;" 
-                  v-for="(item, index) in $store.state.byCar.detail" :key="index" 
-                  v-show="$store.state.byCar.detail">{{item}}</p>
-                <p v-show="!$store.state.byCar.detail">目前無相關資料</p>
+                <p style="text-align: left;" v-for="(item, index) in getTrafficData(0)" :key="index">{{item}}</p>
+                <p v-show="!getTrafficData(0) || !getTrafficData(0).length">{{$store.state.lang.noData}}</p>
               </el-tab-pane>
               <el-tab-pane>
                 <div slot="label" class="rt-tab__travelInfo">  
                   <div class="rt-tab__masstransport"></div>
-                  <span >{{$store.state.byMasstransport.label}}</span>
+                  <span >{{$store.state.lang.byMasstransport}}</span>
                 </div>
-                <p style="text-align: left;" 
-                  v-for="(item, index) in $store.state.byMasstransport.detail" :key="index" 
-                  v-show="$store.state.byMasstransport.detail">{{item}}</p>
-                <p v-show="!$store.state.byMasstransport.detail">目前無相關資料</p>
+                <p style="text-align: left;" v-for="(item, index) in getTrafficData(1)" :key="index">{{item}}</p>
+                <p v-show="!getTrafficData(1) || !getTrafficData(1).length">{{$store.state.lang.noData}}</p>
               </el-tab-pane>
             </el-tabs>
           </div>
           <div v-bind:id="$store.state.tabs[3].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.tabs[3].label"></h2>
-            <iframe id="trailG-map" scrolling="auto" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" 
+            <h2 v-text="$store.state.trail.name"></h2>
+            <iframe id="trailG-map" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" 
               width="100%" height="400px" src="https://www.google.com/maps/d/u/0/embed?mid=1iyYG9qLSsCTNrumDUVoT0VsXxR0">
             </iframe>
-            <el-carousel :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
-              <el-carousel-item v-for="(item, index) in $store.state.snapshots" :key="index">
+            <el-carousel id="el-carousel-3" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+              <el-carousel-item v-for="(item, index) in getTrailExploreData()" :key="index">
                 <div class="rt-carousel__cell">
-                  <div v-bind:style="{backgroundImage: 'url(' + item.url + ')'}" class="rt-carousel__cell__img"></div>
+                  <div v-bind:style="{backgroundImage: 'url(' + (item.EP_PIC? item.EP_PIC : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
                   <div class="rt-carousel__cell__text">
-                    <div class="rt-carousel__cell__text__label">{{ item.label }}</div>
-                    <div class="rt-carousel__cell__text__author">{{ item.author }}</div>
+                    <div class="rt-carousel__cell__text__label">{{ item.EP_TOPIC }}</div>
+                    <div class="rt-carousel__cell__text__author">{{ item.EP_PICER }}</div>
+                    <p>{{ item.EP_CONTENT }}</p>
                   </div>
                 </div>
               </el-carousel-item>
             </el-carousel>
           </div>
           <div v-bind:id="$store.state.tabs[4].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.tabs[4].label"></h2>
-            <p>圖片與解說來源：台灣生命大百科</p>
+            <h2 v-text="$store.state.season.name"></h2>
+            <p>{{$store.state.lang.seasonImageHint}}</p>
             <el-row>
-              <el-col :span="2">
-                <el-button :autofocus=true class="rt-button__seasonInfo">{{$store.state.label.january}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.fabruary}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.march}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.april}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.may}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.june}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.july}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.august}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.september}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.october}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.november}}</el-button>
-              </el-col>
-              <el-col :span="2">
-                <el-button class="rt-button__seasonInfo">{{$store.state.label.december}}</el-button>
+              <el-col :span="24">
+                <el-button v-bind:class="selectMonth==1? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(1)">{{$store.state.lang.january}}</el-button>
+
+                <el-button v-bind:class="selectMonth==2? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(2)">{{$store.state.lang.fabruary}}</el-button>
+
+                <el-button v-bind:class="selectMonth==3? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(3)">{{$store.state.lang.march}}</el-button>
+  
+                <el-button v-bind:class="selectMonth==4? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(4)">{{$store.state.lang.april}}</el-button>
+
+                <el-button v-bind:class="selectMonth==5? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(5)">{{$store.state.lang.may}}</el-button>
+ 
+                <el-button v-bind:class="selectMonth==6? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(6)">{{$store.state.lang.june}}</el-button>
+
+                <el-button v-bind:class="selectMonth==7? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(7)">{{$store.state.lang.july}}</el-button>
+              
+                <el-button v-bind:class="selectMonth==8? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(8)">{{$store.state.lang.august}}</el-button>
+  
+                <el-button v-bind:class="selectMonth==9? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(9)">{{$store.state.lang.september}}</el-button>
+    
+                <el-button v-bind:class="selectMonth==10? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(10)">{{$store.state.lang.october}}</el-button>
+     
+                <el-button v-bind:class="selectMonth==11? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(11)">{{$store.state.lang.november}}</el-button>
+        
+                <el-button v-bind:class="selectMonth==12? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(12)">{{$store.state.lang.december}}</el-button>
               </el-col>
             </el-row>
             <el-tabs type="border-card">
               <el-tab-pane>
                 <div slot="label" class="rt-tab__seasonInfo">  
                   <div class="rt-tab__plant"></div>
-                  <span>{{$store.state.label.plant}}</span>
+                  <span>{{$store.state.lang.plant}}</span>
                 </div>
                 <el-row>
-                  <el-col :span="8" v-for="(item, index) in $store.state.snapshots" :key="index">
+                  <el-col :span="8" v-for="(item, index) in getSeasonData(1)" :key="index" class="rt-card__seasonInfo">
                     <el-card :body-style="{ padding: '0px' }">
-                      <div v-bind:style="{backgroundImage: 'url(' + item.url + ')', height: '200px'}" class="rt-carousel__cell__img"></div>
+                      <div v-bind:style="{backgroundImage: 'url(' + (item.img_info[0].image_big? item.img_info[0].image_big : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
                       <div class="rt-carousel__cell__text">
-                        <div class="rt-carousel__cell__text__label">{{ item.label }}</div>
-                        <div class="rt-carousel__cell__text__author">{{ item.author }}</div>
+                        <div class="rt-carousel__cell__text__label">{{ item.SPECIES }}</div>
+                        <div class="rt-carousel__cell__text__author">{{ item.img_info[0].author }}</div>
                       </div>
-                      <el-button>前往了解</el-button>
+                      <el-button v-on:click="click_outerLink('http://taieol.tw/pages/' + item.NAME_CODE)">{{$store.state.lang.goto}}</el-button>
                     </el-card>
                   </el-col>
+                  <p v-show="!getSeasonData(1) || !getSeasonData(1).length">{{$store.state.lang.noData}}</p>
                 </el-row>
               </el-tab-pane>
               <el-tab-pane>
                 <div slot="label" class="rt-tab__seasonInfo">  
                   <div class="rt-tab__animal"></div>
-                  <span>{{$store.state.label.animal}}</span>
+                  <span>{{$store.state.lang.animal}}</span>
                 </div>
                 <el-row>
-                  <el-col :span="8" v-for="(item, index) in $store.state.aa" :key="index" v-show="$store.state.aa"></el-col>
-                  <el-col :span="24" v-show="!$store.state.aa"><p>資料建置中</p></el-col>
+                  <el-col :span="8" v-for="(item, index) in getSeasonData(2)" :key="index" class="rt-card__seasonInfo">
+                    <el-card :body-style="{ padding: '0px' }">
+                      <div v-bind:style="{backgroundImage: 'url(' + (item.img_info[0].image_big? item.img_info[0].image_big : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
+                      <div class="rt-carousel__cell__text">
+                        <div class="rt-carousel__cell__text__label">{{ item.SPECIES }}</div>
+                        <div class="rt-carousel__cell__text__author">{{ item.img_info[0].author }}</div>
+                      </div>
+                      <el-button v-on:click="click_outerLink('http://taieol.tw/pages/' + item.NAME_CODE)">{{$store.state.lang.goto}}</el-button>
+                    </el-card>
+                  </el-col>
+                  <p v-show="!getSeasonData(2) || !getSeasonData(2).length">{{$store.state.lang.noData}}</p>
                 </el-row>
               </el-tab-pane>
               <el-tab-pane>
                 <div slot="label" class="rt-tab__seasonInfo">  
                   <div class="rt-tab__scence"></div>
-                  <span >{{$store.state.label.scence}}</span>
+                  <span >{{$store.state.lang.scence}}</span>
                 </div>
                 <el-row>
-                  <el-col :span="8" v-for="(item, index) in $store.state.snapshots" :key="index">
+                  <el-col :span="8" v-for="(item, index) in getSeasonExploreData()" :key="index" class="rt-card__seasonInfo">
                     <el-card :body-style="{ padding: '0px' }">
-                      <div v-bind:style="{backgroundImage: 'url(' + item.url + ')', height: '200px'}" class="rt-carousel__cell__img"></div>
+                      <div v-bind:style="{backgroundImage: 'url(' + (item.EP_PIC? item.EP_PIC : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
                       <div class="rt-carousel__cell__text">
-                        <div class="rt-carousel__cell__text__label">{{ item.label }}</div>
-                        <div class="rt-carousel__cell__text__author">{{ item.author }}</div>
+                        <div class="rt-carousel__cell__text__label">{{ item.EP_PIC_TIP }}</div>
+                        <div class="rt-carousel__cell__text__author">{{ item.EP_PICER }}</div>
                       </div>
-                      <el-button>前往了解</el-button>
                     </el-card>
                   </el-col>
+                  <p v-show="!getSeasonExploreData() || !getSeasonExploreData().length">{{$store.state.lang.noData}}</p>
                 </el-row>
               </el-tab-pane>
             </el-tabs>
@@ -322,7 +477,7 @@
       width="80%"
       top="5vh"
       center>
-      <img src="static/u262.jpg" width="100%">
+      <img v-bind:src="$store.state.know.RE_TRBAS.EP_MAP" width="100%">
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="trailImageDialogVisible=false">close</el-button>
       </span>
@@ -399,29 +554,43 @@ export default {
     return {
       trailImageDialogVisible: false,
       trailInfoDialogVisible: false,
-      carouselHeight: 'auto'
+      selectMonth: 1
     }
   },
   mounted: function() { 
     window.addEventListener('resize', function() {
-      this.carouselHeight = $('.rt-carousel__cell__img:first').height() + $('.rt-carousel__cell__text:first').height() + 'px';
+      var maxHeight = 0;
+      $('#el-carousel-1 .rt-carousel__cell__text').each(function() {
+        if ($(this).height() > maxHeight) maxHeight = $(this).height();
+      });
+      $('#el-carousel-1').height($('#el-carousel-1 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+      $('#el-carousel-2 .rt-carousel__cell__text').each(function() {
+        if ($(this).height() > maxHeight) maxHeight = $(this).height();
+      });
+      $('#el-carousel-2').height($('#el-carousel-2 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+      $('#el-carousel-3 .rt-carousel__cell__text').each(function() {
+        if ($(this).height() > maxHeight) maxHeight = $(this).height();
+      });
+      $('#el-carousel-3').height($('#el-carousel-3 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
     }.bind(this));
     setTimeout(function() {
-      this.carouselHeight = $('.rt-carousel__cell__img:first').height() + $('.rt-carousel__cell__text:first').height() + 'px';
-    }.bind(this), 2000);
+      var maxHeight = 0;
+      $('#el-carousel-1 .rt-carousel__cell__text').each(function() {
+        if ($(this).height() > maxHeight) maxHeight = $(this).height();
+      });
+      $('#el-carousel-1').height($('#el-carousel-1 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+      $('#el-carousel-2 .rt-carousel__cell__text').each(function() {
+        if ($(this).height() > maxHeight) maxHeight = $(this).height();
+      });
+      $('#el-carousel-2').height($('#el-carousel-2 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+      $('#el-carousel-3 .rt-carousel__cell__text').each(function() {
+        if ($(this).height() > maxHeight) maxHeight = $(this).height();
+      });
+      $('#el-carousel-3').height($('#el-carousel-3 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+    }.bind(this), 1000);
     
   },
-  methods: {
-    getCurrentTabID: function(tabIndex) {
-      var id = this.$store.state.tabs[tabIndex].href.replace('#', '');
-
-      return id;
-    },
-    getCurrentTabName: function(tabIndex) {
-      var name = this.$store.state.tabs[tabIndex].label;
-
-      return name;
-    }
+  created: function() {
   },
   computed: {
     getTraiDetailData: function() {
@@ -464,7 +633,53 @@ export default {
         }).catch(() => {
           return false;       
         });
-    } 
+    },
+    getDifClassText(c){
+      if (c<=2) return this.$store.state.lang.trailDifClassLow + '(' + c + this.$store.state.lang.level + ')';
+      else if (c==3) return this.$store.state.lang.trailDifClassMiddle + '(' + c + this.$store.state.lang.level + ')';
+      else if (c>=4) return this.$store.state.lang.trailDifClassHigh + '(' + c + this.$store.state.lang.level + ')';
+    },
+    getTourData(index){
+      return this.$store.state.travel.TR_TOUR.filter(function(item){
+        return item.P_INDEX == index;
+      });
+    },
+    getTrailData(index){
+      return this.$store.state.travel.TR_TOUR.filter(function(item){
+        return item.TRAIL_SHOW == index;
+      });
+    },
+    getTrafficData(index){
+      return this.$store.state.traffic.TR_TRAFFIC.filter(function(item){
+        return item.P_INDEX == index;
+      });
+    },
+    getTrailExploreData(){
+      return this.$store.state.trail.TR_EXPLORE;
+    },
+    getSeasonData(index){
+      var month = this.selectMonth;
+      return this.$store.state.season.TR_MONSURVEY.filter(function(item){
+        var checked = false;
+        if (item.P_INDEX == index && item.S_MONTH == month) {
+          checked = true;
+          if (index==1 || index==2){
+            $.getJSON('http://ngismap.forest.gov.tw/REST/species/name_code/' + item.NAME_CODE, function(data) {
+              if (data){
+                Object.assign(item, data);
+              }
+            });
+          }
+        }
+        return checked;
+      });
+    },
+    getSeasonExploreData(){
+      return this.$store.state.season.TR_EXPLORE;
+    },
+    click_month(m){
+      this.selectMonth = m;
+    }
   }
   /*{
     increment() {
@@ -545,7 +760,9 @@ export default {
   color: #fff;
   background-color: #0F7A6E;
 }
-
+.el-button+.el-button{
+  margin-left: 0;
+}
 
 .fixed-bottomRight{
   position: fixed;
@@ -572,11 +789,19 @@ export default {
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  padding-bottom: 60%;
 }
 .rt-carousel__cell__text{
-  height: 20%;
+  min-height: 10%;
   padding: 10px;
   text-align: left;
+}
+.rt-carousel__cell__button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .rt-carousel__cell__text__label{
   color: #000;
@@ -695,6 +920,9 @@ export default {
   height: 80px;
   margin: 0 auto;
 }
+.is-active .rt-tab__car{
+  background-image: url(assets/icon/car.png);
+}
 .rt-tab__masstransport{
   background-image: url(assets/icon/bus.png);
   background-repeat: no-repeat;
@@ -703,6 +931,9 @@ export default {
   width: 80px;
   height: 80px;
   margin: 0 auto;
+}
+.is-active .rt-tab__masstransport{
+  background-image: url(assets/icon/bus.png);
 }
 .rt-tab__plant {
   background-image: url(assets/icon/plant_off.png);
@@ -713,6 +944,9 @@ export default {
   height: 80px;
   margin: 0 auto;
 }
+.is-active .rt-tab__plant{
+  background-image: url(assets/icon/plant_off.png);
+}
 .rt-tab__animal {
   background-image: url(assets/icon/niche_off.png);
   background-repeat: no-repeat;
@@ -721,6 +955,9 @@ export default {
   width: 80px;
   height: 80px;
   margin: 0 auto;
+}
+.is-active .rt-tab__animal{
+  background-image: url(assets/icon/niche_on.png);
 }
 .rt-tab__scence {
   background-image: url(assets/icon/special_off.png);
@@ -731,9 +968,18 @@ export default {
   height: 80px;
   margin: 0 auto;
 }
+.is-active .rt-tab__scence{
+  background-image: url(assets/icon/special_on.png);
+}
 .rt-button__seasonInfo {
-  padding: 12px 0;
-  width: 100%;
+  padding: 8px;
+  color: #606266;
+  background-color: #fff;
+}
+.rt-button__seasonInfo:focus,
+.rt-button__seasonInfo.is-active {
+  color: #fff;
+  background-color: #0F7A6E;
 }
 .rt-icon__check{
   background-image: url(assets/icon/check.png);
@@ -789,7 +1035,7 @@ export default {
   .rt-header__left {
     float: none;
     width: 100%;
-    margin-top: 25vmin;
+    margin-top: 20vmin;
   }
   .rt-header__left p{
     display: none;
@@ -815,6 +1061,9 @@ export default {
   .rt-main__trailInfo {
     width: 100%;
     float: none;
+  }
+  .rt-card__seasonInfo{
+    width: 100%;
   }
 }
 

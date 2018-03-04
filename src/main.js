@@ -10,25 +10,36 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = false;
 
-$.ajax({
-  dataType: "json",
-  url: 'fakeData/API_RT_001.json'
-}).done(function (data) {
-  var result;
-  if (data && data.Status == 'success') {
-      result = data.Body;
-  }
-  callback && callback(result);
-}).fail(function () {
-  callback && callback(null);
-});
-
 /* eslint-disable no-new */
-new Vue({
-  store: store,
-  el: '#app',
-  components: { App },
-  template: '<App/>',
+
+var lang, apiData;
+
+$.when(
+    $.getJSON('fakeData/API_RT_001.json', function(data) {
+      if (data && data.status == 'success'){
+        apiData = data;
+      }
+    }),
+    $.getJSON('locales/zh-tw.json', function(data) {
+      if (data){
+        lang = data;
+      }
+    })
+).then(function() {
+  
+  if (apiData && lang) {
+
+    //store.replaceState(result.data);
+    Object.assign(store.state, apiData.data);
+    store.state.lang = lang;
+    
+    new Vue({
+      store: store,
+      el: '#app',
+      components: { App },
+      template: '<App/>',
+    });
+  }
 });
 
 $(document).ready(function(){
