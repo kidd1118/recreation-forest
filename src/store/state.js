@@ -31,10 +31,9 @@ export const state = {
         }
     ],
     breadcrumb: ['首頁', '自然步道', '嘉明湖國家步道'],
-    campApply: { label: '山屋及營地申請', href: 'http://jmlnt.forest.gov.tw/' },
-    entryApply: { label: '申辦入山許可證', href: 'https://nv2.npa.gov.tw/NM103-604Client/' },
-    enviormentApply: { label: '自然保護(留)區進入申請', href: 'http://pa.forest.gov.tw/ForestApply/' },
-    openInfo: '步道開放資訊',
+    campApply: { label: 'campApply', href: 'http://jmlnt.forest.gov.tw/' },
+    entryApply: { label: 'entryApply', href: 'https://nv2.npa.gov.tw/NM103-604Client/' },
+    enviormentApply: { label: 'enviormentApply', href: 'http://pa.forest.gov.tw/ForestApply/' },
     trailDetail: {
         title: '步道分級',
         category: ['我只想流點汗', '有點累也可以', '想要有挑戰性'],

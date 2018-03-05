@@ -11,13 +11,13 @@
             </el-col>
             <el-col :span="8" class="rt-header__right">
                 <div class="rt-link--campApply">
-                  <a v-on:click="click_outerLink($store.state.campApply.href)">{{$store.state.campApply.label}}&nbsp;&gt;</a>
+                  <a v-on:click="click_outerLink($store.state.campApply.href)">{{$store.state.lang[$store.state.campApply.label]}}&nbsp;&gt;</a>
                 </div>
                 <div class="rt-link--entryApply">
-                  <a v-on:click="click_outerLink($store.state.entryApply.href)">{{$store.state.entryApply.label}}&nbsp;&gt;</a>
+                  <a v-on:click="click_outerLink($store.state.entryApply.href)">{{$store.state.lang[$store.state.entryApply.label]}}&nbsp;&gt;</a>
                 </div>
                 <div class="rt-link--enviormentApply">
-                  <a v-on:click="click_outerLink($store.state.enviormentApply.href)">{{$store.state.enviormentApply.label}}&nbsp;&gt;</a>
+                  <a v-on:click="click_outerLink($store.state.enviormentApply.href)">{{$store.state.lang[$store.state.enviormentApply.label]}}&nbsp;&gt;</a>
                 </div>
                 <div class="rt-info">
                   {{$store.state.index.RE_WEB_NRD.TYPE}}
@@ -38,7 +38,7 @@
                 active-text-color="#fff" 
                 background-color="rgba(0, 0, 0, 0.4)">
                 <el-menu-item index="1" v-for="(tab, index) in $store.state.tabs" :key="index">
-                  <a v-bind:href="tab.href" class="js-anchor">{{ $store.state[tab.label] ? $store.state[tab.label].name : tab.label }}</a>
+                  <a v-bind:href="tab.href" class="js-anchor">{{ $store.state.lang[tab.label] }}</a>
                 </el-menu-item>
               </el-menu>
             </el-col>
@@ -49,7 +49,7 @@
             <el-breadcrumb-item :to="{ path: '/' }" v-for="(item, index) in $store.state.breadcrumb" :key="index">{{ item }}</el-breadcrumb-item>
           </el-breadcrumb>
           <div v-bind:id="$store.state.tabs[0].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.know.name"></h2>
+            <h2 v-text="$store.state.lang.know"></h2>
             <el-row>
               <el-col :span="12" class="rt-main__trailImage">
                 <img v-bind:src="$store.state.know.RE_TRBAS.EP_MAP" @click="trailImageDialogVisible=true">
@@ -221,7 +221,7 @@
             <el-carousel id="el-carousel-1" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
               <el-carousel-item v-for="(item, index) in $store.state.know.TR_PHOTO" :key="index">
                 <div class="rt-carousel__cell">
-                  <div v-bind:style="{backgroundImage: 'url(' + item.PHOTO_NAME + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.PHOTO_TITLE" v-bind:title="item.PHOTO_TITLE"></div>
+                  <div v-bind:style="{backgroundImage: 'url(' + item.PHOTO_NAME + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.PHOTO_TITLE" v-bind:title="item.PHOTO_TITLE"></div>
                   <div class="rt-carousel__cell__text">
                     <div class="rt-carousel__cell__text__label">{{ item.PHOTO_TITLE }}</div>
                     <div class="rt-carousel__cell__text__subLabel">{{ item.PHOTOGRAPHER }}</div>
@@ -231,7 +231,7 @@
             </el-carousel>
           </div>
           <div v-bind:id="$store.state.tabs[1].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.travel.name"></h2>
+            <h2 v-text="$store.state.lang.travel"></h2>
             <el-tabs>
               <el-tab-pane :label="$store.state.lang.travelInfo" style="text-align: left;">
                 <h3>{{$store.state.lang.suggestEquipment}}</h3>
@@ -258,7 +258,7 @@
                 <el-carousel id="el-carousel-2" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
                   <el-carousel-item v-for="(item, index) in getTourData(2)" :key="index">
                     <div class="rt-carousel__cell">
-                      <div v-bind:style="{backgroundImage: 'url(' + (item.TOUR_PIC? item.TOUR_PIC : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.TOUR_Title" v-bind:title="item.TOUR_Title"></div>
+                      <div v-bind:style="{backgroundImage: 'url(' + item.TOUR_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.TOUR_Title" v-bind:title="item.TOUR_Title"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{item.TOUR_Title}}</div>
                         <div class="rt-carousel__cell__text__subLabel">{{item.TOUR_CONTENT}}</div>
@@ -274,7 +274,7 @@
                 <p v-show="!getTrailData(1) || !getTrailData(1).length">{{$store.state.lang.noData}}</p>
                 <el-row v-for="(item, index) in getTrailData(1)" :key="index">
                   <el-col :span="12">
-                    <div v-bind:style="{backgroundImage: 'url(' + (item.PIC? item.PIC : 'static/icon/noImage.png') + ')'}" class="rt-image__travelTrail" v-bind:alt="item.Title" v-bind:title="item.Title"></div>
+                    <div v-bind:style="{backgroundImage: 'url(' + item.PIC + '), url(static/icon/noImage.png)'}" class="rt-image__travelTrail" v-bind:alt="item.Title" v-bind:title="item.Title"></div>
                   </el-col>
                   <el-col :span="12">
                     <div class="rt-article__travelTrail">
@@ -287,7 +287,7 @@
             </el-tabs>
           </div>
           <div v-bind:id="$store.state.tabs[2].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.traffic.name"></h2>
+            <h2 v-text="$store.state.lang.traffic"></h2>
             <el-tabs type="border-card">
               <el-tab-pane>
                 <div slot="label" class="rt-tab__travelInfo">  
@@ -308,14 +308,14 @@
             </el-tabs>
           </div>
           <div v-bind:id="$store.state.tabs[3].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.trail.name"></h2>
+            <h2 v-text="$store.state.lang.trail"></h2>
             <iframe id="trailG-map" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" 
               width="100%" height="400px" src="https://www.google.com/maps/d/u/0/embed?mid=1iyYG9qLSsCTNrumDUVoT0VsXxR0">
             </iframe>
             <el-carousel id="el-carousel-3" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
               <el-carousel-item v-for="(item, index) in getTrailExploreData()" :key="index">
                 <div class="rt-carousel__cell">
-                  <div v-bind:style="{backgroundImage: 'url(' + (item.EP_PIC? item.EP_PIC : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
+                  <div v-bind:style="{backgroundImage: 'url(' + item.EP_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
                   <div class="rt-carousel__cell__text">
                     <div class="rt-carousel__cell__text__label">{{ item.EP_TOPIC }}</div>
                     <div class="rt-carousel__cell__text__author">{{ item.EP_PICER }}</div>
@@ -326,7 +326,7 @@
             </el-carousel>
           </div>
           <div v-bind:id="$store.state.tabs[4].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.season.name"></h2>
+            <h2 v-text="$store.state.lang.season"></h2>
             <p>{{$store.state.lang.seasonImageHint}}</p>
             <el-row>
               <el-col :span="24">
@@ -357,14 +357,14 @@
             </el-row>
             <el-tabs type="border-card">
               <el-tab-pane>
-                <div slot="label" class="rt-tab__seasonInfo">  
+                <div slot="label" class="rt-tab__seasonInfo" v-on:click="seasonTabClick(1)">  
                   <div class="rt-tab__plant"></div>
                   <span>{{$store.state.lang.plant}}</span>
                 </div>
                 <el-row>
                   <el-col :span="8" v-for="(item, index) in getSeasonData(1)" :key="index" class="rt-card__seasonInfo">
                     <el-card :body-style="{ padding: '0px' }">
-                      <div v-bind:style="{backgroundImage: 'url(' + (item.img_info[0].image_big? item.img_info[0].image_big : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
+                      <div v-bind:style="{backgroundImage: 'url(' + item.img_info[0].image_big + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{ item.SPECIES }}</div>
                         <div class="rt-carousel__cell__text__author">{{ item.img_info[0].author }}</div>
@@ -376,14 +376,14 @@
                 </el-row>
               </el-tab-pane>
               <el-tab-pane>
-                <div slot="label" class="rt-tab__seasonInfo">  
+                <div slot="label" class="rt-tab__seasonInfo" v-on:click="seasonTabClick(2)">  
                   <div class="rt-tab__animal"></div>
                   <span>{{$store.state.lang.animal}}</span>
                 </div>
                 <el-row>
                   <el-col :span="8" v-for="(item, index) in getSeasonData(2)" :key="index" class="rt-card__seasonInfo">
                     <el-card :body-style="{ padding: '0px' }">
-                      <div v-bind:style="{backgroundImage: 'url(' + (item.img_info[0].image_big? item.img_info[0].image_big : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
+                      <div v-bind:style="{backgroundImage: 'url(' + item.img_info[0].image_big + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{ item.SPECIES }}</div>
                         <div class="rt-carousel__cell__text__author">{{ item.img_info[0].author }}</div>
@@ -395,37 +395,37 @@
                 </el-row>
               </el-tab-pane>
               <el-tab-pane>
-                <div slot="label" class="rt-tab__seasonInfo">  
+                <div slot="label" class="rt-tab__seasonInfo" v-on:click="seasonTabClick(3)">  
                   <div class="rt-tab__scence"></div>
                   <span >{{$store.state.lang.scence}}</span>
                 </div>
                 <el-row>
-                  <el-col :span="8" v-for="(item, index) in getSeasonExploreData()" :key="index" class="rt-card__seasonInfo">
+                  <el-col :span="8" v-for="(item, index) in getSeasonData(3)" :key="index" class="rt-card__seasonInfo">
                     <el-card :body-style="{ padding: '0px' }">
-                      <div v-bind:style="{backgroundImage: 'url(' + (item.EP_PIC? item.EP_PIC : 'static/icon/noImage.png') + ')'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
+                      <div v-bind:style="{backgroundImage: 'url(' + item.EP_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{ item.EP_PIC_TIP }}</div>
                         <div class="rt-carousel__cell__text__author">{{ item.EP_PICER }}</div>
                       </div>
                     </el-card>
                   </el-col>
-                  <p v-show="!getSeasonExploreData() || !getSeasonExploreData().length">{{$store.state.lang.noData}}</p>
+                  <p v-show="!getSeasonData(3) || !getSeasonData(3).length">{{$store.state.lang.noData}}</p>
                 </el-row>
               </el-tab-pane>
             </el-tabs>
           </div>
           <div v-bind:id="$store.state.tabs[5].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.tabs[5].label"></h2>
-            <el-row>
-              <el-col :span="8" v-for="(item, index) in $store.state.snapshots" :key="index">
+            <h2 v-text="$store.state.lang.environment"></h2>
+            <el-row v-for="seq in 3" :key="seq">
+              <el-col :span="8" v-for="(item, index) in getEnvironmentData(seq)" :key="index" class="rt-card__environmentInfo">
                 <el-card :body-style="{ padding: '0px' }">
-                  <div v-bind:style="{backgroundImage: 'url(' + item.url + ')', height: '200px'}" class="rt-carousel__cell__img"></div>
-                    <div class="rt-carousel__cell__text">
-                      <h4>生態</h4>
-                      <div class="rt-carousel__cell__text__label">{{ item.label }}</div>
-                      <div class="rt-carousel__cell__text__author">{{ item.author }}</div>
-                      <p>春夏時節，多彩多姿的高山花卉依序綻放：紅毛杜鵑、台灣百合、高山烏頭、台灣馬醉木、玉山小米草、黃菀、高山沙參、阿里山龍膽、玉山杜鵑，玉山山蘿蔔、玉山抱莖籟簫、玉山薄雪草等數大繁花，繽紛動人。即使是絕壁之境，仍能看見玉山佛甲草於石縫中綻放出鮮麗花朵。</p>
-                    </div>
+                  <div v-bind:style="{backgroundImage: 'url(' + item.RE_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.RE_PIC_TIP" v-bind:title="item.RE_PIC_TIP"></div>
+                  <div class="rt-carousel__cell__text">
+                    <div class="rt-carousel__cell__text__label">{{ $store.state.lang[environment + seq] }}</div>
+                    <div class="rt-carousel__cell__text__label">{{ item.RE_SLOGAN }}</div>
+                    <div class="rt-carousel__cell__text__author">{{ item.RE_PICER }}</div>
+                    <p>{{item.RE_CONTENT}}</p>
+                  </div>
                 </el-card>
               </el-col>
             </el-row>
@@ -435,7 +435,7 @@
             <el-row>
               <el-col :span="8" v-for="(item, index) in $store.state.snapshots" :key="index">
                 <el-card :body-style="{ padding: '0px' }">
-                  <div v-bind:style="{backgroundImage: 'url(' + item.url + ')', height: '200px'}" class="rt-carousel__cell__img"></div>
+                  <div v-bind:style="{backgroundImage: 'url(' + item.url + '), url(static/icon/noImage.png)', height: '200px'}" class="rt-carousel__cell__img"></div>
                     <div class="rt-carousel__cell__text">
                       <h4>生態</h4>
                       <div class="rt-carousel__cell__text__label">{{ item.label }}</div>
@@ -588,7 +588,31 @@ export default {
       });
       $('#el-carousel-3').height($('#el-carousel-3 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
     }.bind(this), 1000);
-    
+
+    // Add smooth scrolling to all links
+    $("a.js-anchor").on('click', function(event) {
+
+      // Make sure this.hash has a value before overriding default behavior
+      if (this.hash !== "") {
+        // Prevent default anchor click behavior
+        event.preventDefault();
+
+        // Store hash
+        var hash = this.hash;
+
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800, function(){
+
+          window.location.hash = hash;
+        });
+      } 
+    });
+    $('a.js-anchor').keydown(function(event){
+      if(event.keyCode == 13){
+        $(this).click();   
+      }
+    });
   },
   created: function() {
   },
@@ -658,7 +682,8 @@ export default {
       return this.$store.state.trail.TR_EXPLORE;
     },
     getSeasonData(index){
-      var month = this.selectMonth;
+      var _this = this,
+        month = this.selectMonth;
       return this.$store.state.season.TR_MONSURVEY.filter(function(item){
         var checked = false;
         if (item.P_INDEX == index && item.S_MONTH == month) {
@@ -669,16 +694,25 @@ export default {
                 Object.assign(item, data);
               }
             });
+          } else if (index==3) {
+            _this.$store.state.season.TR_EXPLORE.forEach(function(item2){
+              //if (item2.EP_PIC == item.SPECIES) Object.assign(item, item2);
+            });
           }
         }
         return checked;
       });
     },
-    getSeasonExploreData(){
-      return this.$store.state.season.TR_EXPLORE;
-    },
     click_month(m){
       this.selectMonth = m;
+    },
+    seasonTabClick(index) {
+      this.getSeasonData(index);
+    },
+    getEnvironmentData(index) {
+      return this.$store.state.environment.TR_RESOURCE.filter(function(item){
+        return item.P_INDEX == index;
+      });
     }
   }
   /*{
@@ -1062,7 +1096,8 @@ export default {
     width: 100%;
     float: none;
   }
-  .rt-card__seasonInfo{
+  .rt-card__seasonInfo,
+  .rt-card__environmentInfo{
     width: 100%;
   }
 }

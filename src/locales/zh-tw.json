@@ -54,5 +54,19 @@
         "seasonImageHint": "圖片與解說來源：台灣生命大百科",
         "plant": "植物",
         "animal": "動物",
-        "scence": "景觀"
+        "scence": "景觀",
+        "campApply": "山屋及營地申請",
+        "entryApply": "申辦入山許可證",
+        "enviormentApply": "自然保護(留)區進入申請",
+        "know": "認識步道",
+        "travel": "旅遊資訊",
+        "traffic": "交通資訊",
+        "trail": "步道導覽",
+        "season": "季節風貌",
+        "environment": "環境資源",
+        "sharing": "民眾分享",
+        "environment1": "生態",
+        "environment2": "人文",
+        "environment3": "氣候"
+
 }

@@ -263,7 +263,21 @@
         },
         "season": {
             "name": "季節風貌",
-            "TR_MONSURVEY": [],
+            "TR_MONSURVEY": [{
+                "P_INDEX": 3,
+                "SPECIES": "001-01.jpg",
+                "S_MONTH": 2
+            },
+            {
+                "P_INDEX": 3,
+                "SPECIES": "001-02.jpg",
+                "S_MONTH": 3
+            },
+            {
+                "P_INDEX": 3,
+                "SPECIES": "001-03.jpg",
+                "S_MONTH": 3
+            }],
             "TR_EXPLORE": [
                 {
                     "P_INDEX": 1,
