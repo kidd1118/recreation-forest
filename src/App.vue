@@ -218,9 +218,9 @@
                 </el-row>
               </el-col>
             </el-row>
-            <el-carousel id="el-carousel-1" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+            <el-carousel v-show="$store.state.know.TR_PHOTO && $store.state.know.TR_PHOTO.length" id="el-carousel-1" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
               <el-carousel-item v-for="(item, index) in $store.state.know.TR_PHOTO" :key="index">
-                <div class="rt-carousel__cell" v-for="index in carouselDisplayNumber" :key="index" v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
+                <div class="rt-carousel__cell" v-for="seq in carouselDisplayNumber" :key="seq" v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
                   <div v-bind:style="{backgroundImage: 'url(' + item.PHOTO_NAME + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.PHOTO_TITLE" v-bind:title="item.PHOTO_TITLE"></div>
                   <div class="rt-carousel__cell__text">
                     <div class="rt-carousel__cell__text__label">{{ item.PHOTO_TITLE }}</div>
@@ -255,7 +255,7 @@
                 <p v-show="!getTourData(1) || !getTourData(1).length">{{$store.state.lang.noData}}</p>
                 <p style="text-align: left;" v-for="(item, index) in getTourData(1)" :key="index">{{item.TOUR_CONTENT}}</p>
                 <h3>{{$store.state.travelScence}}</h3>
-                <el-carousel id="el-carousel-2" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                <el-carousel v-show="getTourData(2) && getTourData(2).length" id="el-carousel-2" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
                   <el-carousel-item v-for="(item, index) in getTourData(2)" :key="index">
                     <div class="rt-carousel__cell">
                       <div v-bind:style="{backgroundImage: 'url(' + item.TOUR_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.TOUR_Title" v-bind:title="item.TOUR_Title"></div>
@@ -312,7 +312,7 @@
             <iframe id="trailG-map" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" 
               width="100%" height="400px" src="https://www.google.com/maps/d/u/0/embed?mid=1iyYG9qLSsCTNrumDUVoT0VsXxR0">
             </iframe>
-            <el-carousel id="el-carousel-3" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+            <el-carousel v-show="getTrailExploreData() && getTrailExploreData().length" id="el-carousel-3" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
               <el-carousel-item v-for="(item, index) in getTrailExploreData()" :key="index">
                 <div class="rt-carousel__cell">
                   <div v-bind:style="{backgroundImage: 'url(' + item.EP_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
@@ -361,7 +361,7 @@
                   <div class="rt-tab__plant"></div>
                   <span>{{$store.state.lang.plant}}</span>
                 </div>
-                <el-carousel id="el-carousel-4" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                <el-carousel v-show="getSeasonData(1) && getSeasonData(1).length" id="el-carousel-4" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
                   <el-carousel-item v-for="(item, index) in getSeasonData(1)" :key="index">
                     <div class="rt-carousel__cell">
                       <div v-bind:style="{backgroundImage: 'url(' + item.img_info[0].image_big + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
@@ -380,7 +380,7 @@
                   <div class="rt-tab__animal"></div>
                   <span>{{$store.state.lang.animal}}</span>
                 </div>
-                <el-carousel id="el-carousel-5" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                <el-carousel v-show="getSeasonData(2) && getSeasonData(2).length" id="el-carousel-5" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
                   <el-carousel-item v-for="(item, index) in getSeasonData(2)" :key="index">
                     <div class="rt-carousel__cell">
                       <div v-bind:style="{backgroundImage: 'url(' + item.img_info[0].image_big + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
@@ -399,7 +399,7 @@
                   <div class="rt-tab__scence"></div>
                   <span >{{$store.state.lang.scence}}</span>
                 </div>
-                <el-carousel id="el-carousel-6" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                <el-carousel v-show="getSeasonData(3) && getSeasonData(3).length" id="el-carousel-6" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
                   <el-carousel-item v-for="(item, index) in getSeasonData(3)" :key="index">
                     <div class="rt-carousel__cell">
                       <div v-bind:style="{backgroundImage: 'url(' + item.EP_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
@@ -562,45 +562,46 @@ export default {
   },
   mounted: function() { 
     var resize = function() {
-      var maxHeight = 0;
-      $('#el-carousel-1 .rt-carousel__cell__text').each(function() {
-        if ($(this).height() > maxHeight) maxHeight = $(this).height();
-      });
-      $('#el-carousel-1').height($('#el-carousel-1 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-
-      $('#el-carousel-2 .rt-carousel__cell__text').each(function() {
-        if ($(this).height() > maxHeight) maxHeight = $(this).height();
-      });
-      $('#el-carousel-2').height($('#el-carousel-2 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-
-      $('#el-carousel-3 .rt-carousel__cell__text').each(function() {
-        if ($(this).height() > maxHeight) maxHeight = $(this).height();
-      });
-      $('#el-carousel-3').height($('#el-carousel-3 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-
-      $('#el-carousel-4 .rt-carousel__cell__text').each(function() {
-        if ($(this).height() > maxHeight) maxHeight = $(this).height();
-      });
-      $('#el-carousel-4').height($('#el-carousel-4 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-
-      $('#el-carousel-5 .rt-carousel__cell__text').each(function() {
-        if ($(this).height() > maxHeight) maxHeight = $(this).height();
-      });
-      $('#el-carousel-5').height($('#el-carousel-5 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-      
-      $('#el-carousel-6 .rt-carousel__cell__text').each(function() {
-        if ($(this).height() > maxHeight) maxHeight = $(this).height();
-      });
-      $('#el-carousel-6').height($('#el-carousel-6 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-
-      var mq = window.matchMedia('@media all and (max-width: 768px)');
+      var mq = window.matchMedia('(max-width: 768px)');
       if(mq.matches) {
-        this.carouselDisplayNumber = 3;
+        this.carouselDisplayNumber = 1;
         // the width of browser is more then 768px
       } else {
-        this.carouselDisplayNumber = 1;
+        this.carouselDisplayNumber = 3;
         // the width of browser is less then 768px
       }
+
+      var maxHeight = 0;
+      $('#el-carousel-1 .rt-carousel__cell__text').each(function() {
+        if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+      });
+      $('#el-carousel-1').height($('.rt-main__content').width() / 3 * 2 + maxHeight);
+
+      $('#el-carousel-2 .rt-carousel__cell__text').each(function() {
+        if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+      });
+      $('#el-carousel-2').height($('.rt-main__content').width() / 3 * 2 + maxHeight);
+
+      $('#el-carousel-3 .rt-carousel__cell__text').each(function() {
+        if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+      });
+      $('#el-carousel-3').height($('.rt-main__content').width() / 3 * 2 + maxHeight);
+
+      $('#el-carousel-4 .rt-carousel__cell__text').each(function() {
+        if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+      });
+      $('#el-carousel-4').height($('.rt-main__content').width() / 3 * 2 + maxHeight);
+
+      $('#el-carousel-5 .rt-carousel__cell__text').each(function() {
+        if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+      });
+      $('#el-carousel-5').height($('.rt-main__content').width() / 3 * 2 + maxHeight);
+      
+      $('#el-carousel-6 .rt-carousel__cell__text').each(function() {
+        if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+      });
+      $('#el-carousel-6').height($('.rt-main__content').width() / 3 * 2 + maxHeight);
+
     }.bind(this);
 
     window.addEventListener('resize', resize);
@@ -930,6 +931,9 @@ export default {
 }
 .rt-main__content {
   margin-top: 30px;
+}
+.rt-main__trailImage {
+  margin-bottom: 30px;
 }
 .rt-main__trailImage img{
   width: 100%;
