@@ -220,7 +220,7 @@
             </el-row>
             <el-carousel id="el-carousel-1" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
               <el-carousel-item v-for="(item, index) in $store.state.know.TR_PHOTO" :key="index">
-                <div class="rt-carousel__cell">
+                <div class="rt-carousel__cell" v-for="index in carouselDisplayNumber" :key="index" v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
                   <div v-bind:style="{backgroundImage: 'url(' + item.PHOTO_NAME + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.PHOTO_TITLE" v-bind:title="item.PHOTO_TITLE"></div>
                   <div class="rt-carousel__cell__text">
                     <div class="rt-carousel__cell__text__label">{{ item.PHOTO_TITLE }}</div>
@@ -361,90 +361,92 @@
                   <div class="rt-tab__plant"></div>
                   <span>{{$store.state.lang.plant}}</span>
                 </div>
-                <el-row>
-                  <el-col :span="8" v-for="(item, index) in getSeasonData(1)" :key="index" class="rt-card__seasonInfo">
-                    <el-card :body-style="{ padding: '0px' }">
+                <el-carousel id="el-carousel-4" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                  <el-carousel-item v-for="(item, index) in getSeasonData(1)" :key="index">
+                    <div class="rt-carousel__cell">
                       <div v-bind:style="{backgroundImage: 'url(' + item.img_info[0].image_big + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{ item.SPECIES }}</div>
                         <div class="rt-carousel__cell__text__author">{{ item.img_info[0].author }}</div>
                       </div>
                       <el-button v-on:click="click_outerLink('http://taieol.tw/pages/' + item.NAME_CODE)">{{$store.state.lang.goto}}</el-button>
-                    </el-card>
-                  </el-col>
-                  <p v-show="!getSeasonData(1) || !getSeasonData(1).length">{{$store.state.lang.noData}}</p>
-                </el-row>
+                    </div>
+                  </el-carousel-item>
+                </el-carousel>
+                <p v-show="!getSeasonData(1) || !getSeasonData(1).length">{{$store.state.lang.noData}}</p>
               </el-tab-pane>
               <el-tab-pane>
                 <div slot="label" class="rt-tab__seasonInfo" v-on:click="seasonTabClick(2)">  
                   <div class="rt-tab__animal"></div>
                   <span>{{$store.state.lang.animal}}</span>
                 </div>
-                <el-row>
-                  <el-col :span="8" v-for="(item, index) in getSeasonData(2)" :key="index" class="rt-card__seasonInfo">
-                    <el-card :body-style="{ padding: '0px' }">
+                <el-carousel id="el-carousel-5" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                  <el-carousel-item v-for="(item, index) in getSeasonData(2)" :key="index">
+                    <div class="rt-carousel__cell">
                       <div v-bind:style="{backgroundImage: 'url(' + item.img_info[0].image_big + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.ScientificName_c" v-bind:title="item.ScientificName_c"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{ item.SPECIES }}</div>
                         <div class="rt-carousel__cell__text__author">{{ item.img_info[0].author }}</div>
                       </div>
                       <el-button v-on:click="click_outerLink('http://taieol.tw/pages/' + item.NAME_CODE)">{{$store.state.lang.goto}}</el-button>
-                    </el-card>
-                  </el-col>
-                  <p v-show="!getSeasonData(2) || !getSeasonData(2).length">{{$store.state.lang.noData}}</p>
-                </el-row>
+                    </div>
+                  </el-carousel-item>
+                </el-carousel>
+                <p v-show="!getSeasonData(2) || !getSeasonData(2).length">{{$store.state.lang.noData}}</p>
               </el-tab-pane>
               <el-tab-pane>
                 <div slot="label" class="rt-tab__seasonInfo" v-on:click="seasonTabClick(3)">  
                   <div class="rt-tab__scence"></div>
                   <span >{{$store.state.lang.scence}}</span>
                 </div>
-                <el-row>
-                  <el-col :span="8" v-for="(item, index) in getSeasonData(3)" :key="index" class="rt-card__seasonInfo">
-                    <el-card :body-style="{ padding: '0px' }">
+                <el-carousel id="el-carousel-6" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                  <el-carousel-item v-for="(item, index) in getSeasonData(3)" :key="index">
+                    <div class="rt-carousel__cell">
                       <div v-bind:style="{backgroundImage: 'url(' + item.EP_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{ item.EP_PIC_TIP }}</div>
                         <div class="rt-carousel__cell__text__author">{{ item.EP_PICER }}</div>
                       </div>
-                    </el-card>
-                  </el-col>
-                  <p v-show="!getSeasonData(3) || !getSeasonData(3).length">{{$store.state.lang.noData}}</p>
-                </el-row>
+                    </div>
+                  </el-carousel-item>
+                </el-carousel>
+                <p v-show="!getSeasonData(3) || !getSeasonData(3).length">{{$store.state.lang.noData}}</p>
               </el-tab-pane>
             </el-tabs>
           </div>
           <div v-bind:id="$store.state.tabs[5].href.replace('#', '')" class="rt-main__content">
             <h2 v-text="$store.state.lang.environment"></h2>
-            <el-row v-for="seq in 3" :key="seq">
-              <el-col :span="8" v-for="(item, index) in getEnvironmentData(seq)" :key="index" class="rt-card__environmentInfo">
-                <el-card :body-style="{ padding: '0px' }">
-                  <div v-bind:style="{backgroundImage: 'url(' + item.RE_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.RE_PIC_TIP" v-bind:title="item.RE_PIC_TIP"></div>
-                  <div class="rt-carousel__cell__text">
-                    <div class="rt-carousel__cell__text__label">{{ $store.state.lang[environment + seq] }}</div>
-                    <div class="rt-carousel__cell__text__label">{{ item.RE_SLOGAN }}</div>
-                    <div class="rt-carousel__cell__text__author">{{ item.RE_PICER }}</div>
-                    <p>{{item.RE_CONTENT}}</p>
-                  </div>
-                </el-card>
-              </el-col>
+            <el-row>
+              <div v-for="seq in 3" :key="seq">
+                <el-col :span="8" v-for="(item, index) in getEnvironmentData(seq)" :key="index" class="rt-card__environmentInfo">
+                  <el-card :body-style="{ padding: '0px' }">
+                    <div v-bind:style="{backgroundImage: 'url(' + item.RE_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.RE_PIC_TIP" v-bind:title="item.RE_PIC_TIP"></div>
+                    <div class="rt-carousel__cell__text">
+                      <div class="rt-carousel__cell__text__label">{{ $store.state.lang['environment' + seq] }}</div>
+                      <div class="rt-carousel__cell__text__label">{{ item.RE_SLOGAN }}</div>
+                      <div class="rt-carousel__cell__text__author">{{ item.RE_PICER }}</div>
+                      <p>{{item.RE_CONTENT}}</p>
+                    </div>
+                  </el-card>
+                </el-col>
+              </div>
             </el-row>
           </div>
           <div v-bind:id="$store.state.tabs[6].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.tabs[6].label"></h2>
+            <h2 v-text="$store.state.lang.sharing"></h2>
             <el-row>
-              <el-col :span="8" v-for="(item, index) in $store.state.snapshots" :key="index">
-                <el-card :body-style="{ padding: '0px' }">
-                  <div v-bind:style="{backgroundImage: 'url(' + item.url + '), url(static/icon/noImage.png)', height: '200px'}" class="rt-carousel__cell__img"></div>
+              <div v-for="seq in 3" :key="seq">
+                <el-col :span="8" v-for="(item, index) in getSharingData(seq)" :key="index" class="rt-card__environmentInfo">
+                  <el-card :body-style="{ padding: '0px' }">
+                    <div v-bind:style="{backgroundImage: 'url(' + item.EP_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
                     <div class="rt-carousel__cell__text">
-                      <h4>生態</h4>
-                      <div class="rt-carousel__cell__text__label">{{ item.label }}</div>
-                      <div class="rt-carousel__cell__text__author">{{ item.author }}</div>
-                      <p>夏夜裡的嘉明湖，銀河畫過天際，一路上的辛勞在此消失殆盡</p>
+                      <div class="rt-carousel__cell__text__label">{{ item.EP_PIC_TIP }}</div>
+                      <div class="rt-carousel__cell__text__author">{{ item.EP_PICER }}</div>
                     </div>
-                    <el-button>前往了解</el-button>
-                </el-card>
-              </el-col>
+                  </el-card>
+                  <p v-show="!getSharingData(3) || !getSharingData(3).length">{{$store.state.lang.noData}}</p>
+                </el-col>
+              </div>
             </el-row>
           </div>
           <div class="rt-main__content">
@@ -465,12 +467,12 @@
             </span>
           </div>
           <el-row>
-            <el-col :span="8"><h4>| 查詢其他步道 |</h4></el-col>
-            <el-col :span="8"><h4>| 步道資料專區 |</h4></el-col>
-            <el-col :span="8"><h4>| 關於自然步道 |</h4></el-col>
+            <el-col :span="8" class="rt-footer__cell"><h4>| 查詢其他步道 |</h4></el-col>
+            <el-col :span="8" class="rt-footer__cell"><h4>| 步道資料專區 |</h4></el-col>
+            <el-col :span="8" class="rt-footer__cell"><h4>| 關於自然步道 |</h4></el-col>
           </el-row>
         </el-main>
-      </el-container>"http://plurk.com/?qualifier=shares&status=[分享] 分享網址 (網址標題)"
+      </el-container>
     </div>
     <el-dialog
       :visible.sync="trailImageDialogVisible"
@@ -554,40 +556,55 @@ export default {
     return {
       trailImageDialogVisible: false,
       trailInfoDialogVisible: false,
-      selectMonth: 1
+      selectMonth: 1,
+      carouselDisplayNumber: 3
     }
   },
   mounted: function() { 
-    window.addEventListener('resize', function() {
+    var resize = function() {
       var maxHeight = 0;
       $('#el-carousel-1 .rt-carousel__cell__text').each(function() {
         if ($(this).height() > maxHeight) maxHeight = $(this).height();
       });
       $('#el-carousel-1').height($('#el-carousel-1 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+
       $('#el-carousel-2 .rt-carousel__cell__text').each(function() {
         if ($(this).height() > maxHeight) maxHeight = $(this).height();
       });
       $('#el-carousel-2').height($('#el-carousel-2 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+
       $('#el-carousel-3 .rt-carousel__cell__text').each(function() {
         if ($(this).height() > maxHeight) maxHeight = $(this).height();
       });
       $('#el-carousel-3').height($('#el-carousel-3 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-    }.bind(this));
-    setTimeout(function() {
-      var maxHeight = 0;
-      $('#el-carousel-1 .rt-carousel__cell__text').each(function() {
+
+      $('#el-carousel-4 .rt-carousel__cell__text').each(function() {
         if ($(this).height() > maxHeight) maxHeight = $(this).height();
       });
-      $('#el-carousel-1').height($('#el-carousel-1 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-      $('#el-carousel-2 .rt-carousel__cell__text').each(function() {
+      $('#el-carousel-4').height($('#el-carousel-4 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+
+      $('#el-carousel-5 .rt-carousel__cell__text').each(function() {
         if ($(this).height() > maxHeight) maxHeight = $(this).height();
       });
-      $('#el-carousel-2').height($('#el-carousel-2 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-      $('#el-carousel-3 .rt-carousel__cell__text').each(function() {
+      $('#el-carousel-5').height($('#el-carousel-5 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+      
+      $('#el-carousel-6 .rt-carousel__cell__text').each(function() {
         if ($(this).height() > maxHeight) maxHeight = $(this).height();
       });
-      $('#el-carousel-3').height($('#el-carousel-3 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
-    }.bind(this), 1000);
+      $('#el-carousel-6').height($('#el-carousel-6 .rt-carousel__cell__img:first').width() / 3 * 2 + maxHeight);
+
+      var mq = window.matchMedia('@media all and (max-width: 768px)');
+      if(mq.matches) {
+        this.carouselDisplayNumber = 3;
+        // the width of browser is more then 768px
+      } else {
+        this.carouselDisplayNumber = 1;
+        // the width of browser is less then 768px
+      }
+    }.bind(this);
+
+    window.addEventListener('resize', resize);
+    setTimeout(resize, 1000);
 
     // Add smooth scrolling to all links
     $("a.js-anchor").on('click', function(event) {
@@ -713,6 +730,9 @@ export default {
       return this.$store.state.environment.TR_RESOURCE.filter(function(item){
         return item.P_INDEX == index;
       });
+    },
+    getSharingData() {
+      return [];
     }
   }
   /*{
@@ -818,6 +838,7 @@ export default {
 .rt-carousel__cell {
   background-color: #FFF;
   height: 100%;
+  float: left;
 }
 .rt-carousel__cell__img {
   width: 100%;
@@ -1096,8 +1117,8 @@ export default {
     width: 100%;
     float: none;
   }
-  .rt-card__seasonInfo,
-  .rt-card__environmentInfo{
+  .rt-card__environmentInfo,
+  .rt-footer__cell{
     width: 100%;
   }
 }
