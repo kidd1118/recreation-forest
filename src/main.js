@@ -13,15 +13,24 @@ Vue.config.productionTip = false;
 /* eslint-disable no-new */
 
 var lang, apiData;
-
 $.when(
-    $.getJSON('fakeData/API_RT_001.json', function(data) {
+    $.ajax({
+      method: "GET",
+      url: apiName,
+      data: {id: getUrlVars()['id']},
+      crossDomain: true
+    }).done(function( data ) {
       if (data && data.status == 'success'){
         apiData = data;
       }
     }),
-    $.getJSON('locales/zh-tw.json', function(data) {
-      if (data){
+    //$.getJSON(hostName + apiName, {id: getUrlVars()['id']}, function(data) {
+    //  if (data && data.status == 'success'){
+    //    apiData = data;
+    //  }
+    //}),
+    $.getJSON(rootPath + '/locales/zh-tw.json', function(data) {
+      if (data){ 
         lang = data;
       }
     })
@@ -41,6 +50,17 @@ $.when(
     });
   }
 });
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 
 $(document).ready(function(){
 

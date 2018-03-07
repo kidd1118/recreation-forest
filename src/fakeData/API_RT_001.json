@@ -17,15 +17,16 @@
                 "TR_Permit": "無"
             },
             "TR_ADOPT": {
-                "GROUPNAME": null,
-                "START_DATE": null,
-                "END_DATE": null
+                "GROUPNAME": "山協會",
+                "START_DATE": "2018/03/03",
+                "END_DATE": "2018/03/10"
             },
             "TR_ADPOT_GROUP": {
                 "SID": null,
-                "GROUPNAME": null,
+                "GROUPNAME": "山協會",
                 "MENG_TEL": null,
-                "MENG_ADD": null
+                "MENG_ADD": null,
+                "MENG_URL": "abc"
             },
             "TR_GUIDE": {
                 "GUIDE_PIC": "http://recreation.forest.gov.tw/RT/photo/001/01/001GUIDE_PIC.jpg",
