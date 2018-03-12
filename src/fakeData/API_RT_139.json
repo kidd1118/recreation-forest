@@ -1,0 +1,1214 @@
+{
+    "data": {
+        "index": {
+            "name": "首頁",
+            "RE_TRBAS": {
+                "TRAILID": "139",
+                "TR_CNAME": "嘉明湖國家步道",
+                "TR_RELATED_ID": null,
+                "TR_HUT_APPLY": 1,
+                "TR_HUT_NAME": "嘉明湖山屋營地、向陽山屋營地",
+                "TR_HUT_PHONE": "089-324121轉 705、713",
+                "TR_HUT_URL": "https://jmlnt.forest.gov.tw/room/",
+                "TR_protect_nature_stop": null,
+                "TR_protect_nature": "",
+                "TR_Retention_stop": "1",
+                "TR_Retention": "",
+                "TR_Permit": "乙種"
+            },
+            "TR_ADOPT": {
+                "GROUPNAME": "山協會",
+                "START_DATE": "2018/03/03",
+                "END_DATE": "2018/03/22"
+            },
+            "TR_ADPOT_GROUP": {
+                "SID": null,
+                "GROUPNAME": "山協會",
+                "MENG_TEL": null,
+                "MENG_ADD": null,
+                "MENG_URL": "abc"
+            },
+            "TR_GUIDE": {
+                "GUIDE_PIC": "/ForestPark_Templete/Files/RT/photo/139/01/139.jpg",
+                "GUIDE_PIC_TIP": "嘉明湖",
+                "GUIDE_CONTENT": "嘉明湖國家步道為中央山脈南二段的一部分，步道全程路徑明顯，高山生態景觀豐富多變，穿越台灣鐵杉林、台灣冷杉林、高山深谷、斷崖崩壁、箭竹草原及山頂稜線；而空谷鹿鳴、相連群峰、冬日雪景、皎潔月色和滿天星子是長久以來吸引登山客的美景。步道所經的向陽山和三叉山生態景觀各具特色，向陽山為中央山脈高山寒原生態分布的最南界限，三叉山則以廣闊壯麗的高山草原及如藍寶石般的嘉明湖聞名，而二山春夏季節綻放的鮮麗繁花與冬日雪景，更是不可錯過的美景。",
+                "GUIDE_PICER": "林宗以"
+            },
+            "RE_WEB_NRD": {
+                "TYPE": "全線封閉",
+                "TR_TYP": "1",
+                "TITLE": "",
+                "OpenDt": "20180301",
+                "CloseDt": "20180105"
+            }
+        },
+        "know": {
+            "name": "認識步道",
+            "RE_TRBAS": {
+                "EP_MAP": "/ForestPark_Templete/Files/RT/photo/139/01/139_MAP.jpg",
+                "EP_LINE": "",
+                "TR_DIF_CLASS": "4",
+                "TR_ALT_LOW": 2327,
+                "TR_ALT": "3603",
+                "TR_PAVE": "土徑、草坡、碎石路",
+                "TR_POSITION": "台東縣海端鄉",
+                "TR_LENGTH_NUM": "13",
+                "TR_TOUR": "三日",
+                "TR_MOUN": null,
+                "TR_KIND": "線型雙向",
+                "TR_CLASS": "0",
+                "TR_BEST_SEASON": "四季皆宜",
+                "TR_BEST_VIEW": "嘉明湖",
+                "TR_ADMIN": "台東林區管理處",
+                "TR_ADMIN_PHONE": "089-324121-4 轉育樂課"
+            },
+            "TR_PHOTO": [
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/01.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "嘉明湖雪景",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/02.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "向陽山屋",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/03.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "嘉明湖翻騰的雲海夕陽",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/04.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "遙指南一段連稜",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/05.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "玉山圓柏",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/06.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "三叉山西北坡為冷杉林與箭竹草坡鑲嵌的地景",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/07.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "玉山山蘿蔔",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/08.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "阿里山龍膽",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/09.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "七八月盛開的玉山薄雪草",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/10.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "黃苑",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/11.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "水鹿會利用玉山圓柏的樹幹磨擦鹿角",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/12.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "黃喉貂",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/13.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "阿里山山椒魚",
+                    "PHOTOGRAPHER": "林宗以"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/14.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "台灣馬醉木",
+                    "PHOTOGRAPHER": "謝宗宇"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/15.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "黑水塘",
+                    "PHOTOGRAPHER": "鳥會"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/16.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "嘉明湖避難小屋",
+                    "PHOTOGRAPHER": "鳥會"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/17.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "遠眺山巒稜線",
+                    "PHOTOGRAPHER": "鳥會"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/18.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "稜線",
+                    "PHOTOGRAPHER": "鳥會"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/19.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "連綿不斷的草坡",
+                    "PHOTOGRAPHER": "鳥會"
+                },
+                {
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/139/05/20.jpg",
+                    "PHOTO_CAPTION": null,
+                    "PHOTO_TITLE": "枯木",
+                    "PHOTOGRAPHER": "鳥會"
+                }
+            ]
+        },
+        "travel": {
+            "name": "旅遊資訊",
+            "RE_TRBAS": {
+                "M_BUS": null,
+                "L_BUS": null
+            },
+            "TR_TOUR": [
+                {
+                    "P_INDEX": 1,
+                    "TOUR_Title": null,
+                    "TOUR_CONTENT": "搭配南橫景點，安排4--5日遊程",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": null,
+                    "TOUR_LINK_TEXT": null
+                },
+                {
+                    "P_INDEX": 2,
+                    "TOUR_Title": "啞口",
+                    "TOUR_CONTENT": "埡口位於南橫公路大關山隧道，海拔約2722公尺，清晨或午後常有山嵐與雲瀑景觀，引人入勝。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": null,
+                    "TOUR_LINK_TEXT": null
+                },
+                {
+                    "P_INDEX": 2,
+                    "TOUR_Title": "利稻部落",
+                    "TOUR_CONTENT": "利稻部落海拔約1千公尺，居民大都為布農族，整個部落座落在群山環繞的河階台地上，高山聚落田園景緻之美，有如世外桃源。出產紅豆、玉米、高冷蔬菜、藝品等，近年發展布農族社區文化旅遊，也有特色民宿提供遊客深度之旅。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": "http://tour.taitung.gov.tw/ch/AllInOne_Show.aspx?path=288\u0026guid=a07587c3-bf59-4410-b4a2-c66b8782a6e8\u0026lang=zh-tw",
+                    "TOUR_LINK_TEXT": "利稻部落"
+                },
+                {
+                    "P_INDEX": 2,
+                    "TOUR_Title": "碧山溫泉",
+                    "TOUR_CONTENT": "位處霧鹿峽谷段新武呂溪下切溪谷，與公路落差60公尺，形成長長的峽谷景觀，氣勢不凡，地形險峻，兩岸皆有溫泉，屬碳酸氫鈉泉，溫度攝氏40~65度左右，清澈透明，無色無味。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": "http://tour.taitung.gov.tw/ch/AllInOne_Show.aspx?path=296\u0026guid=162c67af-16b8-4a53-9e4e-e04b7692f048\u0026lang=zh-tw",
+                    "TOUR_LINK_TEXT": "碧山溫泉"
+                },
+                {
+                    "P_INDEX": 2,
+                    "TOUR_Title": "栗松溫泉",
+                    "TOUR_CONTENT": "在新武呂溪峽谷右側的岩壁上，從山壁石縫間流出，匯聚成數道泉瀑，最高溫泉瀑布有30公尺。一道道碧翠如玉的泉瀑自山壁流下，因礦物質結晶使岩壁閃耀五顏六色。但因地點隱密，單程約30~60分鐘，有些路段需垂繩而下及涉溪。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": "http://tour.taitung.gov.tw/ch/AllInOne_Show.aspx?path=295\u0026guid=130795f4-4293-43f5-885f-8f20fde61d6d\u0026lang=zh-tw",
+                    "TOUR_LINK_TEXT": "栗松溫泉"
+                },
+                {
+                    "P_INDEX": 2,
+                    "TOUR_Title": "天龍吊橋",
+                    "TOUR_CONTENT": "天龍吊橋位於南橫公路霧鹿村天龍橋風景區內，海拔約721公尺，橫跨氣勢磅礡的霧鹿溪，全長110公尺、距河谷約80公尺，於青山翠谷間，宛如紅色彩虹，天龍橋風景區內有溪流、峽谷、奇石、斷崖和地熱，是漫享受森林芬多精的好去處。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": "http://tour.taitung.gov.tw/ch/AllInOne_Show.aspx?path=283\u0026guid=bc7be81b-38ae-4c19-bd56-3f67dd650fdc\u0026lang=zh-tw",
+                    "TOUR_LINK_TEXT": "天龍吊橋"
+                },
+                {
+                    "P_INDEX": 2,
+                    "TOUR_Title": "天龍古道",
+                    "TOUR_CONTENT": "天龍古道的起點在南橫公路186公里天龍吊橋南岸，終點在179.2公里處，全長1.089公里，沿途千餘公尺的斜坡兩側岩生植被生態豐富，四季各有風采，峽谷岩生植被生態中還孕育特有種「天龍二葉松」。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": "http://tour.taitung.gov.tw/ch/AllInOne_Show.aspx?path=284\u0026guid=1653ebce-a809-4a60-8eb3-913b9ed1afc0\u0026lang=zh-tw",
+                    "TOUR_LINK_TEXT": "天龍古道"
+                },
+                {
+                    "P_INDEX": 2,
+                    "TOUR_Title": "霧鹿古砲台",
+                    "TOUR_CONTENT": "位於霧鹿國小後方古砲台公園內，兩門古砲為1903年俄國製造，在日俄戰爭中被日本擄獲後轉運來台灣，為日本殖民統治台灣迫害布農族原住民的鐵證之一。公園景色宜人，適合賞景、踏青和野餐。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": "http://tour.taitung.gov.tw/ch/AllInOne_Show.aspx?path=291\u0026guid=0110e2bc-d0df-4761-952f-40b71bf4d04d\u0026lang=zh-tw",
+                    "TOUR_LINK_TEXT": "霧鹿古砲台"
+                },
+                {
+                    "P_INDEX": 2,
+                    "TOUR_Title": "新武呂溪保護區",
+                    "TOUR_CONTENT": "新武呂溪發源於中央山脈南段東稜，水質清澈，仍保留原始風味。溪流魚類資源豐富，保育類魚種高身鏟頷魚與台東間爬岩鰍的數量甚多，已劃定為野生動物保護區。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": "http://tour.taitung.gov.tw/ch/AllInOne_Show.aspx?path=292\u0026guid=508972e5-cd5d-439d-a2da-1641d27dbc71\u0026lang=zh-tw",
+                    "TOUR_LINK_TEXT": "新武呂溪保護區"
+                },
+                {
+                    "P_INDEX": 2,
+                    "TOUR_Title": "關山嶺山步道",
+                    "TOUR_CONTENT": "關山嶺山步道位於台東縣與高雄縣交界處，入口在南橫公路最高點「大關山隧道」旁。因地處兩峰交會的風口地帶，天氣變化極大，有時上午晴空萬里，午後即風起雲湧，刺骨寒風撲面。全程1.5公里，部分路段甚為陡峭，且需攀爬峭壁石岩，拉扶繩索上下。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": null,
+                    "TOUR_LINK_TEXT": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "TOUR_Title": "結伴同行勿走捷徑",
+                    "TOUR_CONTENT": "為保障您的安全，請結伴同行，遵循指標，勿走捷徑或自闢路線，並請勿脫隊獨行。",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": null,
+                    "TOUR_LINK_TEXT": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "TOUR_Title": "攜帶定位系統及通訊裝備",
+                    "TOUR_CONTENT": "登山健行請妥善規劃行程及攜帶足夠裝備、糧食，建議應攜帶全球衛星定位系統\r\n（GPS）及通訊裝備如：衛星電話、手機、無線電或有衛星定位功能之裝備如：個人定\r\n位追蹤器(PLB)等，並應攜帶足夠使用之電池，以保障緊急通訊聯絡。",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": null,
+                    "TOUR_LINK_TEXT": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "TOUR_Title": "快速通過危險處",
+                    "TOUR_CONTENT": "山區路況不穩定，請勿在崩塌地或落石地區等危險處停留或拍照，並隨時注意自身安\r\n全。",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": null,
+                    "TOUR_LINK_TEXT": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "TOUR_Title": "建議辦妥登山保險",
+                    "TOUR_CONTENT": "山區活動有一定風險，建議出發前應自行辦妥登山保險。(註：一般旅遊平安險不一定\r\n包含登山事故，投保前建議詳閱保單內容，有關登山保險請參考下列金融監督管理委員\r\n會之新聞稿說明，擇合適保單投保)",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "http://goo.gl/WpJrdR",
+                    "TOUR_LINK_TEXT": "金管會核准產險業銷售登山綜合保險商品"
+                },
+                {
+                    "P_INDEX": 3,
+                    "TOUR_Title": "",
+                    "TOUR_CONTENT": "",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "http://goo.gl/uQxEu6",
+                    "TOUR_LINK_TEXT": "產險公司銷售之登山保險已擴大承保搜救費用保障"
+                },
+                {
+                    "P_INDEX": 3,
+                    "TOUR_Title": "登山安全相關資訊",
+                    "TOUR_CONTENT": "有關登山安全知識、登山裝備、地圖使用技巧等資訊請見登山補給站網頁 http://goo.\r\ngl/QUnv5u ，建議行前閱讀以保障您戶外活動安全。",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "http://goo.gl/QUnv5u",
+                    "TOUR_LINK_TEXT": "登山安全相關資訊"
+                },
+                {
+                    "P_INDEX": 3,
+                    "TOUR_Title": "【特別注意高山症】",
+                    "TOUR_CONTENT": "本步道海拔可達2,500公尺以上，任何人都可能有發生高山症之風險，建議出發前應評\r\n估個人體質及生理狀況，備妥個人隨身藥品。有關高山症之介紹請見下列文章，高山醫\r\n學相關知識請見影片(由台灣野外地區緊急救護協會製作)\r\nhttp://www.taiwanwma.org/reference.asp 。",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "http://www.taiwanwma.org/reference.asp",
+                    "TOUR_LINK_TEXT": "高山醫學知識影片"
+                },
+                {
+                    "P_INDEX": 3,
+                    "TOUR_Title": "",
+                    "TOUR_CONTENT": "",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "http://goo.gl/9A1nln",
+                    "TOUR_LINK_TEXT": "健行筆記-【一定要知道的高山症10個問題】王士豪醫師 撰"
+                },
+                {
+                    "P_INDEX": 3,
+                    "TOUR_Title": "",
+                    "TOUR_CONTENT": "",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "http://goo.gl/iwRESI",
+                    "TOUR_LINK_TEXT": "健行筆記-【高山病的臨場判斷與自我檢診】王士豪醫師 撰"
+                },
+                {
+                    "P_INDEX": 4,
+                    "TOUR_Title": "中型遊覽車可進入",
+                    "TOUR_CONTENT": "",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "",
+                    "TOUR_LINK_TEXT": ""
+                },
+                {
+                    "P_INDEX": 4,
+                    "TOUR_Title": "大型遊覽車不可進入",
+                    "TOUR_CONTENT": "",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "",
+                    "TOUR_LINK_TEXT": ""
+                },
+                {
+                    "P_INDEX": 4,
+                    "TOUR_Title": "申請自然保護(留)區說明",
+                    "TOUR_CONTENT": "",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "pa.forest.gov.tw/",
+                    "TOUR_LINK_TEXT": "林務局自然保留區暨自然保護區進入申請系統"
+                },
+                {
+                    "P_INDEX": 4,
+                    "TOUR_Title": "申請山屋營地說明",
+                    "TOUR_CONTENT": "欲入住向陽山屋及嘉明湖避難小屋的登山客，請於一個月前上台灣山林悠遊網（http://recreation.forest.gov.tw/）或台東林區管理處（http://taitung.forest.gov.tw/）網站申請住宿，有關住宿申請相關事宜可向台東林區管理處育樂課查詢。\u003cbr\u003e建議第一天紮營在向陽營地，或於向陽山屋（海拔2,874公尺）住宿，待適應高海拔空氣後，",
+                    "TOUR_PIC": "",
+                    "TOUR_PIC_TIP": "",
+                    "TOUR_PICER": "",
+                    "TOUR_LINK": "http://jmlnt.forest.gov.tw/",
+                    "TOUR_LINK_TEXT": "嘉明湖國家步道"
+                },
+                {
+                    "P_INDEX": 4,
+                    "TOUR_Title": "申請入山管制說明",
+                    "TOUR_CONTENT": "事前辦妥入山證和備妥登山裝備及口糧，並規劃2～3天行程，若有任何疑問可電洽台東林區管理處育樂課：089－345493。",
+                    "TOUR_PIC": null,
+                    "TOUR_PIC_TIP": null,
+                    "TOUR_PICER": null,
+                    "TOUR_LINK": "https://nv2.npa.gov.tw/NM103-604Client/",
+                    "TOUR_LINK_TEXT": "入山案件申辦系統 - 內政部警政署"
+                }
+            ]
+        },
+        "traffic": {
+            "name": "交通資訊",
+            "TR_TRAFFIC": [
+                {
+                    "P_INDEX": 0,
+                    "TRAFFIC_TITLE": "東部路線",
+                    "TRAFFIC_INTRO": "台9線往台東縣池上鄉→轉台20甲前行約5公里→右轉接台20線進南部橫貫公路→154.5公里處向陽國家森林遊樂區內→嘉明湖國家步道登山口。",
+                    "TRAFFIC_PHOTO": "/ForestPark_Templete/imges/NG.jpg",
+                    "TRAFFIC_PHOTO_TIP": null
+                },
+                {
+                    "P_INDEX": 0,
+                    "TRAFFIC_TITLE": "西部路線",
+                    "TRAFFIC_INTRO": "由國道3號官田系統→轉84號快速道路→至玉井，接台3線與台20線共線道路→往北寮、南化經甲仙、寶來、天池及埡口→向陽國家森林遊樂區。(本路線因啞口段封閉，西部暫不通行)",
+                    "TRAFFIC_PHOTO": "/ForestPark_Templete/imges/NG.jpg",
+                    "TRAFFIC_PHOTO_TIP": null
+                }
+            ]
+        },
+        "trail": {
+            "name": "步道導覽",
+            "TR_ENTRANCE": [
+                {
+                    "X": null,
+                    "Y": null,
+                    "MEMO": null
+                },
+                {
+                    "X": 248499,
+                    "Y": 2571812,
+                    "MEMO": "台20線154.5K向陽國家森林遊樂區大門口"
+                }
+            ],
+            "TR_EXPLORE": [
+                {
+                    "EP_PIC": "/ForestPark_Templete/Files/RT/photo/139/02/139-01.jpg",
+                    "EP_PIC_TIP": "向陽大崩壁",
+                    "EP_TOPIC": "峰斷絕壁氣勢雄渾–向陽大崩壁",
+                    "EP_PICER": null,
+                    "EP_CONTENT": "向陽山海拔高3,603公尺，為台東縣第二高峰，也是台灣歐亞大陸寒帶植物向南分布的最後根據地。「向陽大崩壁」是最震撼的地形景觀，大崩壁自崖頂斷落至南橫公路埡口山莊近處，落差達800公尺，斷面皆為寸草不生的崩壁與破碎岩塊，氣勢攝人。黃昏時刻，夕陽映照在大崩壁上，變質岩層被彩染成紅豔色澤，遠望宛如滿山楓紅，因而有「紅葉山」之稱。",
+                    "X": null,
+                    "Y": null
+                },
+                {
+                    "EP_PIC": "/ForestPark_Templete/Files/RT/photo/139/02/139-02.jpg",
+                    "EP_PIC_TIP": "三叉山翠綠的箭竹大草坡",
+                    "EP_TOPIC": "壯闊連綿的高山大草原–三叉山",
+                    "EP_PICER": "林宗以",
+                    "EP_CONTENT": "三叉山標高3,496公尺，又稱「霞雲沙山」，為台灣高山十崇之一。最高處是幅員遼闊、連綿不斷的箭竹草原，蒼鬱如茵，起伏如波，在登山界有「台灣帕米爾」的美譽，此處也是野生水鹿的最佳樂園。山頂有一等三角點，展望視野絕佳，可遠眺秀姑巒山、新康山、雲峰、向陽山、玉山群峰等名山相連。",
+                    "X": null,
+                    "Y": null
+                },
+                {
+                    "EP_PIC": "/ForestPark_Templete/Files/RT/photo/139/02/139-03.jpg",
+                    "EP_PIC_TIP": "嘉明湖雪景",
+                    "EP_TOPIC": "鑲嵌在綠絨上的藍寶石—嘉明湖",
+                    "EP_PICER": "林宗以",
+                    "EP_CONTENT": "嘉明湖位於三叉山東南側草原上，海拔高約3,310公尺，為台灣僅次於雪山翠池的高山湖泊，因湖面輪廓近似橢圓形而有「蛋池」之稱，又因水色澄澈湛藍與雲天相對，被登山人喚作「天使的眼淚」。雖無山澗或溪流注入水源，但湖水卻終年豐盈；晴天時，湖面波光瀲灩，如鑲嵌於碧茵草原上的藍色寶石，散發著靜謐之美。",
+                    "X": null,
+                    "Y": null
+                },
+                {
+                    "EP_PIC": "/ForestPark_Templete/imges/NG.jpg",
+                    "EP_PIC_TIP": null,
+                    "EP_TOPIC": null,
+                    "EP_PICER": null,
+                    "EP_CONTENT": "根據經濟部中央地質調查所的分析發現，嘉明湖湖畔的碎屑物中含有高溫爆炸後燃餘的玻璃狀物質，研判嘉明湖的形成可能緣於數萬年前流星撞擊所造成的隕石坑。但也有研判其應為冰河遺留的冰斗湖地形。",
+                    "X": null,
+                    "Y": null
+                }
+            ],
+            "TR_FACIL": [
+                {
+                    "Main_KIND": "宿營設施",
+                    "Sub_kind": "山屋",
+                    "twd97_X": 249668,
+                    "twd97_Y": 2575691,
+                    "Facil_KIND": "3",
+                    "SID": 3
+                },
+                {
+                    "Main_KIND": "宿營設施",
+                    "Sub_kind": "營地",
+                    "twd97_X": 248407,
+                    "twd97_Y": 2573366,
+                    "Facil_KIND": "4",
+                    "SID": 4
+                },
+                {
+                    "Main_KIND": "宿營設施",
+                    "Sub_kind": "營地",
+                    "twd97_X": 248633,
+                    "twd97_Y": 2573919,
+                    "Facil_KIND": "4",
+                    "SID": 4
+                },
+                {
+                    "Main_KIND": "宿營設施",
+                    "Sub_kind": "營地",
+                    "twd97_X": 248730,
+                    "twd97_Y": 2574289,
+                    "Facil_KIND": "4",
+                    "SID": 4
+                },
+                {
+                    "Main_KIND": "宿營設施",
+                    "Sub_kind": "營地",
+                    "twd97_X": 248574,
+                    "twd97_Y": 2575313,
+                    "Facil_KIND": "4",
+                    "SID": 4
+                },
+                {
+                    "Main_KIND": "宿營設施",
+                    "Sub_kind": "營地",
+                    "twd97_X": 249617,
+                    "twd97_Y": 2575627,
+                    "Facil_KIND": "4",
+                    "SID": 4
+                },
+                {
+                    "Main_KIND": "宿營設施",
+                    "Sub_kind": "營地",
+                    "twd97_X": 251166,
+                    "twd97_Y": 2576712,
+                    "Facil_KIND": "4",
+                    "SID": 4
+                },
+                {
+                    "Main_KIND": "宿營設施",
+                    "Sub_kind": "營地",
+                    "twd97_X": 253326,
+                    "twd97_Y": 2577081,
+                    "Facil_KIND": "4",
+                    "SID": 4
+                },
+                {
+                    "Main_KIND": "休憩設施",
+                    "Sub_kind": "廣場",
+                    "twd97_X": 248744,
+                    "twd97_Y": 2572704,
+                    "Facil_KIND": "18",
+                    "SID": 18
+                }
+            ]
+        },
+        "season": {
+            "name": "季節風貌",
+            "TR_MONSURVEY": [
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山杜鵑",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "4         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山杜鵑",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "5         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山杜鵑",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "6         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山山蘿蔔",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "4         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山山蘿蔔",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "5         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山山蘿蔔",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "6         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "阿里山龍膽",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "4         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "阿里山龍膽",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "5         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "阿里山龍膽",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "6         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山薄雪草",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "4         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山薄雪草",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "5         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山薄雪草",
+                    "NAME_CODE": "202908",
+                    "S_MONTH": "6         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/20101114153112_202908.jpg",
+                    "ScientificName_c": "玉山杜鵑",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "黃菀",
+                    "NAME_CODE": "47892",
+                    "S_MONTH": "4         ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "黃菀",
+                    "NAME_CODE": "47892",
+                    "S_MONTH": "5         ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "黃菀",
+                    "NAME_CODE": "47892",
+                    "S_MONTH": "6         ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣鐵杉",
+                    "NAME_CODE": "201110",
+                    "S_MONTH": "4         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/2010115173250_201110.jpg",
+                    "ScientificName_c": "臺灣鐵杉;油松",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣鐵杉",
+                    "NAME_CODE": "201110",
+                    "S_MONTH": "5         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/2010115173250_201110.jpg",
+                    "ScientificName_c": "臺灣鐵杉;油松",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣鐵杉",
+                    "NAME_CODE": "201110",
+                    "S_MONTH": "6         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/2010115173250_201110.jpg",
+                    "ScientificName_c": "臺灣鐵杉;油松",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣鐵杉",
+                    "NAME_CODE": "201110",
+                    "S_MONTH": "7         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/2010115173250_201110.jpg",
+                    "ScientificName_c": "臺灣鐵杉;油松",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣鐵杉",
+                    "NAME_CODE": "201110",
+                    "S_MONTH": "8         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/2010115173250_201110.jpg",
+                    "ScientificName_c": "臺灣鐵杉;油松",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣鐵杉",
+                    "NAME_CODE": "201110",
+                    "S_MONTH": "9         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/2010115173250_201110.jpg",
+                    "ScientificName_c": "臺灣鐵杉;油松",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣鐵杉",
+                    "NAME_CODE": "201110",
+                    "S_MONTH": "10        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/2010115173250_201110.jpg",
+                    "ScientificName_c": "臺灣鐵杉;油松",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣鐵杉",
+                    "NAME_CODE": "201110",
+                    "S_MONTH": "11        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/2010115173250_201110.jpg",
+                    "ScientificName_c": "臺灣鐵杉;油松",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣鐵杉",
+                    "NAME_CODE": "201110",
+                    "S_MONTH": "12        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/39/2010115173250_201110.jpg",
+                    "ScientificName_c": "臺灣鐵杉;油松",
+                    "author": "陳育賢"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山圓柏",
+                    "NAME_CODE": "201101",
+                    "S_MONTH": "4         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_2_025_0.jpg",
+                    "ScientificName_c": "香青;玉山圓柏;高 山 柏",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山圓柏",
+                    "NAME_CODE": "201101",
+                    "S_MONTH": "5         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_2_025_0.jpg",
+                    "ScientificName_c": "香青;玉山圓柏;高 山 柏",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山圓柏",
+                    "NAME_CODE": "201101",
+                    "S_MONTH": "6         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_2_025_0.jpg",
+                    "ScientificName_c": "香青;玉山圓柏;高 山 柏",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山圓柏",
+                    "NAME_CODE": "201101",
+                    "S_MONTH": "7         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_2_025_0.jpg",
+                    "ScientificName_c": "香青;玉山圓柏;高 山 柏",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山圓柏",
+                    "NAME_CODE": "201101",
+                    "S_MONTH": "8         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_2_025_0.jpg",
+                    "ScientificName_c": "香青;玉山圓柏;高 山 柏",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山圓柏",
+                    "NAME_CODE": "201101",
+                    "S_MONTH": "9         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_2_025_0.jpg",
+                    "ScientificName_c": "香青;玉山圓柏;高 山 柏",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山圓柏",
+                    "NAME_CODE": "201101",
+                    "S_MONTH": "10        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_2_025_0.jpg",
+                    "ScientificName_c": "香青;玉山圓柏;高 山 柏",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山圓柏",
+                    "NAME_CODE": "201101",
+                    "S_MONTH": "11        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_2_025_0.jpg",
+                    "ScientificName_c": "香青;玉山圓柏;高 山 柏",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山圓柏",
+                    "NAME_CODE": "201101",
+                    "S_MONTH": "12        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_2_025_0.jpg",
+                    "ScientificName_c": "香青;玉山圓柏;高 山 柏",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山箭竹",
+                    "NAME_CODE": "201713",
+                    "S_MONTH": "4         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_5_240_0.jpg",
+                    "ScientificName_c": "玉山箭竹;玉山竹",
+                    "author": "臺灣維管束植物簡誌 第五卷"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山箭竹",
+                    "NAME_CODE": "201713",
+                    "S_MONTH": "5         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_5_240_0.jpg",
+                    "ScientificName_c": "玉山箭竹;玉山竹",
+                    "author": "臺灣維管束植物簡誌 第五卷"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山箭竹",
+                    "NAME_CODE": "201713",
+                    "S_MONTH": "6         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_5_240_0.jpg",
+                    "ScientificName_c": "玉山箭竹;玉山竹",
+                    "author": "臺灣維管束植物簡誌 第五卷"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山箭竹",
+                    "NAME_CODE": "201713",
+                    "S_MONTH": "7         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_5_240_0.jpg",
+                    "ScientificName_c": "玉山箭竹;玉山竹",
+                    "author": "臺灣維管束植物簡誌 第五卷"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山箭竹",
+                    "NAME_CODE": "201713",
+                    "S_MONTH": "8         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_5_240_0.jpg",
+                    "ScientificName_c": "玉山箭竹;玉山竹",
+                    "author": "臺灣維管束植物簡誌 第五卷"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山箭竹",
+                    "NAME_CODE": "201713",
+                    "S_MONTH": "9         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_5_240_0.jpg",
+                    "ScientificName_c": "玉山箭竹;玉山竹",
+                    "author": "臺灣維管束植物簡誌 第五卷"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山箭竹",
+                    "NAME_CODE": "201713",
+                    "S_MONTH": "10        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_5_240_0.jpg",
+                    "ScientificName_c": "玉山箭竹;玉山竹",
+                    "author": "臺灣維管束植物簡誌 第五卷"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山箭竹",
+                    "NAME_CODE": "201713",
+                    "S_MONTH": "11        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_5_240_0.jpg",
+                    "ScientificName_c": "玉山箭竹;玉山竹",
+                    "author": "臺灣維管束植物簡誌 第五卷"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "玉山箭竹",
+                    "NAME_CODE": "201713",
+                    "S_MONTH": "12        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_5_240_0.jpg",
+                    "ScientificName_c": "玉山箭竹;玉山竹",
+                    "author": "臺灣維管束植物簡誌 第五卷"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "紅毛杜鵑",
+                    "NAME_CODE": "202909",
+                    "S_MONTH": "4         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_4_018_0.jpg",
+                    "ScientificName_c": "紅毛杜鵑",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "紅毛杜鵑",
+                    "NAME_CODE": "202909",
+                    "S_MONTH": "5         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_4_018_0.jpg",
+                    "ScientificName_c": "紅毛杜鵑",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "紅毛杜鵑",
+                    "NAME_CODE": "202909",
+                    "S_MONTH": "6         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/f_4_018_0.jpg",
+                    "ScientificName_c": "紅毛杜鵑",
+                    "author": "台灣樹木誌"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣冷杉",
+                    "NAME_CODE": "201102",
+                    "S_MONTH": "4         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_2_026_0.jpg",
+                    "ScientificName_c": "臺灣冷杉",
+                    "author": "呂勝由"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣冷杉",
+                    "NAME_CODE": "201102",
+                    "S_MONTH": "5         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_2_026_0.jpg",
+                    "ScientificName_c": "臺灣冷杉",
+                    "author": "呂勝由"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣冷杉",
+                    "NAME_CODE": "201102",
+                    "S_MONTH": "6         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_2_026_0.jpg",
+                    "ScientificName_c": "臺灣冷杉",
+                    "author": "呂勝由"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣冷杉",
+                    "NAME_CODE": "201102",
+                    "S_MONTH": "7         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_2_026_0.jpg",
+                    "ScientificName_c": "臺灣冷杉",
+                    "author": "呂勝由"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣冷杉",
+                    "NAME_CODE": "201102",
+                    "S_MONTH": "8         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_2_026_0.jpg",
+                    "ScientificName_c": "臺灣冷杉",
+                    "author": "呂勝由"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣冷杉",
+                    "NAME_CODE": "201102",
+                    "S_MONTH": "9         ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_2_026_0.jpg",
+                    "ScientificName_c": "臺灣冷杉",
+                    "author": "呂勝由"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣冷杉",
+                    "NAME_CODE": "201102",
+                    "S_MONTH": "10        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_2_026_0.jpg",
+                    "ScientificName_c": "臺灣冷杉",
+                    "author": "呂勝由"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣冷杉",
+                    "NAME_CODE": "201102",
+                    "S_MONTH": "11        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_2_026_0.jpg",
+                    "ScientificName_c": "臺灣冷杉",
+                    "author": "呂勝由"
+                },
+                {
+                    "P_INDEX": 1,
+                    "SPECIES": "臺灣冷杉",
+                    "NAME_CODE": "201102",
+                    "S_MONTH": "12        ",
+                    "image_big": "http://eoldata.taibif.tw/files/eoldata/imagecache/data_object_image/images/33/p_2_026_0.jpg",
+                    "ScientificName_c": "臺灣冷杉",
+                    "author": "呂勝由"
+                },
+                {
+                    "P_INDEX": 3,
+                    "SPECIES": "嘉明湖",
+                    "NAME_CODE": "",
+                    "S_MONTH": "4         ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "SPECIES": "嘉明湖",
+                    "NAME_CODE": "",
+                    "S_MONTH": "5         ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "SPECIES": "嘉明湖",
+                    "NAME_CODE": "",
+                    "S_MONTH": "6         ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "SPECIES": "嘉明湖",
+                    "NAME_CODE": "",
+                    "S_MONTH": "7         ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "SPECIES": "嘉明湖",
+                    "NAME_CODE": "",
+                    "S_MONTH": "8         ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "SPECIES": "嘉明湖",
+                    "NAME_CODE": "",
+                    "S_MONTH": "9         ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "SPECIES": "嘉明湖",
+                    "NAME_CODE": "",
+                    "S_MONTH": "10        ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "SPECIES": "嘉明湖",
+                    "NAME_CODE": "",
+                    "S_MONTH": "11        ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                },
+                {
+                    "P_INDEX": 3,
+                    "SPECIES": "嘉明湖",
+                    "NAME_CODE": "",
+                    "S_MONTH": "12        ",
+                    "image_big": null,
+                    "ScientificName_c": null,
+                    "author": null
+                }
+            ],
+            "TR_EXPLORE": [
+                {
+                    "P_INDEX": 1,
+                    "EP_PIC": "139-01.jpg",
+                    "EP_PIC_TIP": "向陽大崩壁",
+                    "EP_PICER": null
+                },
+                {
+                    "P_INDEX": 2,
+                    "EP_PIC": "139-02.jpg",
+                    "EP_PIC_TIP": "三叉山翠綠的箭竹大草坡",
+                    "EP_PICER": "林宗以"
+                },
+                {
+                    "P_INDEX": 3,
+                    "EP_PIC": "139-03.jpg",
+                    "EP_PIC_TIP": "嘉明湖雪景",
+                    "EP_PICER": "林宗以"
+                },
+                {
+                    "P_INDEX": 4,
+                    "EP_PIC": null,
+                    "EP_PIC_TIP": null,
+                    "EP_PICER": null
+                }
+            ]
+        },
+        "environment": {
+            "name": "環境資源",
+            "TR_RESOURCE": [
+                {
+                    "P_INDEX": 1,
+                    "RE_PIC": "01.jpg",
+                    "RE_PIC_TIP": "玉山佛甲草",
+                    "RE_SLOGAN": null,
+                    "RE_PICER": "謝宗宇",
+                    "RE_CONTENT": "春夏時節，多彩多姿的高山花卉依序綻放：紅毛杜鵑、台灣百合、高山烏頭、台灣馬醉木、玉山小米草、黃菀、高山沙參、阿里山龍膽、玉山杜鵑，玉山山蘿蔔、玉山抱莖籟簫、玉山薄雪草等數大繁花，繽紛動人。即使是絕壁之境，仍能看見玉山佛甲草於石縫中綻放出鮮麗花朵。"
+                },
+                {
+                    "P_INDEX": 2,
+                    "RE_PIC": "02.jpg",
+                    "RE_PIC_TIP": "玉山圓柏所形成的白木林景觀",
+                    "RE_SLOGAN": null,
+                    "RE_PICER": "鳥會",
+                    "RE_CONTENT": "整片白木林的出現，並非短時間形成，一般而言需要50年以上。由於高海拔氣候較為乾冷，歷經火災而枯亡的林木被菌類分解的速率十分緩慢，枯死的樹幹因風吹、日曬、雨淋使得樹皮逐漸剝落而露出木質部分，因而保留了鐵漢傲骨般立地不倒的樹身，佇立荒山冷風之中。形成白木林的樹種主要為台灣冷杉、台灣鐵杉和玉山圓柏，通常樹幹較為挺直的是台灣冷杉，分枝較多的為台灣鐵杉，呈現奇特不規則扭曲形狀的即是玉山圓柏。"
+                },
+                {
+                    "P_INDEX": 3,
+                    "RE_PIC": "03.jpg",
+                    "RE_PIC_TIP": "台灣水鹿",
+                    "RE_SLOGAN": null,
+                    "RE_PICER": "林宗以",
+                    "RE_CONTENT": "嘉明湖國家步道擁有相當原始的森林生態，是野生動物棲息繁衍的重要場域，包括及大赤鼯鼠、黃喉貂、山羌、水鹿等哺乳類動，鄰近的「關山野生動物重要棲息環境」，也為本區野生動物群落提供了交流的廣度。夏季，向陽山屋周圍山澗不難發現台灣特有的珍貴兩棲動物阿里山山椒魚；步道上可以發現華南鼬鼠或黃喉貂的排遺及足跡，及水鹿摩擦樹幹、啃食樹皮的痕跡，夜晚還有機會與來到湖畔飲水的水鹿近距離接觸。"
+                }
+            ]
+        }
+    },
+    "api_name": "自然步道",
+    "status": "success",
+    "msg": ""
+}

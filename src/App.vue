@@ -3,7 +3,7 @@
     <div>
       <el-container>
         <el-header class="rt-header" v-bind:style="{backgroundImage: 'url(' + getImagePath() + $store.state.index.TR_GUIDE.GUIDE_PIC + ')'}"  
-          style="height: 80vh; max-height: 500px; min-height: 250px;">
+          style="height: 80vh; min-height: 500px; max-height: 700px;">
           <div class="rt-header__mask"></div>
           <el-row class="rt-header__content">
             <el-col :span="16" class="rt-header__left">
@@ -15,17 +15,28 @@
                 </div>
                 <div>{{$store.state.index.TR_ADOPT.START_DATE + ' ~ ' + $store.state.index.TR_ADOPT.END_DATE}}</div>
               </div>
-              <p class="rt-summary">{{$store.state.index.TR_GUIDE.GUIDE_CONTENT}}</p>
+              <p class="rt-summary">{{$store.state.index.TR_GUIDE.GUIDE_CONTENT.length > 200?
+                splitTextCount($store.state.index.TR_GUIDE.GUIDE_CONTENT, 200):
+                $store.state.index.TR_GUIDE.GUIDE_CONTENT}}
+                <a style="cursor: pointer;" v-show="$store.state.index.TR_GUIDE.GUIDE_CONTENT.length > 200" v-on:click="summaryInfoDialogVisible=true">
+                  {{'.....' + $store.state.lang.more}}
+                </a>
+              </p>
+              <span class="rt-spin" v-show="$store.state.index.TR_GUIDE.GUIDE_PICER">
+                {{$store.state.lang.photographer +' : '+ $store.state.index.TR_GUIDE.GUIDE_PICER}}
+              </span>
             </el-col>
             <el-col :span="8" class="rt-header__right">
-                <div class="rt-link--campApply">
-                  <a v-on:click="click_outerLink($store.state.campApply.href)">{{$store.state.lang[$store.state.campApply.label]}}&nbsp;&gt;</a>
-                </div>
-                <div class="rt-link--entryApply">
-                  <a v-on:click="click_outerLink($store.state.entryApply.href)">{{$store.state.lang[$store.state.entryApply.label]}}&nbsp;&gt;</a>
-                </div>
-                <div class="rt-link--enviormentApply">
-                  <a v-on:click="click_outerLink($store.state.enviormentApply.href)">{{$store.state.lang[$store.state.enviormentApply.label]}}&nbsp;&gt;</a>
+                <div class="rt-link">
+                  <div v-show="$store.state.index.RE_TRBAS.TR_HUT_APPLY==1" class="rt-link--campApply">
+                    <a v-on:click="click_outerLink($store.state.campApplyUrl)">{{$store.state.lang.campApply}}&nbsp;&gt;</a>
+                  </div>
+                  <div v-show="$store.state.index.RE_TRBAS.TR_Permit"  class="rt-link--entryApply">
+                    <a v-on:click="click_outerLink($store.state.entryApplyUrl)">{{$store.state.lang.entryApply}}&nbsp;&gt;</a>
+                  </div>
+                  <div v-show="$store.state.index.RE_TRBAS.TR_protect_nature_stop==1"  class="rt-link--enviormentApply">
+                    <a v-on:click="click_outerLink($store.state.enviormentApplyUrl)">{{$store.state.lang.enviormentApply}}&nbsp;&gt;</a>
+                  </div>
                 </div>
                 <div class="rt-info">
                   <span class="rt-info__newsImage"></span>
@@ -33,7 +44,7 @@
                   <div v-show="$store.state.index.RE_WEB_NRD.TR_TYP==1||$store.state.index.RE_WEB_NRD.TR_TYP==2">{{$store.state.lang.openDate}}:{{$store.state.index.RE_WEB_NRD.OpenDt}}</div>
                   <div v-show="$store.state.index.RE_WEB_NRD.TR_TYP==1||$store.state.index.RE_WEB_NRD.TR_TYP==2">{{$store.state.lang.closeDate}}:{{$store.state.index.RE_WEB_NRD.CloseDt}}</div>
                   <div v-show="$store.state.index.RE_WEB_NRD.TR_TYP==3">{{$store.state.lang.noticeDate}}:{{$store.state.index.RE_WEB_NRD.OpenDt}}</div>
-                  <a>{{$store.state.lang.checkNotice}}</a>
+                  <a v-on:click="click_outerLink($store.state.noticeUrl)">{{$store.state.lang.checkNotice}}</a>
                 </div>
             </el-col>
           </el-row>
@@ -63,12 +74,12 @@
               <el-col :span="12" class="rt-main__trailImage">
                 <img v-bind:src="getImagePath() + $store.state.know.RE_TRBAS.EP_MAP" @click="trailImageDialogVisible=true">
                 {{$store.state.lang.imageHint}}
-                <div v-show="$store.state.know.RE_TRBAS.EP_LINE" style="width: 80vw;">
-                  <span class="rt-main__trailInfo__columnName" >{{$store.state.lang.detailTrail}}:</span>{{$store.state.know.RE_TRBAS.EP_LINE}}
-                </div>
+              </el-col>
+              <el-col :span="24" class="rt-main__trailInfo__detail--vertical" v-show="$store.state.know.RE_TRBAS.EP_LINE">
+                <span class="rt-main__trailInfo__columnName" >{{$store.state.lang.detailTrail}}:</span>{{$store.state.know.RE_TRBAS.EP_LINE}}
               </el-col>
               <el-col :span="12" class="rt-main__trailInfo">
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_DIF_CLASS">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailDifClass}}:
@@ -76,12 +87,12 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{getDifClassText($store.state.know.RE_TRBAS.TR_DIF_CLASS)}}
+                      {{$store.state.know.RE_TRBAS.TR_DIF_CLASS?getDifClassText($store.state.know.RE_TRBAS.TR_DIF_CLASS):$store.state.lang.noData}}
                       <span @click="trailInfoDialogVisible=true"></span>
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_ALT_LOW||$store.state.know.RE_TRBAS.TR_ALT">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailAltitude}}: 
@@ -89,11 +100,12 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_ALT_LOW}} ~ {{$store.state.know.RE_TRBAS.TR_ALT}}
+                      {{$store.state.know.RE_TRBAS.TR_ALT_LOW?$store.state.know.RE_TRBAS.TR_ALT_LOW:$store.state.lang.noData}} ~ 
+                      {{$store.state.know.RE_TRBAS.TR_ALT?$store.state.know.RE_TRBAS.TR_ALT:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_PAVE">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailStatus}}: 
@@ -101,11 +113,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_PAVE}}
+                      {{$store.state.know.RE_TRBAS.TR_PAVE?$store.state.know.RE_TRBAS.TR_PAVE:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_POSITION">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailPosition}}:
@@ -113,11 +125,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_POSITION}}
+                      {{$store.state.know.RE_TRBAS.TR_POSITION?$store.state.know.RE_TRBAS.TR_POSITION:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_LENGTH_NUM">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailLength}}:
@@ -125,11 +137,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_LENGTH_NUM}} {{$store.state.lang.km}}
+                      {{$store.state.know.RE_TRBAS.TR_LENGTH_NUM?$store.state.know.RE_TRBAS.TR_LENGTH_NUM + ' ' + $store.state.lang.km:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_TOUR">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailTour}}:
@@ -137,11 +149,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_TOUR}}
+                      {{$store.state.know.RE_TRBAS.TR_TOUR?$store.state.know.RE_TRBAS.TR_TOUR:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_MOUN">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailMoutain}}:
@@ -149,11 +161,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_MOUN}}
+                      {{$store.state.know.RE_TRBAS.TR_MOUN?$store.state.know.RE_TRBAS.TR_MOUN:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_KIND">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailType}}:
@@ -161,11 +173,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_KIND}}
+                      {{$store.state.know.RE_TRBAS.TR_KIND?$store.state.know.RE_TRBAS.TR_KIND:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_CLASS">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailClass}}:
@@ -173,11 +185,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.lang['trailClass' + $store.state.know.RE_TRBAS.TR_CLASS]}}
+                      {{$store.state.know.RE_TRBAS.TR_CLASS?$store.state.lang['trailClass' + $store.state.know.RE_TRBAS.TR_CLASS]:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_BEST_SEASON">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailBestSeason}}:
@@ -185,11 +197,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_BEST_SEASON}}
+                      {{$store.state.know.RE_TRBAS.TR_BEST_SEASON?$store.state.know.RE_TRBAS.TR_BEST_SEASON:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_BEST_VIEW">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailBestView}}:
@@ -197,11 +209,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_BEST_VIEW}}
+                      {{$store.state.know.RE_TRBAS.TR_BEST_VIEW?$store.state.know.RE_TRBAS.TR_BEST_VIEW:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_RELATED_ID">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.relatedTrial}}:
@@ -209,11 +221,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_RELATED_ID}}
+                      {{$store.state.know.RE_TRBAS.TR_RELATED_ID?$store.state.know.RE_TRBAS.TR_RELATED_ID:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_ADMIN">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailAdmin}}:
@@ -221,11 +233,11 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_ADMIN}}
+                      {{$store.state.know.RE_TRBAS.TR_ADMIN?$store.state.know.RE_TRBAS.TR_ADMIN:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
-                <el-row v-show="$store.state.know.RE_TRBAS.TR_ADMIN_PHONE">
+                <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
                       {{$store.state.lang.trailAdminPhone}}:
@@ -233,10 +245,15 @@
                   </el-col>
                   <el-col :span="16">
                     <div class="rt-main__trailInfo__text">
-                      {{$store.state.know.RE_TRBAS.TR_ADMIN_PHONE}}
+                      {{$store.state.know.RE_TRBAS.TR_ADMIN_PHONE?$store.state.know.RE_TRBAS.TR_ADMIN_PHONE:$store.state.lang.noData}}
                     </div>
                   </el-col>
                 </el-row>
+              </el-col>
+            </el-row>
+            <el-row v-show="$store.state.know.RE_TRBAS.EP_LINE">
+              <el-col :span="24" class="rt-main__trailInfo__detail--horizontal">
+                <span class="rt-main__trailInfo__columnName" >{{$store.state.lang.detailTrail}}:</span>{{$store.state.know.RE_TRBAS.EP_LINE}}
               </el-col>
             </el-row>
             <el-carousel v-show="$store.state.know.TR_PHOTO && $store.state.know.TR_PHOTO.length" 
@@ -247,7 +264,7 @@
                   v-for="(seq, idx) in carouselDisplayNumber" :key="idx"
                   v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
                   <div class="rt-carousel__cell__img" 
-                    v-bind:style="{backgroundImage: 'url(' + getImagePath() + $store.state.know.TR_PHOTO[index+idx].PHOTO_NAME + '), url(static/icon/noImage.png)'}" 
+                    v-bind:style="{backgroundImage: 'url(' + getImagePath() + $store.state.know.TR_PHOTO[index+idx].PHOTO_NAME + '), url('+getRootPath()+'static/icon/noImage.png)'}" 
                     v-bind:alt="$store.state.know.TR_PHOTO[index+idx].PHOTO_TITLE" 
                     v-bind:title="$store.state.know.TR_PHOTO[index+idx].PHOTO_TITLE">
                   </div>
@@ -290,7 +307,7 @@
                       v-if="index+idx < getTourData(2).length"
                       v-for="(seq, idx) in carouselDisplayNumber" :key="idx"
                       v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
-                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getTourData(2)[index+idx].TOUR_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
+                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getTourData(2)[index+idx].TOUR_PIC + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
                         v-bind:alt="getTourData(2)[index+idx].TOUR_Title" v-bind:title="getTourData(2)[index+idx].TOUR_Title"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{getTourData(2)[index+idx].TOUR_Title}}</div>
@@ -309,7 +326,7 @@
                 <p v-show="!getTrailData(1) || !getTrailData(1).length">{{$store.state.lang.noData}}</p>
                 <el-row v-for="(item, index) in getTrailData(1)" :key="index">
                   <el-col :span="12">
-                    <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + item.PIC + '), url(static/icon/noImage.png)'}" class="rt-image__travelTrail" v-bind:alt="item.Title" v-bind:title="item.Title"></div>
+                    <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + item.PIC + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-image__travelTrail" v-bind:alt="item.Title" v-bind:title="item.Title"></div>
                   </el-col>
                   <el-col :span="12">
                     <div class="rt-article__travelTrail">
@@ -329,7 +346,10 @@
                   <div class="rt-tab__car"></div>
                   <span>{{$store.state.lang.byCar}}</span>
                 </div>
-                <p style="text-align: left;" v-for="(item, index) in getTrafficData(0)" :key="index">{{item}}</p>
+                <div style="text-align: left;" v-for="(item, index) in getTrafficData(0)" :key="index">
+                  <h4>{{(index+1) + '.' + item.TRAFFIC_TITLE + ' : '}}</h4>
+                  <p>{{item.TRAFFIC_INTRO}}</p>
+                </div>
                 <p v-show="!getTrafficData(0) || !getTrafficData(0).length">{{$store.state.lang.noData}}</p>
               </el-tab-pane>
               <el-tab-pane>
@@ -337,7 +357,10 @@
                   <div class="rt-tab__masstransport"></div>
                   <span >{{$store.state.lang.byMasstransport}}</span>
                 </div>
-                <p style="text-align: left;" v-for="(item, index) in getTrafficData(1)" :key="index">{{item}}</p>
+                <div style="text-align: left;" v-for="(item, index) in getTrafficData(1)" :key="index">
+                  <h4>{{(index+1) + '.' + item.TRAFFIC_TITLE + ' : '}}</h4>
+                  <p>{{item.TRAFFIC_INTRO}}</p>
+                </div>
                 <p v-show="!getTrafficData(1) || !getTrafficData(1).length">{{$store.state.lang.noData}}</p>
               </el-tab-pane>
             </el-tabs>
@@ -353,7 +376,7 @@
                   v-if="index+idx < getTrailExploreData().length"
                   v-for="(seq, idx) in carouselDisplayNumber" :key="idx"
                   v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
-                  <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getTrailExploreData()[index+idx].EP_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
+                  <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getTrailExploreData()[index+idx].EP_PIC + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
                     v-bind:alt="getTrailExploreData()[index+idx].EP_PIC_TIP" v-bind:title="getTrailExploreData()[index+idx].EP_PIC_TIP"></div>
                   <div class="rt-carousel__cell__text">
                     <div class="rt-carousel__cell__text__label">{{ getTrailExploreData()[index+idx].EP_TOPIC }}</div>
@@ -406,7 +429,7 @@
                       v-if="index+idx < getSeasonData(1).length"
                       v-for="(seq, idx) in carouselDisplayNumber" :key="idx"
                       v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
-                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getSeasonData(1)[index+idx].img_info[0].image_big + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
+                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getSeasonData(1)[index+idx].img_info[0].image_big + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
                         v-bind:alt="getSeasonData(1)[index+idx].ScientificName_c" v-bind:title="getSeasonData(1)[index+idx].ScientificName_c"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{ getSeasonData(1)[index+idx].SPECIES }}</div>
@@ -431,7 +454,7 @@
                       v-if="index+idx < getSeasonData(2).length"
                       v-for="(seq, idx) in carouselDisplayNumber" :key="idx"
                       v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
-                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getSeasonData(2)[index+idx].img_info[0].image_big + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
+                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getSeasonData(2)[index+idx].img_info[0].image_big + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
                         v-bind:alt="getSeasonData(2)[index+idx].ScientificName_c" 
                         v-bind:title="getSeasonData(2)[index+idx].ScientificName_c"></div>
                       <div class="rt-carousel__cell__text">
@@ -457,7 +480,7 @@
                       v-if="index+idx < getSeasonData(3).length"
                       v-for="(seq, idx) in carouselDisplayNumber" :key="idx"
                       v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
-                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getSeasonData(3)[index+idx].EP_PIC + '), url(static/icon/noImage.png)'}" 
+                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getSeasonData(3)[index+idx].EP_PIC + '), url('+getRootPath()+'static/icon/noImage.png)'}" 
                         class="rt-carousel__cell__img" v-bind:alt="getSeasonData(3)[index+idx].EP_PIC_TIP" 
                         v-bind:title="getSeasonData(3)[index+idx].EP_PIC_TIP"></div>
                       <div class="rt-carousel__cell__text">
@@ -477,7 +500,7 @@
               <div v-for="seq in 3" :key="seq">
                 <el-col :span="8" v-for="(item, index) in getEnvironmentData(seq)" :key="index" class="rt-card__environmentInfo">
                   <el-card :body-style="{ padding: '0px' }">
-                    <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + item.RE_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.RE_PIC_TIP" v-bind:title="item.RE_PIC_TIP"></div>
+                    <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + item.RE_PIC + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.RE_PIC_TIP" v-bind:title="item.RE_PIC_TIP"></div>
                     <div class="rt-carousel__cell__text">
                       <div class="rt-carousel__cell__text__label">{{ $store.state.lang['environment' + seq] }}</div>
                       <div class="rt-carousel__cell__text__label">{{ item.RE_SLOGAN }}</div>
@@ -495,7 +518,7 @@
               <div v-for="seq in 3" :key="seq">
                 <el-col :span="8" v-for="(item, index) in getSharingData(seq)" :key="index" class="rt-card__environmentInfo">
                   <el-card :body-style="{ padding: '0px' }">
-                    <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + item.EP_PIC + '), url(static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
+                    <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + item.EP_PIC + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-carousel__cell__img" v-bind:alt="item.EP_PIC_TIP" v-bind:title="item.EP_PIC_TIP"></div>
                     <div class="rt-carousel__cell__text">
                       <div class="rt-carousel__cell__text__label">{{ item.EP_PIC_TIP }}</div>
                       <div class="rt-carousel__cell__text__author">{{ item.EP_PICER }}</div>
@@ -599,6 +622,16 @@
         <el-button type="primary" @click="trailInfoDialogVisible=false">close</el-button>
       </span>
     </el-dialog>
+    \<el-dialog
+      :visible.sync="summaryInfoDialogVisible"
+      width="90%"
+      top="5vh"
+      center>
+      <p>{{$store.state.index.TR_GUIDE.GUIDE_CONTENT}}</p>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="summaryInfoDialogVisible=false">close</el-button>
+      </span>
+    </el-dialog>
     <div class="el-carousel__arrow fixed-bottomRight">
       <a href="#" class="js-anchor el-icon-arrow-up"></a>
     </div>
@@ -613,6 +646,7 @@ export default {
     return {
       trailImageDialogVisible: false,
       trailInfoDialogVisible: false,
+      summaryInfoDialogVisible: false,
       selectMonth: 1,
       carouselDisplayNumber: 3
     }
@@ -688,6 +722,7 @@ export default {
         $(this).click();   
       }
     });
+    $('#loading').hide();
   },
   created: function() {
   },
@@ -795,6 +830,9 @@ export default {
     getImagePath() {
       return window.imagePath;
     },
+    getRootPath() {
+      return window.rootPath;
+    },
     getDoday() {
       function pad (str, max) {
         str = str.toString();
@@ -802,6 +840,9 @@ export default {
       }
       var date = new Date();
       return (date.getFullYear() + '/' + pad(date.getMonth() + 1, 2) + '/' + pad(date.getDate(), 2));
+    },
+    splitTextCount(text, count) {
+      return text.substring(0, count);
     }
   }
   /*{
@@ -819,7 +860,6 @@ export default {
 </script>
 
 <style>
-
 .el-menu { 
   display: flex; 
   width: 100%; 
@@ -896,7 +936,9 @@ export default {
   justify-content: center;
   align-items: center;
 }
+</style>
 
+<style scoped>
 
 #app {
   font-family: Helvetica, sans-serif;
@@ -945,6 +987,7 @@ export default {
   background-repeat: no-repeat;
   color: #fff;
   position: relative;
+  padding: 0;
 }
 .rt-header__mask{
   background-color:rgba(0, 0, 0, 0.5);
@@ -954,9 +997,17 @@ export default {
   top: 0;
   left: 0;
 }
+.rt-header__content{
+  height: 90%;
+  padding: 120px 0 10px 0;
+}
+.rt-header__left{
+  padding: 0 30px;
+  height: 100%;
+  overflow: hidden;
+}
 .rt-header__right {
-  padding-top: 10vh;
-  padding-left: 3vw;
+  padding-top: 170px;
 }
 .rt-header__right a {
   line-height: 2rem;
@@ -965,7 +1016,18 @@ export default {
 .rt-title,
 .rt-summary {
   text-align: left;
-  margin: 1vw 0;
+  float: left;
+  width: 100%;
+}
+.rt-spin {
+  float: left;
+  width: 100%;
+  text-align: left;
+  color: #ccc;
+}
+.rt-link {
+  margin-bottom: 20px;
+  float: right;
 }
 .rt-link--campApply{
   background-color: #0F7A6E;
@@ -976,6 +1038,14 @@ export default {
 .rt-link--enviormentApply{
   background-color: #C22448;
 }
+.rt-link--campApply, 
+.rt-link--entryApply, 
+.rt-link--enviormentApply{
+  display: inline-block;
+  padding: 5px 10px; 
+  float: right;
+  clear: both;
+}
 .rt-link--campApply a, 
 .rt-link--entryApply a, 
 .rt-link--enviormentApply a{
@@ -984,8 +1054,8 @@ export default {
 }
 .rt-info,
 .rt-info__admin{
+  clear: both;
   background-color: #3B5999;
-  margin-top: 20px;
   line-height: 2rem;
   font-size: 1.2rem;
   padding: 0 10px 0 calc(10px + 1.5rem);
@@ -1004,10 +1074,10 @@ export default {
 }
 .rt-info__admin{
   padding: 0 10px;
-  margin: 0;
   display: inline-block;
   cursor: pointer;
   text-align: center;
+  float: left;
 }
 .rt-info__linkImage {
   background-image: url(assets/icon/external_W.png);
@@ -1032,12 +1102,17 @@ export default {
 .rt-main__content {
   margin-top: 30px;
 }
-.rt-main__trailImage {
-  margin-bottom: 30px;
-}
 .rt-main__trailImage img{
   width: 100%;
   cursor: pointer;
+}
+.rt-main__trailInfo__detail--horizontal{
+  display: block;
+  margin: 30px 0;
+  text-align: left;
+}
+.rt-main__trailInfo__detail--vertical{
+  display: none;
 }
 .rt-main__trailInfo__columnName {
   font-weight: bold;
@@ -1193,7 +1268,6 @@ export default {
   .rt-header__left {
     float: none;
     width: 100%;
-    margin-top: 20vmin;
   }
   .rt-header__left p{
     display: none;
@@ -1214,14 +1288,36 @@ export default {
   }
   .rt-info{
     margin-top: 0px;
+    text-align: center;
   }
   .rt-menu {
+    display: none;
+  }
+  .rt-link {
+    margin-bottom: 0;
+    float: none;
+  }
+  .rt-link--campApply, 
+  .rt-link--entryApply, 
+  .rt-link--enviormentApply{
+    display: block;
+    width: 100%;
+    float: none;
+  }
+  .rt-spin{
     display: none;
   }
   .rt-main__trailImage,
   .rt-main__trailInfo {
     width: 100%;
-    float: none;
+  }
+  .rt-main__trailInfo__detail--horizontal{
+    display: none;
+  }
+  .rt-main__trailInfo__detail--vertical{
+    text-align: left;
+    display: block;
+    margin: 30px 0;
   }
   .rt-card__environmentInfo,
   .rt-footer__cell{

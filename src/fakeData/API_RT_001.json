@@ -17,19 +17,18 @@
                 "TR_Permit": "無"
             },
             "TR_ADOPT": {
-                "GROUPNAME": "山協會",
-                "START_DATE": "2018/03/03",
-                "END_DATE": "2018/03/10"
+                "GROUPNAME": null,
+                "START_DATE": null,
+                "END_DATE": null
             },
             "TR_ADPOT_GROUP": {
                 "SID": null,
-                "GROUPNAME": "山協會",
+                "GROUPNAME": null,
                 "MENG_TEL": null,
-                "MENG_ADD": null,
-                "MENG_URL": "abc"
+                "MENG_ADD": null
             },
             "TR_GUIDE": {
-                "GUIDE_PIC": "http://recreation.forest.gov.tw/RT/photo/001/01/001GUIDE_PIC.jpg",
+                "GUIDE_PIC": "/ForestPark_Templete/Files/RT/photo/001/01/001GUIDE_PIC.jpg",
                 "GUIDE_PIC_TIP": "",
                 "GUIDE_CONTENT": "蘇花古道建造於清朝同治13 年（1874 年），是聯絡蘇澳與花蓮之間最早的一條官道；日人19 世紀於蘇花海岸之間先後開鑿了北段的大南澳路、南段的沿岸理番道路及東海徒步道，即今日蘇花公路的前身，但早已荒廢舊跡難尋。經過調查後整建「蘇花古道-- 大南澳越嶺段」。古道呈南北縱向，地勢北高南低，因此由北往南走，多為下坡路，路程較輕鬆，若由南往北走，則海拔落差幾達七百公尺，來回行走約5 小時，路程頗具挑戰性。",
                 "GUIDE_PICER": ""
@@ -45,7 +44,7 @@
         "know": {
             "name": "認識步道",
             "RE_TRBAS": {
-                "EP_MAP": "http://recreation.forest.gov.tw/RT/photo/001/01/001EP_Map.jpg",
+                "EP_MAP": "/ForestPark_Templete/Files/RT/photo/001/01/001EP_Map.jpg",
                 "EP_LINE": "使用步道12條責任:1.衡量體力，瞭解步行時程。2.遵循步道指示方向，勿抄捷徑。3.自然步道屬生態區不設公廁，行前請先行方便。4.自然生態區，若需處理生理問題，請遠離水源，事後覆土，回歸土壤養分。5.自然步道不設垃圾桶，垃圾物品請自行攜回，避免野生動物誤食及污穢環境。6.勿攜帶寵物及放生，避免病菌感染，干擾影生動物棲息及影響他人遊憩品質。7.勿挖掘植物及攀折花木，讓大家共享自然生態。8.勿獵捕野生動物及魚類，因為它是自然界的原住民，尊重他們的生命。9.勿進入瀑布及溪流，避免汙染水源及自身安全。10.勿露營、野炊、烤肉，任何野外引火行為都可能導致森林火災。11.勿在解說牌、樹幹、岩石、設施上刻畫書寫，而影響視覺美感。12.勿移動或破壞休憩設施，讓資源永在，分享無限。",
                 "TR_DIF_CLASS": "2",
                 "TR_ALT_LOW": 100,
@@ -64,55 +63,55 @@
             },
             "TR_PHOTO": [
                 {
-                    "PHOTO_NAME": "http://recreation.forest.gov.tw/RT/photo/001/05/01.jpg",
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/001/05/01.jpg",
                     "PHOTO_CAPTION": "",
                     "PHOTO_TITLE": "北路口解說牌",
                     "PHOTOGRAPHER": ""
                 },
                 {
-                    "PHOTO_NAME": "http://recreation.forest.gov.tw/RT/photo/001/05/04.jpg",
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/001/05/04.jpg",
                     "PHOTO_CAPTION": "",
                     "PHOTO_TITLE": "觀景平台",
                     "PHOTOGRAPHER": ""
                 },
                 {
-                    "PHOTO_NAME": "http://recreation.forest.gov.tw/RT/photo/001/05/08.jpg",
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/001/05/08.jpg",
                     "PHOTO_CAPTION": "",
                     "PHOTO_TITLE": "華八仙",
                     "PHOTOGRAPHER": ""
                 },
                 {
-                    "PHOTO_NAME": "http://recreation.forest.gov.tw/RT/photo/001/05/09.jpg",
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/001/05/09.jpg",
                     "PHOTO_CAPTION": "",
                     "PHOTO_TITLE": "附生植物",
                     "PHOTOGRAPHER": ""
                 },
                 {
-                    "PHOTO_NAME": "http://recreation.forest.gov.tw/RT/photo/001/05/10.jpg",
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/001/05/10.jpg",
                     "PHOTO_CAPTION": "",
                     "PHOTO_TITLE": "攀藤植物",
                     "PHOTOGRAPHER": ""
                 },
                 {
-                    "PHOTO_NAME": "http://recreation.forest.gov.tw/RT/photo/001/05/11.jpg",
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/001/05/11.jpg",
                     "PHOTO_CAPTION": "",
                     "PHOTO_TITLE": "長柄冷水麻",
                     "PHOTOGRAPHER": ""
                 },
                 {
-                    "PHOTO_NAME": "http://recreation.forest.gov.tw/RT/photo/001/05/12.jpg",
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/001/05/12.jpg",
                     "PHOTO_CAPTION": "",
                     "PHOTO_TITLE": "遠眺烏石鼻",
                     "PHOTOGRAPHER": ""
                 },
                 {
-                    "PHOTO_NAME": "http://recreation.forest.gov.tw/RT/photo/001/05/13.jpg",
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/001/05/13.jpg",
                     "PHOTO_CAPTION": "",
                     "PHOTO_TITLE": "南入口",
                     "PHOTOGRAPHER": ""
                 },
                 {
-                    "PHOTO_NAME": "http://recreation.forest.gov.tw/RT/photo/001/05/14.jpg",
+                    "PHOTO_NAME": "/ForestPark_Templete/Files/RT/photo/001/05/14.jpg",
                     "PHOTO_CAPTION": "",
                     "PHOTO_TITLE": "北入口意象",
                     "PHOTOGRAPHER": ""
@@ -233,7 +232,7 @@
             ],
             "TR_EXPLORE": [
                 {
-                    "EP_PIC": "http://recreation.forest.gov.twphoto/001/02/001-01.jpg",
+                    "EP_PIC": "/ForestPark_Templete/Files/RT/photo/001/02/001-01.jpg",
                     "EP_PIC_TIP": "土木階梯Log-and-Dirt Steps",
                     "EP_TOPIC": "海天一色，山海無邊",
                     "EP_PICER": "",
@@ -242,7 +241,7 @@
                     "Y": null
                 },
                 {
-                    "EP_PIC": "http://recreation.forest.gov.tw/RT/photo/001/02/001-02.jpg",
+                    "EP_PIC": "/ForestPark_Templete/Files/RT/photo/001/02/001-02.jpg",
                     "EP_PIC_TIP": "南側入口South Entrance",
                     "EP_TOPIC": "爬坡越嶺，考驗腳力",
                     "EP_PICER": "",
@@ -251,7 +250,7 @@
                     "Y": null
                 },
                 {
-                    "EP_PIC": "http://recreation.forest.gov.tw/RT/photo/001/02/001-03.jpg",
+                    "EP_PIC": "/ForestPark_Templete/Files/RT/photo/001/02/001-03.jpg",
                     "EP_PIC_TIP": "碉堡遺跡Abandoned Bunker",
                     "EP_TOPIC": "",
                     "EP_PICER": "",
@@ -264,21 +263,7 @@
         },
         "season": {
             "name": "季節風貌",
-            "TR_MONSURVEY": [{
-                "P_INDEX": 3,
-                "SPECIES": "001-01.jpg",
-                "S_MONTH": 2
-            },
-            {
-                "P_INDEX": 3,
-                "SPECIES": "001-02.jpg",
-                "S_MONTH": 3
-            },
-            {
-                "P_INDEX": 3,
-                "SPECIES": "001-03.jpg",
-                "S_MONTH": 3
-            }],
+            "TR_MONSURVEY": [],
             "TR_EXPLORE": [
                 {
                     "P_INDEX": 1,

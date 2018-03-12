@@ -64,5 +64,4 @@ function getUrlVars() {
 
 $(document).ready(function(){
 
-  $('#loading').hide();
 });

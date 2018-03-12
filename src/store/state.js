@@ -31,9 +31,9 @@ export const state = {
         }
     ],
     breadcrumb: ['首頁', '自然步道', '嘉明湖國家步道'],
-    campApply: { label: 'campApply', href: 'http://jmlnt.forest.gov.tw/' },
-    entryApply: { label: 'entryApply', href: 'https://nv2.npa.gov.tw/NM103-604Client/' },
-    enviormentApply: { label: 'enviormentApply', href: 'http://pa.forest.gov.tw/ForestApply/' },
+    campApplyUrl: 'http://jmlnt.forest.gov.tw/',
+    entryApplyUrl: 'https://nv2.npa.gov.tw/NM103-604Client/',
+    enviormentApplyUrl: 'http://pa.forest.gov.tw/ForestApply/',
     trailDetail: {
         title: '步道分級',
         category: ['我只想流點汗', '有點累也可以', '想要有挑戰性'],
@@ -45,5 +45,6 @@ export const state = {
             { level: 5, candidate: '已受訓登山者', altitude: '海拔3,000公尺以上', days: '3天以上', equipment: '登山裝備需具備（糧食、睡袋、炊煮設備等）', remark: '部分路段需先申請入園許可；位於高海拔（約3,000公尺以上）山區，路況不佳，也較原始，有許多困難及危險路段，坡度陡，氣候變化大。' }
         ]
     },
+    noticeUrl: 'http://www.google.com',
     count: 0
 }
