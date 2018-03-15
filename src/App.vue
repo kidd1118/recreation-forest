@@ -3,7 +3,7 @@
     <div>
       <el-container>
         <el-header class="rt-header" v-bind:style="{backgroundImage: 'url(' + getImagePath() + $store.state.index.TR_GUIDE.GUIDE_PIC + ')'}"  
-          style="height: 80vh; min-height: 500px; max-height: 700px;">
+          style="height: 80vmin; min-height: 500px; max-height: 700px;">
           <div class="rt-header__mask"></div>
           <el-row class="rt-header__content">
             <el-col :span="16" class="rt-header__left">
@@ -68,17 +68,18 @@
           <el-breadcrumb separator=">">
             <el-breadcrumb-item :to="{ path: '/' }" v-for="(item, index) in $store.state.breadcrumb" :key="index">{{ item }}</el-breadcrumb-item>
           </el-breadcrumb>
-          <div v-bind:id="$store.state.tabs[0].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.lang.know"></h2>
+          <h2 class="js-AccordionTab" v-text="$store.state.lang.know" @click="doAccordion($store.state.tabs[0].href)"></h2>
+          <div v-bind:id="$store.state.tabs[0].href.replace('#', '')" class="js-AccordionContent rt-main__content">
+            <h2 class="js-title" v-text="$store.state.lang.know"></h2>
             <el-row>
-              <el-col :span="12" class="rt-main__trailImage">
-                <img v-bind:src="getImagePath() + $store.state.know.RE_TRBAS.EP_MAP" @click="trailImageDialogVisible=true">
+              <el-col id="trailMap" :span="12" class="rt-main__trailImage">
+                <div class="rt-main__trailImage__img" v-bind:style="{backgroundImage: 'url(' + getImagePath() + $store.state.know.RE_TRBAS.EP_MAP + ')'}" @click="trailImageDialogVisible=true"></div>
                 {{$store.state.lang.imageHint}}
               </el-col>
               <el-col :span="24" class="rt-main__trailInfo__detail--vertical" v-show="$store.state.know.RE_TRBAS.EP_LINE">
                 <span class="rt-main__trailInfo__columnName" >{{$store.state.lang.detailTrail}}:</span>{{$store.state.know.RE_TRBAS.EP_LINE}}
               </el-col>
-              <el-col :span="12" class="rt-main__trailInfo">
+              <el-col id="trailInfo" :span="12" class="rt-main__trailInfo">
                 <el-row>
                   <el-col :span="8">
                     <div class="rt-main__trailInfo__columnName">
@@ -276,8 +277,9 @@
               </el-carousel-item>
             </el-carousel>
           </div>
-          <div v-bind:id="$store.state.tabs[1].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.lang.travel"></h2>
+          <h2 class="js-AccordionTab" v-text="$store.state.lang.travel" @click="doAccordion($store.state.tabs[1].href)"></h2>
+          <div v-bind:id="$store.state.tabs[1].href.replace('#', '')" class="js-AccordionContent rt-main__content">
+            <h2 class="js-title" v-text="$store.state.lang.travel"></h2>
             <el-tabs>
               <el-tab-pane :label="$store.state.lang.travelInfo" style="text-align: left;">
                 <h3>{{$store.state.lang.suggestEquipment}}</h3>
@@ -338,8 +340,9 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-bind:id="$store.state.tabs[2].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.lang.traffic"></h2>
+          <h2 class="js-AccordionTab" v-text="$store.state.lang.traffic" @click="doAccordion($store.state.tabs[2].href)"></h2>
+          <div v-bind:id="$store.state.tabs[2].href.replace('#', '')" class="js-AccordionContent rt-main__content">
+            <h2 class="js-title" v-text="$store.state.lang.traffic"></h2>
             <el-tabs type="border-card">
               <el-tab-pane>
                 <div slot="label" class="rt-tab__travelInfo">  
@@ -365,8 +368,9 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-bind:id="$store.state.tabs[3].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.lang.trail"></h2>
+          <h2 class="js-AccordionTab" v-text="$store.state.lang.trail" @click="doAccordion($store.state.tabs[3].href)"></h2>
+          <div v-bind:id="$store.state.tabs[3].href.replace('#', '')" class="js-AccordionContent rt-main__content">
+            <h2 class="js-title" v-text="$store.state.lang.trail"></h2>
             <iframe id="trailG-map" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" 
               width="100%" height="400px" src="https://www.google.com/maps/d/u/0/embed?mid=1iyYG9qLSsCTNrumDUVoT0VsXxR0">
             </iframe>
@@ -387,36 +391,79 @@
               </el-carousel-item>
             </el-carousel>
           </div>
-          <div v-bind:id="$store.state.tabs[4].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.lang.season"></h2>
+          <h2 class="js-AccordionTab" v-text="$store.state.lang.season" @click="doAccordion($store.state.tabs[4].href)"></h2>
+          <div v-bind:id="$store.state.tabs[4].href.replace('#', '')" class="js-AccordionContent rt-main__content">
+            <h2 class="js-title" v-text="$store.state.lang.season"></h2>
             <p>{{$store.state.lang.seasonImageHint}}</p>
-            <el-row>
-              <el-col :span="24">
+            <el-row class="rt-buttonList__seasonInfo">
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==1? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(1)">{{$store.state.lang.january}}</el-button>
-
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==2? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(2)">{{$store.state.lang.fabruary}}</el-button>
-
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==3? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(3)">{{$store.state.lang.march}}</el-button>
-  
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==4? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(4)">{{$store.state.lang.april}}</el-button>
-
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==5? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(5)">{{$store.state.lang.may}}</el-button>
- 
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==6? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(6)">{{$store.state.lang.june}}</el-button>
-
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==7? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(7)">{{$store.state.lang.july}}</el-button>
-              
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==8? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(8)">{{$store.state.lang.august}}</el-button>
-  
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==9? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(9)">{{$store.state.lang.september}}</el-button>
-    
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==10? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(10)">{{$store.state.lang.october}}</el-button>
-     
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==11? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(11)">{{$store.state.lang.november}}</el-button>
-        
+              </el-col>
+              <el-col :span="2">
                 <el-button v-bind:class="selectMonth==12? 'is-active' : ''" class="rt-button__seasonInfo" v-on:click="click_month(12)">{{$store.state.lang.december}}</el-button>
               </el-col>
             </el-row>
+            <el-dropdown class="rt-dropdown__seasonInfo" trigger="click" @command="click_month">
+              <el-button type="primary">
+                <span v-show="selectMonth==1">{{$store.state.lang.january}}</span>
+                <span v-show="selectMonth==2">{{$store.state.lang.fabruary}}</span>
+                <span v-show="selectMonth==3">{{$store.state.lang.march}}</span>
+                <span v-show="selectMonth==4">{{$store.state.lang.april}}</span>
+                <span v-show="selectMonth==5">{{$store.state.lang.may}}</span>
+                <span v-show="selectMonth==6">{{$store.state.lang.june}}</span>
+                <span v-show="selectMonth==7">{{$store.state.lang.july}}</span>
+                <span v-show="selectMonth==8">{{$store.state.lang.august}}</span>
+                <span v-show="selectMonth==9">{{$store.state.lang.september}}</span>
+                <span v-show="selectMonth==10">{{$store.state.lang.october}}</span>
+                <span v-show="selectMonth==11">{{$store.state.lang.november}}</span>
+                <span v-show="selectMonth==12">{{$store.state.lang.december}}</span>
+                <i class="el-icon-arrow-down el-icon--right"></i>
+              </el-button>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item command="1">{{$store.state.lang.january}}</el-dropdown-item>
+                <el-dropdown-item command="2">{{$store.state.lang.fabruary}}</el-dropdown-item>
+                <el-dropdown-item command="3">{{$store.state.lang.march}}</el-dropdown-item>
+                <el-dropdown-item command="4">{{$store.state.lang.april}}</el-dropdown-item>
+                <el-dropdown-item command="5">{{$store.state.lang.may}}</el-dropdown-item>
+                <el-dropdown-item command="6">{{$store.state.lang.june}}</el-dropdown-item>
+                <el-dropdown-item command="7">{{$store.state.lang.july}}</el-dropdown-item>
+                <el-dropdown-item command="8">{{$store.state.lang.august}}</el-dropdown-item>
+                <el-dropdown-item command="9">{{$store.state.lang.september}}</el-dropdown-item>
+                <el-dropdown-item command="10">{{$store.state.lang.october}}</el-dropdown-item>
+                <el-dropdown-item command="11">{{$store.state.lang.november}}</el-dropdown-item>
+                <el-dropdown-item command="12">{{$store.state.lang.december}}</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
             <el-tabs type="border-card">
               <el-tab-pane>
                 <div slot="label" class="rt-tab__seasonInfo" v-on:click="seasonTabClick(1)">  
@@ -429,11 +476,13 @@
                       v-if="index+idx < getSeasonData(1).length"
                       v-for="(seq, idx) in carouselDisplayNumber" :key="idx"
                       v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
-                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getSeasonData(1)[index+idx].img_info[0].image_big + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
+                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getSeasonData(1)[index+idx].img_info ? getSeasonData(1)[index+idx].img_info[0].image_big : '' + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
                         v-bind:alt="getSeasonData(1)[index+idx].ScientificName_c" v-bind:title="getSeasonData(1)[index+idx].ScientificName_c"></div>
                       <div class="rt-carousel__cell__text">
                         <div class="rt-carousel__cell__text__label">{{ getSeasonData(1)[index+idx].SPECIES }}</div>
-                        <div class="rt-carousel__cell__text__author">{{ getSeasonData(1)[index+idx].img_info[0].author }}</div>
+                        <div class="rt-carousel__cell__text__author">
+                          {{ getSeasonData(1)[index+idx].img_info ? getSeasonData(1)[index+idx].img_info[0].author : '' }}
+                          </div>
                       </div>
                       <el-button v-on:click="click_outerLink('http://taieol.tw/pages/' + getSeasonData(1)[index+idx].NAME_CODE)">
                         {{$store.state.lang.goto}}
@@ -494,8 +543,9 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-bind:id="$store.state.tabs[5].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.lang.environment"></h2>
+          <h2 class="js-AccordionTab" v-text="$store.state.lang.environment" @click="doAccordion($store.state.tabs[5].href)"></h2>
+          <div v-bind:id="$store.state.tabs[5].href.replace('#', '')" class="js-AccordionContent rt-main__content">
+            <h2 class="js-title" v-text="$store.state.lang.environment"></h2>
             <el-row>
               <div v-for="seq in 3" :key="seq">
                 <el-col :span="8" v-for="(item, index) in getEnvironmentData(seq)" :key="index" class="rt-card__environmentInfo">
@@ -512,8 +562,9 @@
               </div>
             </el-row>
           </div>
-          <div v-bind:id="$store.state.tabs[6].href.replace('#', '')" class="rt-main__content">
-            <h2 v-text="$store.state.lang.sharing"></h2>
+          <h2 class="js-AccordionTab" v-text="$store.state.lang.sharing" @click="doAccordion($store.state.tabs[6].href)"></h2>
+          <div v-bind:id="$store.state.tabs[6].href.replace('#', '')" class="js-AccordionContent rt-main__content">
+            <h2 class="js-title" v-text="$store.state.lang.sharing"></h2>
             <el-row>
               <div v-for="seq in 3" :key="seq">
                 <el-col :span="8" v-for="(item, index) in getSharingData(seq)" :key="index" class="rt-card__environmentInfo">
@@ -622,7 +673,7 @@
         <el-button type="primary" @click="trailInfoDialogVisible=false">close</el-button>
       </span>
     </el-dialog>
-    \<el-dialog
+    <el-dialog
       :visible.sync="summaryInfoDialogVisible"
       width="90%"
       top="5vh"
@@ -648,7 +699,8 @@ export default {
       trailInfoDialogVisible: false,
       summaryInfoDialogVisible: false,
       selectMonth: 1,
-      carouselDisplayNumber: 3
+      carouselDisplayNumber: 3,
+      isAccordion: null
     }
   },
   mounted: function() { 
@@ -656,10 +708,20 @@ export default {
       var mq = window.matchMedia('(max-width: 768px)');
       if(mq.matches) {
         this.carouselDisplayNumber = 1;
-        // the width of browser is more then 768px
+        $('#trailMap').height($('#trailInfo').outerHeight());
+        if (this.isAccordion !== true) {
+          this.isAccordion = true;
+          this.changeAccordionMode();
+        }
+        // the width of browser is less then 768px
       } else {
         this.carouselDisplayNumber = 3;
-        // the width of browser is less then 768px
+        $('#trailMap').height($('#trailMap').width());
+        if (this.isAccordion !== false) {
+          this.isAccordion = false;
+          this.changeAccordionMode();
+        }
+        // the width of browser is more then 768px
       }
 
       var maxHeight = 0;
@@ -696,7 +758,9 @@ export default {
     }.bind(this);
 
     window.addEventListener('resize', resize);
-    setTimeout(resize, 1000);
+    setTimeout(resize, 0);
+
+    this.selectMonth = new Date().getMonth() + 1;
 
     // Add smooth scrolling to all links
     $("a.js-anchor").on('click', function(event) {
@@ -796,14 +860,24 @@ export default {
         month = this.selectMonth;
       return this.$store.state.season.TR_MONSURVEY.filter(function(item){
         var checked = false;
+        
         if (item.P_INDEX == index && item.S_MONTH == month) {
           checked = true;
           if (index==1 || index==2){
-            $.getJSON('http://ngismap.forest.gov.tw/REST/species/name_code/' + item.NAME_CODE, function(data) {
+            $.ajax({
+              method: "GET",
+              url: 'http://ngismap.forest.gov.tw/REST/species/name_code/' + item.NAME_CODE,
+              crossDomain: true
+            }).done(function( data ) {
               if (data){
                 Object.assign(item, data);
               }
-            });
+            })
+            //$.getJSON('http://ngismap.forest.gov.tw/REST/species/name_code/' + item.NAME_CODE, function(data) {
+            //  if (data){
+            //    Object.assign(item, data);
+            //  }
+            //});
           } else if (index==3) {
             _this.$store.state.season.TR_EXPLORE.forEach(function(item2){
               //if (item2.EP_PIC == item.SPECIES) Object.assign(item, item2);
@@ -843,6 +917,70 @@ export default {
     },
     splitTextCount(text, count) {
       return text.substring(0, count);
+    },
+    changeAccordionMode() {
+
+      if (this.isAccordion) {
+        $('.js-AccordionTab').show();
+        $('.js-title').hide();
+        this.expandAll();
+      } else {
+        $('.js-AccordionTab').hide();
+        $('.js-title').show();
+        this.collapseAll();
+      }
+    },
+    collapseAll() {
+      $('.js-AccordionContent').show();
+    },
+    expandAll() {
+      $('.js-AccordionContent').hide();
+    },
+    doAccordion(id) {
+      $(id).slideToggle("normal", function() {
+        $('#trailMap').height($('#trailMap').width());
+      });
+    },
+    getMonthName: function(m) {
+
+      switch (m) {
+        case 1:
+          return this.$store.state.lang.january;
+          break;
+        case 2:
+          return this.$store.state.lang.fabruary;
+          break;
+        case 3:
+          return this.$store.state.lang.march;
+          break;
+        case 4:
+          return this.$store.state.lang.april;
+          break;
+        case 5:
+          return this.$store.state.lang.may;
+          break;
+        case 6:
+          return this.$store.state.lang.june;
+          break;
+        case 7:
+          return this.$store.state.lang.july;
+          break;
+        case 8:
+          return this.$store.state.lang.august;
+          break;
+        case 9:
+          return this.$store.state.lang.september;
+          break;
+        case 10:
+          return this.$store.state.lang.october;
+          break;
+        case 11:
+          return this.$store.state.lang.november;
+          break;
+        case 12:
+          return this.$store.state.lang.december;
+          break;
+      }
     }
   }
   /*{
@@ -875,6 +1013,7 @@ export default {
 
 .el-carousel__container {
   height: 100%;
+  position: relative;
 }
 .el-carousel__arrow{
   background-image: url(assets/icon/circle_Button.png);
@@ -939,6 +1078,10 @@ export default {
 </style>
 
 <style scoped>
+
+.js-AccordionTab{
+  cursor: pointer;
+}
 
 #app {
   font-family: Helvetica, sans-serif;
@@ -1100,11 +1243,15 @@ export default {
   overflow: hidden;
 }
 .rt-main__content {
-  margin-top: 30px;
+  margin-top: 50px;
 }
-.rt-main__trailImage img{
-  width: 100%;
+.rt-main__trailImage__img{
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   cursor: pointer;
+  height: 93%;
+  width: 100%;
 }
 .rt-main__trailInfo__detail--horizontal{
   display: block;
@@ -1145,7 +1292,7 @@ export default {
   margin: 0 10px;
 }
 .rt-tab__car{
-  background-image: url(assets/icon/car.png);
+  background-image: url(assets/icon/car_off.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1154,10 +1301,10 @@ export default {
   margin: 0 auto;
 }
 .is-active .rt-tab__car{
-  background-image: url(assets/icon/car.png);
+  background-image: url(assets/icon/car_on.png);
 }
 .rt-tab__masstransport{
-  background-image: url(assets/icon/bus.png);
+  background-image: url(assets/icon/bus_off.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1166,7 +1313,16 @@ export default {
   margin: 0 auto;
 }
 .is-active .rt-tab__masstransport{
-  background-image: url(assets/icon/bus.png);
+  background-image: url(assets/icon/bus_on.png);
+}
+.rt-buttonList__seasonInfo{
+  display: block;
+}
+.rt-buttonList__seasonInfo > div{
+  padding: 0 1px;
+}
+.rt-dropdown__seasonInfo{
+  display: none;
 }
 .rt-tab__plant {
   background-image: url(assets/icon/plant_off.png);
@@ -1208,6 +1364,7 @@ export default {
   padding: 8px;
   color: #606266;
   background-color: #fff;
+  width: 100%;
 }
 .rt-button__seasonInfo:focus,
 .rt-button__seasonInfo.is-active {
@@ -1318,6 +1475,12 @@ export default {
     text-align: left;
     display: block;
     margin: 30px 0;
+  }
+  .rt-buttonList__seasonInfo{
+    display: none;
+  }
+  .rt-dropdown__seasonInfo{
+    display: inline-block;
   }
   .rt-card__environmentInfo,
   .rt-footer__cell{
