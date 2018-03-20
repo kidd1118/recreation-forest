@@ -18,7 +18,7 @@
               <p class="rt-summary">{{$store.state.index.TR_GUIDE.GUIDE_CONTENT.length > 200?
                 splitTextCount($store.state.index.TR_GUIDE.GUIDE_CONTENT, 200):
                 $store.state.index.TR_GUIDE.GUIDE_CONTENT}}
-                <a style="cursor: pointer;" v-show="$store.state.index.TR_GUIDE.GUIDE_CONTENT.length > 200" v-on:click="summaryInfoDialogVisible=true">
+                <a style="cursor: pointer;" v-show="$store.state.index.TR_GUIDE.GUIDE_CONTENT.length > 200" v-on:click="summaryInfoDialogVisible=true;readMoreText=$store.state.index.TR_GUIDE.GUIDE_CONTENT">
                   {{'.....' + $store.state.lang.more}}
                 </a>
               </p>
@@ -68,9 +68,8 @@
           <el-breadcrumb separator=">">
             <el-breadcrumb-item :to="{ path: '/' }" v-for="(item, index) in $store.state.breadcrumb" :key="index">{{ item }}</el-breadcrumb-item>
           </el-breadcrumb>
-          <h2 class="js-AccordionTab" v-text="$store.state.lang.know" @click="doAccordion($store.state.tabs[0].href)"></h2>
-          <div v-bind:id="$store.state.tabs[0].href.replace('#', '')" class="js-AccordionContent rt-main__content">
-            <h2 class="js-title" v-text="$store.state.lang.know"></h2>
+          <div v-bind:id="$store.state.tabs[0].href.replace('#', '')">
+            <h2 v-text="$store.state.lang.know"></h2>
             <el-row>
               <el-col id="trailMap" :span="12" class="rt-main__trailImage">
                 <div class="rt-main__trailImage__img" v-bind:style="{backgroundImage: 'url(' + getImagePath() + $store.state.know.RE_TRBAS.EP_MAP + ')'}" @click="trailImageDialogVisible=true"></div>
@@ -277,11 +276,10 @@
               </el-carousel-item>
             </el-carousel>
           </div>
-          <h2 class="js-AccordionTab" v-text="$store.state.lang.travel" @click="doAccordion($store.state.tabs[1].href)"></h2>
-          <div v-bind:id="$store.state.tabs[1].href.replace('#', '')" class="js-AccordionContent rt-main__content">
-            <h2 class="js-title" v-text="$store.state.lang.travel"></h2>
-            <el-tabs>
-              <el-tab-pane :label="$store.state.lang.travelInfo" style="text-align: left;">
+          <div v-bind:id="$store.state.tabs[1].href.replace('#', '')">
+            <h2 v-text="$store.state.lang.travel"></h2>
+            <el-tabs v-model="activeName" class="rt-tabs__travel" @tab-click="tabsClick">
+              <el-tab-pane :label="$store.state.lang.travelInfo" style="text-align: left;" name="1">
                 <h3>{{$store.state.lang.suggestEquipment}}</h3>
                 <el-button>{{$store.state.lang.download}}</el-button>
                 <h3>{{$store.state.lang.beforeInfomation}}</h3>
@@ -299,7 +297,7 @@
                   <el-button v-show="item.TOUR_LINK" v-on:click="click_outerLink(item.TOUR_LINK)">{{$store.state.lang.goto}}</el-button>
                 </div>
               </el-tab-pane>
-              <el-tab-pane :label="$store.state.lang.travelSuggestion">
+              <el-tab-pane :label="$store.state.lang.travelSuggestion" name="2">
                 <p v-show="!getTourData(1) || !getTourData(1).length">{{$store.state.lang.noData}}</p>
                 <p style="text-align: left;" v-for="(item, index) in getTourData(1)" :key="index">{{item.TOUR_CONTENT}}</p>
                 <h3>{{$store.state.travelScence}}</h3>
@@ -324,7 +322,7 @@
                   </el-carousel-item>
                 </el-carousel>
               </el-tab-pane>
-              <el-tab-pane :label="$store.state.lang.travelTrail">
+              <el-tab-pane :label="$store.state.lang.travelTrail" name="3">
                 <p v-show="!getTrailData(1) || !getTrailData(1).length">{{$store.state.lang.noData}}</p>
                 <el-row v-for="(item, index) in getTrailData(1)" :key="index">
                   <el-col :span="12">
@@ -339,10 +337,73 @@
                 </el-row>  
               </el-tab-pane>
             </el-tabs>
+            <el-collapse class="rt-accordion__travel" v-model="activeName" accordion @change="accordionChange">
+              <el-collapse-item :title="$store.state.lang.travelInfo" name="1" style="text-align: left;">
+                <h3>{{$store.state.lang.suggestEquipment}}</h3>
+                <el-button>{{$store.state.lang.download}}</el-button>
+                <h3>{{$store.state.lang.beforeInfomation}}</h3>
+                <h4 v-show="$store.state.travel.RE_TRBAS.M_BUS!=null">
+                  <div v-bind:class="$store.state.travel.RE_TRBAS.M_BUS == 0? 'rt-icon__check' : 'rt-icon__wrong'"></div>
+                  {{$store.state.travel.RE_TRBAS.M_BUS == 0? $store.state.lang.yesMiddleBus:$store.state.lang.noMiddleBus}}
+                </h4>
+                <h4 v-show="$store.state.travel.RE_TRBAS.L_BUS!=null">
+                  <div v-bind:class="$store.state.travel.RE_TRBAS.L_BUS == 0? 'rt-icon__check' : 'rt-icon__wrong'"></div>
+                  {{$store.state.travel.RE_TRBAS.M_BUS == 0? $store.state.lang.yesLargeBus:$store.state.lang.noLargeBus}}
+                </h4>
+                <div v-for="(item, index) in getTourData(4)" :key="index">
+                  <h4 v-show="item.TOUR_Title"><div class="rt-icon__check"></div>{{item.TOUR_Title}}</h4>
+                  <p v-show="item.TOUR_CONTENT">{{item.TOUR_CONTENT}}</p>
+                  <el-button v-show="item.TOUR_LINK" v-on:click="click_outerLink(item.TOUR_LINK)">{{$store.state.lang.goto}}</el-button>
+                </div>
+              </el-collapse-item>
+              <el-collapse-item :title="$store.state.lang.travelSuggestion" name="2">
+                <p v-show="!getTourData(1) || !getTourData(1).length">{{$store.state.lang.noData}}</p>
+                <p style="text-align: left;" v-for="(item, index) in getTourData(1)" :key="index">{{item.TOUR_CONTENT}}</p>
+                <h3>{{$store.state.travelScence}}</h3>
+                <el-carousel v-show="getTourData(2) && getTourData(2).length" id="el-carousel-7" :interval="1000" :autoplay="false" arrow="always" indicator-position="none">
+                  <el-carousel-item v-if="index % carouselDisplayNumber==0" v-for="(item, index) in getTourData(2)" :key="index">
+                    <div class="rt-carousel__cell"
+                      v-if="index+idx < getTourData(2).length"
+                      v-for="(seq, idx) in carouselDisplayNumber" :key="idx"
+                      v-bind:style="{width: + (100 / carouselDisplayNumber) + '%'}">
+                      <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + getTourData(2)[index+idx].TOUR_PIC + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-carousel__cell__img" 
+                        v-bind:alt="getTourData(2)[index+idx].TOUR_Title" v-bind:title="getTourData(2)[index+idx].TOUR_Title"></div>
+                      <div class="rt-carousel__cell__text">
+                        <div class="rt-carousel__cell__text__label">{{getTourData(2)[index+idx].TOUR_Title}}</div>
+                        <div class="rt-carousel__cell__text__subLabel">
+                          {{splitTextCount(getTourData(2)[index+idx].TOUR_CONTENT, 100)}}
+                          <a style="cursor: pointer;" v-show="getTourData(2)[index+idx].TOUR_CONTENT.length > 100" v-on:click="summaryInfoDialogVisible=true;readMoreText=getTourData(2)[index+idx].TOUR_CONTENT">
+                            {{'.....' + $store.state.lang.more}}
+                          </a>
+                        </div>
+                        <div class="rt-carousel__cell__button">
+                          <el-button v-show="getTourData(2)[index+idx].TOUR_LINK" v-on:click="click_outerLink(getTourData(2)[index+idx].TOUR_LINK)">
+                            {{$store.state.lang.goto}}
+                          </el-button>
+                        </div>
+                      </div>
+                    </div>
+                  </el-carousel-item>
+                </el-carousel>
+              </el-collapse-item>
+              <el-collapse-item :title="$store.state.lang.travelTrail" name="3">
+                <p v-show="!getTrailData(1) || !getTrailData(1).length">{{$store.state.lang.noData}}</p>
+                <el-row v-for="(item, index) in getTrailData(1)" :key="index">
+                  <el-col :span="12">
+                    <div v-bind:style="{backgroundImage: 'url(' + getImagePath() + item.PIC + '), url('+getRootPath()+'static/icon/noImage.png)'}" class="rt-image__travelTrail" v-bind:alt="item.Title" v-bind:title="item.Title"></div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class="rt-article__travelTrail">
+                      <h4>{{item.TITLE}}</h4>
+                      <p>{{item.FEATURES}}</p>
+                    </div>
+                  </el-col>
+                </el-row>  
+              </el-collapse-item>
+            </el-collapse>
           </div>
-          <h2 class="js-AccordionTab" v-text="$store.state.lang.traffic" @click="doAccordion($store.state.tabs[2].href)"></h2>
-          <div v-bind:id="$store.state.tabs[2].href.replace('#', '')" class="js-AccordionContent rt-main__content">
-            <h2 class="js-title" v-text="$store.state.lang.traffic"></h2>
+          <div v-bind:id="$store.state.tabs[2].href.replace('#', '')">
+            <h2 v-text="$store.state.lang.traffic"></h2>
             <el-tabs type="border-card">
               <el-tab-pane>
                 <div slot="label" class="rt-tab__travelInfo">  
@@ -368,9 +429,8 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <h2 class="js-AccordionTab" v-text="$store.state.lang.trail" @click="doAccordion($store.state.tabs[3].href)"></h2>
-          <div v-bind:id="$store.state.tabs[3].href.replace('#', '')" class="js-AccordionContent rt-main__content">
-            <h2 class="js-title" v-text="$store.state.lang.trail"></h2>
+          <div v-bind:id="$store.state.tabs[3].href.replace('#', '')">
+            <h2 v-text="$store.state.lang.trail"></h2>
             <iframe id="trailG-map" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" 
               width="100%" height="400px" src="https://www.google.com/maps/d/u/0/embed?mid=1iyYG9qLSsCTNrumDUVoT0VsXxR0">
             </iframe>
@@ -391,9 +451,8 @@
               </el-carousel-item>
             </el-carousel>
           </div>
-          <h2 class="js-AccordionTab" v-text="$store.state.lang.season" @click="doAccordion($store.state.tabs[4].href)"></h2>
-          <div v-bind:id="$store.state.tabs[4].href.replace('#', '')" class="js-AccordionContent rt-main__content">
-            <h2 class="js-title" v-text="$store.state.lang.season"></h2>
+          <div v-bind:id="$store.state.tabs[4].href.replace('#', '')">
+            <h2 v-text="$store.state.lang.season"></h2>
             <p>{{$store.state.lang.seasonImageHint}}</p>
             <el-row class="rt-buttonList__seasonInfo">
               <el-col :span="2">
@@ -543,9 +602,8 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <h2 class="js-AccordionTab" v-text="$store.state.lang.environment" @click="doAccordion($store.state.tabs[5].href)"></h2>
-          <div v-bind:id="$store.state.tabs[5].href.replace('#', '')" class="js-AccordionContent rt-main__content">
-            <h2 class="js-title" v-text="$store.state.lang.environment"></h2>
+          <div v-bind:id="$store.state.tabs[5].href.replace('#', '')">
+            <h2 v-text="$store.state.lang.environment"></h2>
             <el-row>
               <div v-for="seq in 3" :key="seq">
                 <el-col :span="8" v-for="(item, index) in getEnvironmentData(seq)" :key="index" class="rt-card__environmentInfo">
@@ -562,9 +620,8 @@
               </div>
             </el-row>
           </div>
-          <h2 class="js-AccordionTab" v-text="$store.state.lang.sharing" @click="doAccordion($store.state.tabs[6].href)"></h2>
-          <div v-bind:id="$store.state.tabs[6].href.replace('#', '')" class="js-AccordionContent rt-main__content">
-            <h2 class="js-title" v-text="$store.state.lang.sharing"></h2>
+          <div v-bind:id="$store.state.tabs[6].href.replace('#', '')">
+            <h2 v-text="$store.state.lang.sharing"></h2>
             <el-row>
               <div v-for="seq in 3" :key="seq">
                 <el-col :span="8" v-for="(item, index) in getSharingData(seq)" :key="index" class="rt-card__environmentInfo">
@@ -678,7 +735,7 @@
       width="90%"
       top="5vh"
       center>
-      <p>{{$store.state.index.TR_GUIDE.GUIDE_CONTENT}}</p>
+      <p>{{readMoreText}}</p>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="summaryInfoDialogVisible=false">close</el-button>
       </span>
@@ -700,7 +757,8 @@ export default {
       summaryInfoDialogVisible: false,
       selectMonth: 1,
       carouselDisplayNumber: 3,
-      isAccordion: null
+      activeName: '1',
+      readMoreText: ''
     }
   },
   mounted: function() { 
@@ -709,18 +767,12 @@ export default {
       if(mq.matches) {
         this.carouselDisplayNumber = 1;
         $('#trailMap').height($('#trailInfo').outerHeight());
-        if (this.isAccordion !== true) {
-          this.isAccordion = true;
-          this.changeAccordionMode();
-        }
+        
         // the width of browser is less then 768px
       } else {
         this.carouselDisplayNumber = 3;
         $('#trailMap').height($('#trailMap').width());
-        if (this.isAccordion !== false) {
-          this.isAccordion = false;
-          this.changeAccordionMode();
-        }
+        
         // the width of browser is more then 768px
       }
 
@@ -754,6 +806,11 @@ export default {
         if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
       });
       $('#el-carousel-6').height($('.rt-main__content').width() / 3 * 2 / this.carouselDisplayNumber + maxHeight);
+
+      $('#el-carousel-7 .rt-carousel__cell__text').each(function() {
+        if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+      });
+      $('#el-carousel-7').height($('.rt-main__content').width() / 3 * 2 / this.carouselDisplayNumber + maxHeight);
 
     }.bind(this);
 
@@ -820,6 +877,24 @@ export default {
     //]),
     handleSelect(tab, event) {
       console.log(tab, event);
+    },
+    tabsClick(val) {
+      if (val == 2) {
+        var maxHeight = 0;
+        $('#el-carousel-2 .rt-carousel__cell__text').each(function() {
+          if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+        });
+        $('#el-carousel-2').height($('.rt-main__content').width() / 3 * 2 / this.carouselDisplayNumber + maxHeight);
+      }
+    },
+    accordionChange(val) {
+      if (val == 2) {
+        var maxHeight = 0;
+        $('#el-carousel-7 .rt-carousel__cell__text').each(function() {
+          if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+        });
+        $('#el-carousel-7').height($('.rt-main__content').width() / 3 * 2 / this.carouselDisplayNumber + maxHeight);
+      }
     },
     click_outerLink(href) {
       this.$confirm('是否繼續 ?', '訊息', {
@@ -917,29 +992,6 @@ export default {
     },
     splitTextCount(text, count) {
       return text.substring(0, count);
-    },
-    changeAccordionMode() {
-
-      if (this.isAccordion) {
-        $('.js-AccordionTab').show();
-        $('.js-title').hide();
-        this.expandAll();
-      } else {
-        $('.js-AccordionTab').hide();
-        $('.js-title').show();
-        this.collapseAll();
-      }
-    },
-    collapseAll() {
-      $('.js-AccordionContent').show();
-    },
-    expandAll() {
-      $('.js-AccordionContent').hide();
-    },
-    doAccordion(id) {
-      $(id).slideToggle("normal", function() {
-        $('#trailMap').height($('#trailMap').width());
-      });
     },
     getMonthName: function(m) {
 
@@ -1055,10 +1107,20 @@ export default {
 .el-tabs__content{
   padding: 15px;
 }
-.el-tabs__item {
+.el-tabs__item,
+.el-collapse-item__header {
   font-size: 1.5rem;
 }
-.el-button {
+.el-collapse-item__header,
+.el-collapse-item__wrap {
+  padding: 0 10px;
+}
+.el-collapse-item__header.is-active,
+.el-tabs__item.is-active {
+  color: #0F7A6E;
+}
+.el-button,
+.el-tabs__active-bar {
   color: #fff;
   background-color: #0F7A6E;
 }
@@ -1078,10 +1140,6 @@ export default {
 </style>
 
 <style scoped>
-
-.js-AccordionTab{
-  cursor: pointer;
-}
 
 #app {
   font-family: Helvetica, sans-serif;
@@ -1281,6 +1339,15 @@ export default {
   margin-left: 10px;
   margin-bottom: 10px;
 }
+.rt-tabs__travel{
+  display: block;
+}
+.rt-accordion__travel{
+  display: none;
+}
+.rt-accordion__travel .rt-carousel__cell__text {
+  height: 150px;
+}
 .rt-image__travelTrail{
   background-repeat: no-repeat;
   background-size: contain;
@@ -1476,6 +1543,12 @@ export default {
     display: block;
     margin: 30px 0;
   }
+  .rt-tabs__travel{
+  display: none;
+}
+.rt-accordion__travel{
+  display: block;
+}
   .rt-buttonList__seasonInfo{
     display: none;
   }

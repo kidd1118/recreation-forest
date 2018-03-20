@@ -24,11 +24,6 @@ $.when(
         apiData = data;
       }
     }),
-    //$.getJSON(hostName + apiName, {id: getUrlVars()['id']}, function(data) {
-    //  if (data && data.status == 'success'){
-    //    apiData = data;
-    //  }
-    //}),
     $.getJSON(rootPath + '/locales/zh-tw.json', function(data) {
       if (data){ 
         lang = data;
