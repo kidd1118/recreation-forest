@@ -67,6 +67,12 @@
         "sharing": "民眾分享",
         "environment1": "生態",
         "environment2": "人文",
-        "environment3": "氣候"
-
+        "environment3": "氣候",
+        "managerUnit": "認養單位",
+        "relatedTrial": "關聯步道",
+        "trailClass0": "國家級步道",
+        "trailClass1": "區域級步道",
+        "trailClass2": "其他",
+        "photographer": "攝影者",
+        "more": "閱讀更多"
 }

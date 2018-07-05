@@ -11,41 +11,52 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-new Vue({
-  store: store,
-  el: '#app',
-  components: { App },
-  template: '<App/>',
+
+var lang, apiData;
+$.when(
+    $.ajax({
+      method: "GET",
+      url: apiName,
+      data: {id: getUrlVars()['id']},
+      crossDomain: true
+    }).done(function( data ) {
+      if (data && data.status == 'success'){
+        apiData = data;
+      }
+    }),
+    $.getJSON(rootPath + '/locales/zh-tw.json', function(data) {
+      if (data){ 
+        lang = data;
+      }
+    })
+).then(function() {
+  
+  if (apiData && lang) {
+
+    //store.replaceState(result.data);
+    Object.assign(store.state, apiData.data);
+    store.state.lang = lang;
+    
+    new Vue({
+      store: store,
+      el: '#app',
+      components: { App },
+      template: '<App/>',
+    });
+  }
 });
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 
 $(document).ready(function(){
-  // Add smooth scrolling to all links
-  $("a.js-anchor").on('click', function(event) {
 
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } 
-  });
-  $('a.js-anchor').keydown(function(event){
-    if(event.keyCode == 13){
-        $(this).click();   
-    }
-});
-
-  $('#loading').hide();
 });
